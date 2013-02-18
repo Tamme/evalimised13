@@ -1,13 +1,26 @@
-.header
+p {
+	
+}
+
+.header {
+	color:#000000;
+}
+
+.logo
 {
 	float:left;
 }
 
+body {
+	background:#3a75c4;
+}
+
 .container
 {
-	margin: 0 auto;
-	padding:0;
-	width:1080px;
+	margin: -10px auto;
+	padding: 0 8em 8em 8em;
+	width:65%;
+	background:#FFFFFF;
 }
 
 .title {
@@ -29,4 +42,25 @@
 	clear:both;
 	margin-left:auto;
 	margin-right:auto;
-}]
+	line-height:200%;
+	color:red;
+	
+}
+
+.menu a {
+	line-height:200%;
+	color:#000000;
+	background:#3a75c4;
+	font-size:30px;
+	font-padding:10px;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+	padding:1% 7%;
+	text-decoration:none;
+	border-style:solid;
+	border-left-style:solid;
+	border-width:2px 1px;
+	
+}
+
