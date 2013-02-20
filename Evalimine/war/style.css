@@ -1,14 +1,25 @@
-p {
-	
+
+h1, h2, h3, h4, h5, h5, p, a {
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-.header {
+#header
+{
+	float:left;
+	margin:0px;
+	padding:0px;
+	width:100em;
+	height:20em;
 	color:#000000;
 }
 
 .logo
 {
 	float:left;
+	margin:0px;
+	padding:3em 0 0 0;
+	width:350px;
+	height:155px;
 }
 
 body {
@@ -18,49 +29,65 @@ body {
 .container
 {
 	margin: -10px auto;
-	padding: 0 8em 8em 8em;
-	width:65%;
+	padding: 0 4em 8em 4em;
+	width: 77em;
 	background:#FFFFFF;
 }
 
 .title {
-	padding:100px 40px 50px 40px;
+	padding:3.5em 0em;
 	float:left;
+	font-size:2em;
 }
 
 .ops {
-	padding:130px 0px 50px 20px;
+	padding:10em 4em;
 	float:left;
 }
 
-.logo {
-	width:400px;
-	hight:300px;
+.enter a {
+	line-height:5em;
+	color:#ffffff;
+	background:#3a75c4;
+	font-size:2em;
+	font-padding:1em;
+	clear:both;
+	padding:0.1em 2em;
+	text-decoration:none;
 }
 
-.menus {
-	clear:both;
-	margin-left:auto;
-	margin-right:auto;
-	line-height:200%;
-	color:red;
-	
+.search {
+	width:6em;
+	hight:1em;
 }
+
 
 .menu a {
-	line-height:200%;
-	color:#000000;
+	line-height:10em;
+	color:#ffffff;
 	background:#3a75c4;
-	font-size:30px;
-	font-padding:10px;
+	font-size:2em;
+	font-padding:1em;
 	clear:both;
-	margin-left:auto;
-	margin-right:auto;
-	padding:1% 7%;
+	margin-left:0.2em;
+	margin-right:0.2em;
+	padding:0.1em 2em;
 	text-decoration:none;
-	border-style:solid;
-	border-left-style:solid;
-	border-width:2px 1px;
+}
+
+.menu a:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
 	
 }
+.menu a:active {
+	background:#FFFFFFF;
+	color:#3a75c4;
+	}
+	
+a:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
+	text-decoration:none;
+	}
 
