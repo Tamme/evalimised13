@@ -56,6 +56,15 @@ body {
 	text-decoration:none;
 }
 
+.searchbar {
+	float:right;
+	position:relative;
+	top:-5.5em;
+	background:#23282e url('taust.png') no-repeat;
+	padding-bottom:0.5em;
+}
+
+
 .search {
 	width:6em;
 	hight:1em;
@@ -74,6 +83,9 @@ body {
 	margin-right:4em;
 }
 
+.active {
+	background:#ffffff;
+}
 
 .menu a {
 	line-height:4em;
@@ -83,8 +95,19 @@ body {
 	/*font-padding:5em;*/
 	clear:both;
 	margin-right:0.1em;
-	padding:0.1em 1.97em;
+	padding:0.1em 1.17em; /* change menu width here */
 	text-decoration:none;
+}
+
+.btn
+{
+	background:#23282e url('taust.png') no-repeat;
+	color: white;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	width:2em;
+	position:relative;
+	top:0.5em;
+	
 }
 
 .menu a:hover {
@@ -96,13 +119,14 @@ body {
 	background:#FFFFFFF;
 	color:#3a75c4;
 	}
-	
-.search:hover {
-	background:#FFFFFFF;
-	color:#3a75c4;
-	}
 
 a:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
+	text-decoration:none;
+	}
+	
+input:hover {
 	background:#FFFFFF;
 	color:#3a75c4;
 	text-decoration:none;
