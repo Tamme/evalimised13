@@ -9,3 +9,5 @@ document.write('<a href="statistika.html" class="menu">Statistika</a>');
 
 document.write('<a href="kkk.html" class="extra">KKK</a>');
 
+document.write('<a href="enter.html" class="extra">Sisene</a>');
+

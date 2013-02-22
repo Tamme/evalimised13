@@ -1,16 +1,15 @@
 
-h1, h2, h3, h4, h5, h5, p, a {
+h1, h2, h3, h4, h5, h5, p, a, ul, li {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #header
 {
 	float:left;
-	margin:0px;
-	padding:0px;
+	margin:-5em 0 0 0;
+	padding:0em;
 	width:100em;
 	height:20em;
-	color:#000000;
 }
 
 .logo
@@ -18,18 +17,18 @@ h1, h2, h3, h4, h5, h5, p, a {
 	float:left;
 	margin:0px;
 	padding:3em 0 0 0;
-	width:350px;
-	height:155px;
+	width:77em;
+	height:16.5em;
 }
 
 body {
-	background:#3a75c4;
+	background:#23282e url('taust.png') no-repeat;
 }
 
 .container
 {
-	margin: -10px auto;
-	padding: 0 4em 8em 4em;
+	margin: -2em auto;
+	padding: 0em 0 12em 0;
 	width: 77em;
 	background:#FFFFFF;
 }
@@ -38,6 +37,7 @@ body {
 	padding:3.5em 0em;
 	float:left;
 	font-size:2em;
+	color:#000000;
 }
 
 .ops {
@@ -46,32 +46,44 @@ body {
 }
 
 .enter a {
-	line-height:5em;
+	line-height:2.5em;
 	color:#ffffff;
 	background:#3a75c4;
 	font-size:2em;
 	font-padding:1em;
 	clear:both;
-	padding:0.1em 2em;
+	padding:0.1em 1.75em;
 	text-decoration:none;
 }
 
 .search {
 	width:6em;
 	hight:1em;
-}
-
-
-.menu a {
-	line-height:10em;
+	line-height:2.5em;
 	color:#ffffff;
 	background:#3a75c4;
 	font-size:2em;
 	font-padding:1em;
 	clear:both;
-	margin-left:0.2em;
-	margin-right:0.2em;
-	padding:0.1em 2em;
+	padding:0.1em 1.75em;
+	text-decoration:none;
+}
+
+.text {
+	margin-left:4em;
+	margin-right:4em;
+}
+
+
+.menu a {
+	line-height:4em;
+	color:#ffffff;
+	background:#23282e url('taust.png') no-repeat;
+	font-size:2em;
+	/*font-padding:5em;*/
+	clear:both;
+	margin-right:0.1em;
+	padding:0.1em 1.97em;
 	text-decoration:none;
 }
 
@@ -85,6 +97,11 @@ body {
 	color:#3a75c4;
 	}
 	
+.search:hover {
+	background:#FFFFFFF;
+	color:#3a75c4;
+	}
+
 a:hover {
 	background:#FFFFFF;
 	color:#3a75c4;
