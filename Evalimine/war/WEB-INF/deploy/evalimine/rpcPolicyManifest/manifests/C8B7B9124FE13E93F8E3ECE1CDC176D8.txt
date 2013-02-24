@@ -1,0 +1,2 @@
+serviceClass: com.evalimine.client.GreetingService
+path: 0BB9D482132F15AA5DA0BE1E14FECB50.gwt.rpc
