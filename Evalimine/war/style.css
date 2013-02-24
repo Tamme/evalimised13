@@ -179,3 +179,7 @@ input:hover {
 #idkaardinupp:active {
 	background: url(id3.gif) no-repeat;
 }
+
+#form{
+	padding-left:15px;
+}
