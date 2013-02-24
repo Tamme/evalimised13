@@ -132,3 +132,50 @@ input:hover {
 	text-decoration:none;
 	}
 
+#facebookinupp { display: block; width:255px; height:43px;
+	background: url(fb1.gif) no-repeat;
+}
+
+#facebookinupp:hover {
+	background: url(fb2.gif) no-repeat;
+}
+
+#facebookinupp:active {
+	background: url(fb3.gif) no-repeat;
+}
+
+#twitterinupp { display: block; width:255px; height:43px;
+	background: url(tw1.gif) no-repeat;
+}
+
+#twitterinupp:hover {
+	background: url(tw2.gif) no-repeat;
+}
+
+#twitterinupp:active {
+	background: url(tw3.gif) no-repeat;
+}
+
+#googlenupp { display: block; width:255px; height:43px;
+	background: url(ggl1.gif) no-repeat;
+}
+
+#googlenupp:hover {
+	background: url(ggl2.gif) no-repeat;
+}
+
+#googlenupp:active {
+	background: url(ggl3.gif) no-repeat;
+}
+
+#idkaardinupp { display: block; width:255px; height:43px;
+	background: url(id1.gif) no-repeat;
+}
+
+#idkaardinupp:hover {
+	background: url(id2.gif) no-repeat;
+}
+
+#idkaardinupp:active {
+	background: url(id3.gif) no-repeat;
+}
