@@ -68,7 +68,7 @@ body {
 
 .search {
 	width:6em;
-	hight:1em;
+	height:1em;
 	line-height:2.5em;
 	color:#ffffff;
 	background:#3a75c4;
@@ -117,7 +117,7 @@ body {
 	
 }
 .menu a:active {
-	background:#FFFFFFF;
+	background:#FFFFFF;
 	color:#3a75c4;
 	}
 
