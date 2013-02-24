@@ -59,9 +59,10 @@ body {
 .searchbar {
 	float:right;
 	position:relative;
-	top:-5.5em;
+	top:-5.45em;
 	background:#23282e url('taust.png') no-repeat;
-	padding-bottom:0.5em;
+	padding-bottom:0.9em;
+	padding-left:3.9em;
 }
 
 
@@ -182,4 +183,18 @@ input:hover {
 
 #form{
 	padding-left:15px;
+}
+
+.statmenu a {
+	position:relative;
+	float:center;
+	top:-2.4em;
+	color:#ffffff;
+	background:#23282e url('taust.png') no-repeat;
+	font-size:1em;
+	/*font-padding:5em;*/
+	clear:both;
+	margin-right:0.3em;
+	padding:0.1em 1.17em; /* change menu width here */
+	text-decoration:none;
 }
