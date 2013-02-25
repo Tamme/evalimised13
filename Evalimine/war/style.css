@@ -198,3 +198,59 @@ input:hover {
 	padding:0.1em 1.17em; /* change menu width here */
 	text-decoration:none;
 }
+
+.riigistat {
+	float:center;
+	margin:0px;
+	width:60em;
+	height:40em;
+}
+
+.piirkonnastat {
+	float:center;
+	margin:0px;
+	width:60em;
+	height:40em;
+}
+
+.statmenu a:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
+}
+
+.kandidaadid {
+	text-align:center;
+	margin-left:4em;
+	margin-bottom:2em;
+}
+
+.kandidaadistat {
+	float:center;
+	margin:0px;
+	width:60em;
+	height:40em;
+}
+.parteistat {
+	float:center;
+	margin:0px;
+	width:60em;
+	height:40em;
+}
+
+.print {
+	margin-top:5em;
+	margin-left:4em;
+	margin-right:4em;
+}
+
+.printbutton a {
+	position:relative;
+	float:inherit;
+	top:-2.2em;
+	color:#ffffff;
+	background:#23282e url('taust.png') no-repeat;
+	font-size:1em;
+	padding:0.1em 1.3em;
+	clear:both;
+	text-decoration:none;
+}
