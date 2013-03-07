@@ -6,11 +6,120 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>E-Valimine 2013</title>
 	<script type="text/javascript" language="javascript" src="evalimine/evalimine.nocache.js"></script>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script >
-		alert('hello there');
-		var element = document.getElementById("esi");
-		element.className = element.className + ” active”;
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+	</script>
+	<script>
+
+// 		$.getJSON('candidate.json', function(data) {
+// 		var items = [];
+		 
+// 		$.each(data, function(key, val) {
+// 		items.push('<li id="' + key + '">' + val + '</li>');
+// 		});
+		 
+// 		$('<ul/>', {
+// 		'class': 'my-new-list',
+// 		html: items.join('')
+// 		}).appendTo('body');
+// 		});
+		
+// 		$.ajax({
+			
+// 			data: $("#candidateForm").serialize(),
+// 			console.log(data);
+// 		})
+		
+		function getPerson() {
+			$(document).ready(function(){
+				$.getJSON('candidate.real.json', function(data) {
+					var items = data;
+					var text = "<table class='candidateInfo' border='1'>" +
+						"<tr><th>Isiku (isiku)kood</th><td>" + items.person.id + "</td><tr>" +
+						"<tr><th>Isiku nimi</th><td>" + items.person.name + "</td><tr>" +
+						"<tr><th>Valimisnumber</th><td>" + items.id + "</td><tr>" + 
+						"<tr><th>Partei lühend</th><td>" + items.party.id  + "</td><tr>" +
+						"<tr><th>Partei nimi</th><td>" + items.party.name  + "</td><tr>" +
+						"<tr><th>Piirkonna lühend</th><td>" + items.region.id + "</td><tr>" +
+						"<tr><th>Piirkonna nimi</th><td>" + items.region.name + "</td><tr>" + "</table>";
+						
+					$('#list').html(text);
+				});
+			});
+		}
+		
+		$(document).ready(function(){
+			$('#candidateForm').submit(function(e) {
+				e.preventDefault();
+				var params = $(this).serialize();
+				//no selection
+				if ((params.indexOf('eesti')) != -1 && (params.indexOf('allParties')) != -1) {
+						$.getJSON('candidate.json', function(data) {
+							var items = data;
+							var text = "<table class='candidateTable' border='1'><tr><th>Järjekorranumber</th><th>Isikukood</th><th>Nimi</th><th></th></tr>";
+							for (var i = 0; i < items.candidates.length; i++) {
+								text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + "</td>" + 
+									"<td><button type='button' onclick=getPerson() class='button'>Info</button></tr>";
+							}
+							text += "</table>"
+							$('#list').html(text);
+						});
+					}
+				else if ((params.indexOf('eesti')) != -1 && (params.indexOf('allParties')) == -1){
+						$.getJSON('findCandidatesByParty.json', function(data) {
+							var items = data;
+							var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>partei id</th><th>partei nimi</th></tr>";
+							for (var i = 0; i < items.candidates.length; i++) {
+								text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + 
+									"</td><td>" + items.candidates[i].party.id + "</td><td>" + items.candidates[i].party.name + "</td></tr>";
+							}
+							text += "</table>"
+							$('#list').html(text);
+						});
+					}
+					//$("#siia").load('findCandidatesByParty.json');
+				else if ((params.indexOf('eesti')) == -1 && (params.indexOf('allParties')) != -1) {
+					$.getJSON('findCandidatesByRegion.json', function(data) {
+						var items = data;
+						var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>piirkonna lühend</th><th>piirkonna nimi</th></tr>";
+						for (var i = 0; i < items.candidates.length; i++) {
+							text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + 
+								"</td><td>" + items.candidates[i].region.id + "</td><td>" + items.candidates[i].region.name + "</td></tr>";
+						}
+						text += "</table>";
+						$('#list').html(text);
+					});
+				}
+				else {
+					$.getJSON('findCandidatesByPartyAndRegion.json', function(data) {
+						var items = data;
+						var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>piirkonna lühend</th><th>piirkonna nimi</th></th><th>erakonna lühend</th><th>erakonna nimi</th></tr>";
+						for (var i = 0; i < items.candidates.length; i++) {
+							text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + 
+								"</td><td>" + items.candidates[i].region.id + "</td><td>" + items.candidates[i].region.name +
+								"</td><td>" + items.candidates[i].party.id + "</td><td>" + items.candidates[i].party.name + "</td></tr>";
+						}
+						text += "</table>";
+						$('#list').html(text);
+					});
+				}
+			});
+		});
+// 		$(document).ready(function(){
+			
+// 		$("#candSearch").click(function(e){
+// 			e.preventDefault();
+// 		$.getJSON("candidate.json",function(result){
+// 			$("#siia").append(result.id + " ");
+// 			console.log(result.id);
+// 			console.log(result.party.name);
+// 			var o = jQuery.parseJSON(result);
+// 			console.log(o);
+// // 		$.each(result, function(i, field){
+// // 		$("#siia").append(field + " ");
+// // 		});
+// 		});
+// 		});
+// 		});
 	</script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
@@ -19,7 +128,7 @@
 		<div class="container">
 			<div id="header">
 				<div class="logo">
-					<img class="logo" src="logo3.png"></img>
+					<img class="logo" src="img/logo3.png"></img>
 				</div>
 			</div>
 			<div class="menu">
@@ -28,47 +137,69 @@
 			<div>
 				<form class="searchbar">
 					<input type="text" name=search">
-					<input type="image" src="search.png" class="btn" type="submit" value="Otsi" name="search_btn"/>
+					<input type="image" src="img/search.png" class="btn" type="submit" value="Otsi" name="search_btn"/>
 				</form>
 			</div>
 			<div class="text">
-				<h1>
+				<h3>
+					Otsi kandidaate
+				</h3>
+			</div>
+			<div class="searchCandidate">
+				<form id="candidateForm">
+					Vali piirkond:
+					<select name="area" id="areas">
+						<option value="eesti">Eesti</option>
+						<option value="tallinn">Tallinn</option>
+					</select>
+					Vali erakond:
+					<select name="party" id="parties">
+						<option value="allParties">Kõik</option>
+						<option value="sde">SDE</option>
+						<option value="ref">RE</option>
+					</select>
+					<button id="candSearch">Otsi</button>
+				</form>
+			</div>
+			<div class="text">
+				<h3>
 					Kandidaatide nimekiri
-				</h1>
+				</h3>
 			</div>
-			
-			<div class="kandidaadid">
-				<table border="1">
-				<tr>
-				<td><img src="avatarm.jpg"></img></td>
-				<td><img src="avatarm.jpg"></img></td>
-				<td><img src="avatarm.jpg"></img></td>
-				<td><img src="avatarn.jpg"></img></td>
-				</tr>
-				<tr>
-				<td>Aadu Aabits</td>
-				<td>Georg Geoloog</td>
-				<td>Harold Hirm</td>
-				<td>Ingrid Imelik</td>
-				</tr>
-				</table>
+			<div id="list">
 			</div>
-			<div class="kandidaadid">
-				<table border="1">
-				<tr>
-				<td><img src="avatarn.jpg"></img></td>
-				<td><img src="avatarm.jpg"></img></td>
-				<td><img src="avatarn.jpg"></img></td>
-				<td><img src="avatarm.jpg"></img></td>
-				</tr>
-				<tr>
-				<td>Heli Kopter</td>
-				<td>Maksim Market</td>
-				<td>Anna Nuga</td>
-				<td>Kalju Kits</td>
-				</tr>
-				</table>
-			</div>
+<!-- 			<div> -->
+<!-- 				<table border="1"> -->
+<!-- 				<tr> -->
+<!-- 				<td><img src="img/avatarm.jpg"></img></td> -->
+<!-- 				<td><img src="img/avatarm.jpg"></img></td> -->
+<!-- 				<td><img src="img/avatarm.jpg"></img></td> -->
+<!-- 				<td><img src="img/avatarn.jpg"></img></td> -->
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 				<td>Aadu Aabits</td> -->
+<!-- 				<td>Georg Geoloog</td> -->
+<!-- 				<td>Harold Hirm</td> -->
+<!-- 				<td>Ingrid Imelik</td> -->
+<!-- 				</tr> -->
+<!-- 				</table> -->
+<!-- 			</div> -->
+<!-- 			<div class="kandidaadid"> -->
+<!-- 				<table border="1"> -->
+<!-- 				<tr> -->
+<!-- 				<td><img src="img/avatarn.jpg"></img></td> -->
+<!-- 				<td><img src="img/avatarm.jpg"></img></td> -->
+<!-- 				<td><img src="img/avatarn.jpg"></img></td> -->
+<!-- 				<td><img src="img/avatarm.jpg"></img></td> -->
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 				<td>Heli Kopter</td> -->
+<!-- 				<td>Maksim Market</td> -->
+<!-- 				<td>Anna Nuga</td> -->
+<!-- 				<td>Kalju Kits</td> -->
+<!-- 				</tr> -->
+<!-- 				</table> -->
+<!-- 			</div> -->
 
 			
 			

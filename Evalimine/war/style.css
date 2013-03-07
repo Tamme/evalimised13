@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, p, a, ul, li {
 }
 
 body {
-	background:#23282e url('taust.png') no-repeat;
+	background:#23282e url('img/taust.png') no-repeat;
 }
 
 .container
@@ -60,7 +60,7 @@ body {
 	float:right;
 	position:relative;
 	top:-5.45em;
-	background:#23282e url('taust.png') no-repeat;
+	background:#23282e url('img/taust.png') no-repeat;
 	padding-bottom:0.5em;
 	padding-left:1.3em;
 }
@@ -91,7 +91,7 @@ body {
 .menu a {
 	line-height:4em;
 	color:#ffffff;
-	background:#23282e url('taust.png') no-repeat;
+	background:#23282e url('img/taust.png') no-repeat;
 	font-size:2em;
 	/*font-padding:5em;*/
 	clear:both;
@@ -102,7 +102,7 @@ body {
 
 .btn
 {
-	background:#23282e url('taust.png') no-repeat;
+	background:#23282e url('img/taust.png') no-repeat;
 	color: white;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	width:2em;
@@ -190,7 +190,7 @@ input:hover {
 	float:inherit;
 	top:-2.4em;
 	color:#ffffff;
-	background:#23282e url('taust.png') no-repeat;
+	background:#23282e url('img/taust.png') no-repeat;
 	font-size:1em;
 	/*font-padding:5em;*/
 	clear:both;
@@ -248,9 +248,66 @@ input:hover {
 	float:inherit;
 	top:-2.2em;
 	color:#ffffff;
-	background:#23282e url('taust.png') no-repeat;
+	background:#23282e url('img/taust.png') no-repeat;
 	font-size:1em;
 	padding:0.1em 1.3em;
 	clear:both;
+	text-decoration:none;
+}
+
+.candidateTable {
+	margin-left:4em;
+	width:90%;
+	height:9em;
+	text-align:center;
+	border:2em;
+	border-color:#000066;
+	
+}
+
+.candidateInfo {
+	margin-left:10%;
+	width:80%;
+	height:9em;
+	text-align:center;
+	border:2em;
+	border-color:#000066;
+	
+}
+
+#candidateForm {
+	margin-left:4em;
+	margin-bottom:1em;
+}
+
+th {
+	color:#ffffff;
+	background:#23282e url('img/button.png') no-repeat;
+	background-size:cover
+}
+
+#candSearch {
+	color:#ffffff;
+	background:#23282e url('img/button.png') no-repeat;
+	background-size:cover;
+	/*font-padding:5em;*/
+	clear:both;
+	padding:0.1em 1.17em; /* change menu width here */
+	text-decoration:none;
+}
+
+#candSearch:hover, .button:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
+	
+}
+
+.button {
+		color:#ffffff;
+	background:#23282e url('img/button.png') no-repeat;
+	background-size:cover;
+	/*font-padding:5em;*/
+	clear:both;
+	padding:0.1em 1.17em; /* change menu width here */
 	text-decoration:none;
 }
