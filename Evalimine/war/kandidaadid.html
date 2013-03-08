@@ -28,6 +28,8 @@
 // 			data: $("#candidateForm").serialize(),
 // 			console.log(data);
 // 		})
+		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
+		var candidateOne = "<h3>Kandidaadi info</h3>";
 		
 		function getPerson() {
 			$(document).ready(function(){
@@ -44,15 +46,17 @@
 						
 					$('#list').html(text);
 				});
+				$('#candHeading').html(candidateOne);
 			});
 		}
+		
 		
 		$(document).ready(function(){
 			$('#candidateForm').submit(function(e) {
 				e.preventDefault();
 				var params = $(this).serialize();
 				//no selection
-				if ((params.indexOf('eesti')) != -1 && (params.indexOf('allParties')) != -1) {
+				if ((params.indexOf('eesti')) == -1 && (params.indexOf('allParties')) == -1) {
 						$.getJSON('candidate.json', function(data) {
 							var items = data;
 							var text = "<table class='candidateTable' border='1'><tr><th>Järjekorranumber</th><th>Isikukood</th><th>Nimi</th><th></th></tr>";
@@ -63,44 +67,48 @@
 							text += "</table>"
 							$('#list').html(text);
 						});
+						$('#candHeading').html(candidateList);
 					}
-				else if ((params.indexOf('eesti')) != -1 && (params.indexOf('allParties')) == -1){
+				else if ((params.indexOf('eesti')) == -1 && (params.indexOf('allParties')) != -1){
 						$.getJSON('findCandidatesByParty.json', function(data) {
 							var items = data;
-							var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>partei id</th><th>partei nimi</th></tr>";
+							var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>partei id</th><th>partei nimi</th><th></th></tr>";
 							for (var i = 0; i < items.candidates.length; i++) {
 								text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + 
-									"</td><td>" + items.candidates[i].party.id + "</td><td>" + items.candidates[i].party.name + "</td></tr>";
+									"</td><td>" + items.candidates[i].party.id + "</td><td>" + items.candidates[i].party.name + "</td><td><button type='button' onclick=getPerson() class='button'>Info</button></tr>";
 							}
 							text += "</table>"
 							$('#list').html(text);
 						});
+						$('#candHeading').html(candidateList);
 					}
 					//$("#siia").load('findCandidatesByParty.json');
-				else if ((params.indexOf('eesti')) == -1 && (params.indexOf('allParties')) != -1) {
+				else if ((params.indexOf('eesti')) != -1 && (params.indexOf('allParties')) == -1) {
 					$.getJSON('findCandidatesByRegion.json', function(data) {
 						var items = data;
-						var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>piirkonna lühend</th><th>piirkonna nimi</th></tr>";
+						var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>piirkonna lühend</th><th>piirkonna nimi</th><th></th></tr>";
 						for (var i = 0; i < items.candidates.length; i++) {
 							text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + 
-								"</td><td>" + items.candidates[i].region.id + "</td><td>" + items.candidates[i].region.name + "</td></tr>";
+								"</td><td>" + items.candidates[i].region.id + "</td><td>" + items.candidates[i].region.name + "</td><td><button type='button' onclick=getPerson() class='button'>Info</button></tr>";
 						}
 						text += "</table>";
 						$('#list').html(text);
 					});
+					$('#candHeading').html(candidateList);
 				}
 				else {
 					$.getJSON('findCandidatesByPartyAndRegion.json', function(data) {
 						var items = data;
-						var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>piirkonna lühend</th><th>piirkonna nimi</th></th><th>erakonna lühend</th><th>erakonna nimi</th></tr>";
+						var text = "<table class='candidateTable' border='1'><tr><th>Partei järgi id</th><th>id</th><th>name</th><th>piirkonna lühend</th><th>piirkonna nimi</th></th><th>erakonna lühend</th><th>erakonna nimi</th><th></th></tr>";
 						for (var i = 0; i < items.candidates.length; i++) {
 							text += "<tr><td>" + items.candidates[i].id + "</td><td>" + items.candidates[i].person.id + "</td><td>" + items.candidates[i].person.name + 
 								"</td><td>" + items.candidates[i].region.id + "</td><td>" + items.candidates[i].region.name +
-								"</td><td>" + items.candidates[i].party.id + "</td><td>" + items.candidates[i].party.name + "</td></tr>";
+								"</td><td>" + items.candidates[i].party.id + "</td><td>" + items.candidates[i].party.name + "</td><td><button type='button' onclick=getPerson() class='button'>Info</button></tr>";
 						}
 						text += "</table>";
 						$('#list').html(text);
 					});
+					$('#candHeading').html(candidateList);
 				}
 			});
 		});
@@ -121,7 +129,7 @@
 // 		});
 // 		});
 	</script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 
 	<body>
@@ -132,7 +140,7 @@
 				</div>
 			</div>
 			<div class="menu">
-				<script language="JavaScript" type="text/javascript" src="menu.js"></script>
+				<script language="JavaScript" type="text/javascript" src="js/menu.js"></script>
 			</div>
 			<div>
 				<form class="searchbar">
@@ -161,10 +169,7 @@
 					<button id="candSearch">Otsi</button>
 				</form>
 			</div>
-			<div class="text">
-				<h3>
-					Kandidaatide nimekiri
-				</h3>
+			<div class="text" id="candHeading">
 			</div>
 			<div id="list">
 			</div>
