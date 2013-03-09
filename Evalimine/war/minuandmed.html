@@ -35,31 +35,57 @@
 				<h1>
 					Minu andmed
 				</h1>
-				<table border = "0">
-					<tr>
-						<td>
-							<a href="default.asp">
-								<img border="0" src="lae_pilt_yles.png" width="250"></img>
-							</a>
-						</td>
-						<td id="form">
-							<form action="demo_form.asp">
-							Eesnimi:   <input type="text" name="EesNimi" value="Aadu"><br><br>
-							Perenimi:  <input type="text" name="PereNimi" value="Aas"><br><br>
-							Piirkond:  <select>
-								<option value="Tartumaa">Tartumaa</option>
-								<option value="Harjumaa">Harjumaa</option>
-								<option value="Valgamaa">Valgamaa</option>
-							</select><br><br>
-							<input type="submit" value="Uuenda andmeid"><br>
-							</form><br><br>
-							<a href="default.asp" class="btn">Kandideeri</a>
-							<a href="default.asp" class="btn">Tühista</a>
-						</td>
-					</tr>
-				</table>
-					
-				
+				<div id="specialcontainer">
+					<div id="row">
+						<div id="left">
+  							<p>
+  								<img border="0" src="/img/avatarm.jpg"></img><br>
+  								<a href="default.asp">Laadi pilt üles</a>
+  							</p>
+  						</div>
+ 						<div id="middle1">
+				  			<p>
+  								Eesnimi:<br>
+  								Perenimi:<br>
+  								Isikukood:<br>
+  								Valimisringkond:<br>
+  								Hääletamine:<br>
+  								Kandideerimine:<br>
+  							</p>
+  						</div>
+						<div id="middle2">
+    						<p>
+    							<form action="demo_form.asp">
+					   			<input type="text" name="EesNimi" value="Aadu"><br>
+					  			<input type="text" name="PereNimi" value="Aas"><br>
+					 			<input type="text" name="Isikukood" value="39001010101"><br>
+    							<select>
+								<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+								<option value="valimisringkondnr2">Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+								<option value="valimisringkondnr3">Tallinna Mustamäe ja Nõmme linnaosa</option>
+								<option value="valimisringkondnr4">Harju- (v.a Tallinn) ja Raplamaa</option>
+								<option value="valimisringkondnr5">Hiiu-, Lääne- ja Saaremaa</option>
+								<option value="valimisringkondnr6">Lääne-Virumaa</option>
+								<option value="valimisringkondnr7">Ida-Virumaa</option>
+								<option value="valimisringkondnr8">Järva- ja Viljandimaa</option>
+								<option value="valimisringkondnr9">Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+								<option value="valimisringkondnr10">Tartu linn</option>
+								<option value="valimisringkondnr11">Võru-, Valga- ja Põlvamaa</option>
+								<option value="valimisringkondnr12">Pärnumaa</option>
+								</select><br>
+					 			Te pole veel hääletanud!<br>
+					 			Te ei kandideeri! <br>
+								<input type="submit" value="Salvesta">
+								</form>
+    						</p>
+  						</div>
+  						<div id="right">
+  							<p>
+  							<br><br><br><br><br><br>
+  								<a href="default.asp">Hääletama</a><br>
+  								<a href="default.asp">Kandideerima</a>
+					</div>
+				</div>		
 			</div>
 		</div>
 	</body>

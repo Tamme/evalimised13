@@ -1,5 +1,5 @@
 
-h1, h2, h3, h4, h5, p, a, ul, li {
+h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -305,7 +305,7 @@ th {
 }
 
 .button {
-		color:#ffffff;
+	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	/*font-padding:5em;*/
@@ -313,3 +313,18 @@ th {
 	padding:0.1em 1.17em; /* change menu width here */
 	text-decoration:none;
 }
+
+#specialcontainer {
+	display: table;
+	}
+
+#row  {
+	padding:4em;
+	display: table-row;
+	}
+
+#left, #right, #middle1, #middle2 {
+	padding:4em;
+	display: table-cell;
+	}
+	
