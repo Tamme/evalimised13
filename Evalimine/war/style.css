@@ -323,8 +323,11 @@ th {
 	display: table-row;
 	}
 
-#left, #right, #middle1, #middle2 {
+#left, #right, #middle {
 	padding:4em;
 	display: table-cell;
 	}
 	
+#select {
+	width:4em;
+	}
