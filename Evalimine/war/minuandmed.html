@@ -19,18 +19,10 @@
     	$("#commentForm").validate();
   		});
   	</script>
+  	<script src="http://code.jquery.com/jquery-latest.js"></script>
+  	<script type="text/javascript" src="js/sumbitcandidate.js"></script>
   	<script>
-	function kandideerimisFunktsioon() {
-		var x;
-		var r=confirm("Kas soovid tõesti kandideerida?");
-		if (r==true) {
-  			x="Olete kandideeritud!";
-  		}
-		else {
-  			x="Kandideerimine tühistatud!";
-  		}
-		document.getElementById("demo").innerHTML=x;
-	}
+		document.getElementById("kandideerima").innerHTML=x;
 	</script>
   	<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
@@ -69,17 +61,17 @@
    									<!--<legend>A simple comment form with submit validation and default messages</legend> -->
    									<p>
      									<label for="ceesnimi">Eesnimi</label>
-     									<em>*</em><br><input id="ceesnimi" name="eesnimi" size="70" class="required" minlength="2" value="Aadu" />
+     									<em>*</em><br><input id="ceesnimi" name="eesnimi" size="70" class="required" minlength="2"/>
      									<!-- <em>*</em><input id="cname" name="name" size="25" class="required" minlength="2" /> -->
    									</p>
    									<p>
      									<label for="cperenimi">Perenimi</label>
-     									<em>*</em><br><input id="cperenimi" name="perenimi" size="70" class="required" minlength="2" value="Aas" />
+     									<em>*</em><br><input id="cperenimi" name="perenimi" size="70" class="required" minlength="2"/>
      									<!-- <em>*</em><input id="cemail" name="email" size="25"  class="required email" /> -->
    									</p>
    									<p>
      									<label for="cisikukood">Isikukood</label>
-     									<em>*</em><br><input id="cisikukood" name="isikukood" size="70" class="digits" minlength="11" maxlength="11" value="39101010101" />
+     									<em>*</em><br><input id="cisikukood" name="isikukood" size="70" class="digits" minlength="11" maxlength="11"/>
    									</p>
    									<p>
      									<label for="cvalimisringkond">Valimisringkond</label>
@@ -100,6 +92,21 @@
 										</select>
    									</p>
    									<p>
+     									<label for="erakond">Erakond</label>
+     									<br><select id="cerakond" name="erakond">
+     									<option selected="" value=""> --Palun vali oma erakond--</option>
+										<option value="erakondnr1">Eestimaa Ühendatud Vasakpartei</option>
+										<option value="erakondnr2">Isamaa ja Res Publica Liit</option>
+										<option value="erakondnr3">Iseseisvuspartei</option>
+										<option value="erakondnr4">Keskerakond</option>
+										<option value="erakondnr5">Kristlikud Demokraadid</option>
+										<option value="erakondnr6">Rahvaliit</option>
+										<option value="erakondnr7">Reformierakond</option>
+										<option value="erakondnr8">Rohelised</option>
+										<option value="erakondnr9">Sotsiaaldemokraatlik Erakond</option>
+										</select>
+   									</p>
+   									<p>
      									<input class="submit" type="submit" value="Salvesta"/>
    									</p>
  								</fieldset>
@@ -107,10 +114,14 @@
    						</div>
   						<div id="right">
   							<p>
+  								<div id="hääletama">
   								Hääletamine:<br>
   								<a href="kandidaadid.html">Häält andma</a><br><br>
+  								</div>
   								Kandideerimine:<br>
-  								<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Kandideerima</a>
+  								<div id="kandideerima">
+  									<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Kandideerima</a>
+  								</div>
   						</p>
 					</div>
 				</div>		
