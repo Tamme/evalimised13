@@ -19,7 +19,20 @@
     	$("#commentForm").validate();
   		});
   	</script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+  	<script>
+	function kandideerimisFunktsioon() {
+		var x;
+		var r=confirm("Kas soovid tõesti kandideerida?");
+		if (r==true) {
+  			x="Olete kandideeritud!";
+  		}
+		else {
+  			x="Kandideerimine tühistatud!";
+  		}
+		document.getElementById("demo").innerHTML=x;
+	}
+	</script>
+  	<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
@@ -95,10 +108,10 @@
   						<div id="right">
   							<p>
   								Hääletamine:<br>
-  								<a href="default.asp">Hääletama</a><br><br>
+  								<a href="kandidaadid.html">Häält andma</a><br><br>
   								Kandideerimine:<br>
-  								<a href="default.asp">Kandideerima</a>
-  							</p>
+  								<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Kandideerima</a>
+  						</p>
 					</div>
 				</div>		
 			</div>
