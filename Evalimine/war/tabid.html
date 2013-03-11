@@ -4,6 +4,22 @@
 <head>
   <meta charset="utf-8" />
   <title>E-valimine 2013</title>
+  
+<!-- script 1 -->
+	<script type="text/javascript" language="javascript" src="evalimine/evalimine.nocache.js"></script>
+	<script src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="sort.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script >
+	</script>
+	<script>
+	var TSort_Data = new Array ('sorting', 's', 'i', 'f');
+	var TSort_Initial =  new Array ('0A');
+	tsRegister();
+	</script>
+<!-- script 1 -->
+
+<!-- script 2 -->      
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
   <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
@@ -24,8 +40,9 @@
 		$('#large-img').show();
 		} );
 		});
-	
-  </script>
+  </script>  
+  <!-- script 2 -->
+  
 </head>
 <body>
 	<div class="container">
@@ -103,7 +120,8 @@
 				<div id="list">
 				</div>
 			</div>
-				<div id="statistika" class="text">
+			
+			<div id="statistika" class="text">
 					<div id="stattabs">
 						<div class="statmenu">
 						  	<ul>
@@ -113,71 +131,74 @@
 							    <li><a href="#kandidaadiSisu" id="KandidaadiStat">Statistika kandidaatide lõikes</a></li>
 						  	</ul>
 				 		</div>
-						<div id="riigiSisu" class="text">
-							<div class="printbutton">
-								<div class="print">
-									<h1>
-										Häälte jagunemine riigi lõikes
-									</h1>
-								</div>
-								<div class="riigistat">
-									<img class="riigistat" src="img/eestikaart1.gif"></img>
-								</div>
-							</div>
-							
-							<div class="text">
-								<h1>
-									Häälte jagunemine riigi lõikes
-								</h1>
-							</div>
-							<div class="riigistat">
-								<img class="riigistat" src="img/eestikaart1.gif"></img>
-							</div>
-						</div>
-						
-						<div id="piirkonnaSisu" class="text">
-							<div class="printbutton">
-								<a href="piirkonnastatprint.html">Prindi</a>
-							</div>
-							<div class="text">
-								<h1>
-									Häälte jagunemine piirkondade lõikes
-								</h1>
-							</div>
-							<div class="piirkonnastat">
-								<img class="piirkonnastat" src="img/eestikaart2.gif"></img>
-							</div>
-						</div>
-						<div id="parteiSisu">
-							<div class="printbutton">
-								<a href="parteistatprint.html">Prindi</a>
-							</div>
-							
-							<div class="text">
-								<h1>
-									Häälte jagunemine parteide lõikes
-								</h1>
-							</div>
-							<div class="parteistat">
-								<img class="parteistat" src="img/parteistat.png"></img>
-							</div>
-						</div>
-						<div id="kandidaadiSisu">
-							<div class="printbutton">
-								<a href="kandidaadistatprint.html">Prindi</a>
-							</div>
-							
-							<div class="text">
-								<h1>
-									Häälte jagunemine konktreetsete kandidaatide lõikes
-								</h1>
-							</div>
-							<div class="kandidaadistat">
-								<img class="kandidaadistat" src="img/kandidaadistat.png"></img>
-							</div>
-						</div>
-					</div>
+			<div id="riigiSisu" class="text">
+				<div class="text">
+					<h1>
+						Häälte jagunemine riigi lõikes
+					</h1>
 				</div>
+			<!--  Algab sort-->
+			
+			<div id="statistikaSisu">
+				<p>Sorteerimine</p>
+		<!-- 	<div id="loading" style="display: none;" align="middle"><img src='pildid/loader.gif'></div> -->
+				<table id="sorting" class="candidateTable">
+					<thead>
+						<tr>
+							<th >Erakond</th>
+							<th>Hääli</th>
+							<th>Osakaal</th>
+						</tr>
+					</thead>
+					<tr>
+						<td>Eestimaa Ühendatud Vasakpartei</td>
+						<td>1000</td>		
+						<td>10%</td>
+					</tr>
+					<tr>
+						<td>Isamaa ja Res Publica Liit</td>
+						<td>2000</td>		
+						<td>20%</td>
+					</tr>
+					<tr>
+						<td>Iseseisvuspartei</td>
+						<td>200</td>		
+						<td>2%</td>
+					</tr>
+					<tr>
+						<td>Keskerakond</td>
+						<td>3000</td>		
+						<td>30%</td>
+					</tr>
+					<tr>
+						<td>Kristlikud Demokraadid</td>
+						<td>100</td>		
+						<td>1%</td>
+					</tr>
+					<tr>
+						<td>Rahvaliit</td>
+						<td>500</td>		
+						<td>5.5%</td>
+					</tr>
+					<tr>
+						<td>Reformierakond</td>
+						<td>2500</td>		
+						<td>25.6%</td>
+					</tr>
+					<tr>
+						<td>Rohelised</td>
+						<td>300</td>		
+						<td>25.7%</td>
+					</tr>
+					<tr>
+						<td>Sotsiaaldemokraatlik Erakond</td>
+						<td>400</td>		
+						<td>4%</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	
 				<div id="kkk" class="text">
 					<h1>
 						Korduma kippuvad küsimused

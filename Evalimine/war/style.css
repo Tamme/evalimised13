@@ -3,17 +3,15 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#header
-{
+#header {
 	float:left;
-	margin:-5em 0 0 0;
+	margin:-4em 0 0 0; 
 	padding:0em;
-	width:70em;
+	width:10em;
 	height:20em;
 }
 
-.logo
-{
+.logo {
 	float:left;
 	margin:0px;
 	padding:3.2em 0 0 0;
@@ -31,8 +29,7 @@ html {
 	height:57%; /* this should make page container from top to bottom fully white.*/
 }
 
-.container
-{
+.container {
 	margin: -2em auto;
 	padding: 0em 0 12em 0;
 	width: 70em;
@@ -62,6 +59,7 @@ html {
 	text-decoration:none;
 }
 
+/*Mittekasutatud otsing*/
 /* .searchbar {
 	float:right;
 	position:relative;
@@ -87,7 +85,7 @@ html {
 .text {
 	clear:both;
 	margin:4em;
-}
+} 
 
 .active {
 	background:#ffffff;
@@ -130,19 +128,17 @@ html {
 }
 
 
-#sisene a{
+/* #sisene a{
 	padding:0.2em;
-}
+} */
 
-.btn
-{
+.btn {
 	background:#23282e url('img/taust.png') no-repeat;
 	color: white;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	width:2em;
 	position:relative;
 	top:0.5em;
-	
 }
 
 .menu a:hover {
@@ -245,13 +241,15 @@ input:hover {
 }
 
 .candidateTable {
-	margin-left:4em;
-	width:90%;
-	height:10%;
-	text-align:center;
-	border:1;
-	border-color:#000066;
-	
+ margin-left:4em;
+ width:90%;
+ height:10%;
+ text-align:center;
+ border:1;
+ border-color:#000066;
+ border-collapse:collapse;
+ width: 530px;
+ text-decoration:none;
 }
 
 .candidateInfo {
@@ -261,13 +259,19 @@ input:hover {
 	text-align:center;
 	border:2em;
 	border-color:#000066;
-	
 }
 
 #candidateForm {
 	margin-left:4em;
 	margin-bottom:1em;
 }
+
+table.candidateTable td, table.candidateTable th {
+ border:0.2em solid #3a75c4;
+ padding:0.3em;
+ text-decoration:none;
+}
+
 
 th {
 	color:#ffffff;
@@ -312,7 +316,7 @@ th {
 	}
 
 #left, #right, #middle {
-	padding-left:1em;
+	padding-left:3em;
 	display: table-cell;
 	}
 	
