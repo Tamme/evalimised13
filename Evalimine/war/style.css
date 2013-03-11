@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 
 html {
 	background:#23282e url('img/taust.png') no-repeat;
-	height:57%; /* this should make page container from top to bottom fully white.*/
+	height:60%; /* this should make page container from top to bottom fully white.*/
 }
 
 .container {
@@ -84,7 +84,7 @@ html {
 
 .text {
 	clear:both;
-	margin:4em;
+	margin:1em 4em;
 } 
 
 .active {
@@ -193,9 +193,8 @@ input:hover {
 
 .piirkonnastat {
 	float:center;
-	margin:0px;
-	width:60em;
-	height:40em;
+	width:40em;
+	height:25em;
 }
 
 .statmenu a:hover {
@@ -211,15 +210,13 @@ input:hover {
 
 .kandidaadistat {
 	float:center;
-	margin:0px;
-	width:60em;
-	height:40em;
+	width:40em;
+	height:25em;
 }
 .parteistat {
 	float:center;
-	margin:0px;
-	width:60em;
-	height:40em;
+	width:40em;
+	height:25em;
 }
 
 .print {
@@ -231,7 +228,7 @@ input:hover {
 .printbutton a {
 	position:relative;
 	float:inherit;
-	top:-2.2em;
+	top:-1.2em;
 	color:#ffffff;
 	background:#23282e url('img/taust.png') no-repeat;
 	font-size:1em;
@@ -248,7 +245,6 @@ input:hover {
  border:1;
  border-color:#000066;
  border-collapse:collapse;
- width: 530px;
  text-decoration:none;
 }
 
