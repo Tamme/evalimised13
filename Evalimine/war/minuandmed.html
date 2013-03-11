@@ -13,14 +13,14 @@
 		element.className = element.className + ” active”;
 	</script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-  	<script type="text/javascript" src="js/validate.js"></script>
+  	<script type="text/javascript" language="javascript" src="js/validate.js"></script>
 	<script>
   		$(document).ready(function(){
     	$("#commentForm").validate();
   		});
   	</script>
   	<script src="http://code.jquery.com/jquery-latest.js"></script>
-  	<script type="text/javascript" src="js/sumbitcandidate.js"></script>
+  	<script type="text/javascript" language="javascript" src="js/sumbitcandidate.js"></script>
   	<script>
 		document.getElementById("kandideerima").innerHTML=x;
 	</script>
@@ -31,19 +31,13 @@
 		<div class="container">
 			<div id="header">
 				<div class="logo">
-					<img class="logo" src="logo3.png"></img>
+					<img class="logo" src="img/logo3.png"></img>
 				</div>
 			</div>
 			<div class="menu">
-				<script language="JavaScript" type="text/javascript" src="menu.js"></script>
+				<script language="JavaScript" type="text/javascript" src="js/menu.js"></script>
 			</div>
-			<div>
-				<form class="searchbar">
-					<input type="text" name=search">
-					<input type="image" src="search.png" class="btn" type="submit" value="Otsi" name="search_btn"/>
-				</form>
-			</div>
-			<div class="text">
+			<div id="tab6" class="text">
 				<h1>
 					Minu andmed
 				</h1>
@@ -51,8 +45,8 @@
 					<div id="row">
 						<div id="left">
   							<p>
-  								<img border="0" src="/img/avatarm.jpg"></img><br>
-  								<a href="default.asp">Laadi pilt üles</a>
+  								<img border="0" src="img/avatarm.jpg" width="80px"></img><br>
+  								<a href="javascript:void(0)">Laadi pilt üles</a>
   							</p>
   						</div>
 						<div id="middle">

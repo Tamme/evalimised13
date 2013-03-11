@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 
 html, body {
 	background:#23282e url('img/taust.png') no-repeat;
-	height:52.5%; /* this should make page container from top to botom fully white.*/
+	height:57%; /* this should make page container from top to bottom fully white.*/
 }
 
 .container
@@ -98,7 +98,7 @@ html, body {
 	/*font-padding:5em;*/
 	clear:both;
 	margin-right:0.1em;
-	padding:0.1em 1.17em; /* change menu width here */
+	padding:0.1em 1.062em; /* change menu width here */
 	text-decoration:none;
 }
 
@@ -136,51 +136,51 @@ input:hover {
 	}
 
 #facebookinupp { display: block; width:255px; height:43px;
-	background: url(fb1.gif) no-repeat;
+	background: url(img/fb1.gif) no-repeat;
 }
 
 #facebookinupp:hover {
-	background: url(fb2.gif) no-repeat;
+	background: url(img/fb2.gif) no-repeat;
 }
 
 #facebookinupp:active {
-	background: url(fb3.gif) no-repeat;
+	background: url(img/fb3.gif) no-repeat;
 }
 
 #twitterinupp { display: block; width:255px; height:43px;
-	background: url(tw1.gif) no-repeat;
+	background: url(img/tw1.gif) no-repeat;
 }
 
 #twitterinupp:hover {
-	background: url(tw2.gif) no-repeat;
+	background: url(img/tw2.gif) no-repeat;
 }
 
 #twitterinupp:active {
-	background: url(tw3.gif) no-repeat;
+	background: url(img/tw3.gif) no-repeat;
 }
 
 #googlenupp { display: block; width:255px; height:43px;
-	background: url(ggl1.gif) no-repeat;
+	background: url(img/ggl1.gif) no-repeat;
 }
 
 #googlenupp:hover {
-	background: url(ggl2.gif) no-repeat;
+	background: url(img/ggl2.gif) no-repeat;
 }
 
 #googlenupp:active {
-	background: url(ggl3.gif) no-repeat;
+	background: url(img/ggl3.gif) no-repeat;
 }
 
 #idkaardinupp { display: block; width:255px; height:43px;
-	background: url(id1.gif) no-repeat;
+	background: url(img/id1.gif) no-repeat;
 }
 
 #idkaardinupp:hover {
-	background: url(id2.gif) no-repeat;
+	background: url(img/id2.gif) no-repeat;
 }
 
 #idkaardinupp:active {
-	background: url(id3.gif) no-repeat;
+	background: url(img/id3.gif) no-repeat;
 }
 
 #form{
@@ -316,18 +316,32 @@ th {
 
 #specialcontainer {
 	display: table;
+	background-size:cover;
 	}
 
 #row  {
-	padding:4em;
+	padding-left:1em;
 	display: table-row;
 	}
 
 #left, #right, #middle {
-	padding:4em;
+	padding-left:1em;
 	display: table-cell;
 	}
 	
 #select {
 	width:4em;
 	}
+	
+.tabs li {
+ list-style:none;
+ display:inline;
+}
+
+.tabs a {
+ padding:5px 10px;
+ display:inline-block;
+ background:#666;
+ color:#fff;
+ text-decoration:none;
+}
