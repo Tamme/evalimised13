@@ -95,23 +95,39 @@ html {
 	background:#ffffff;
 }
 
-.menu {
+/* .menu {
 	float:left;
 	margin-top:-1.5em;
 	margin-bottom:3em;
 	margin-left:-2.5em;
 	margin-right:-1em;
-}
+} */
 
 .menu a {
+	float:left;
+	margin:0px;
+	padding:3em 3em 3em 3em;
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	font-size:2em;
 	/*font-padding:5em;*/
-	padding:0.1em 0.75em; /* change menu width here */
+	padding:0em 0.82em; /* change menu width here */
 	text-decoration:none;
 }
+
+.statmenu a {
+	position:relative;
+	float:inherit;
+	color:#ffffff;
+	background:#23282e url('img/taust.png') no-repeat;
+	font-size:1em;
+	clear:both;
+	margin-right:0.3em;
+	padding:0em 1.17em; /* change menu width here */
+	text-decoration:none;
+}
+
 
 #sisene a{
 	padding:0.2em;
@@ -150,7 +166,7 @@ input:hover {
 	text-decoration:none;
 	}
 
-#facebookinupp { display: block; width:255px; height:43px;
+/* #facebookinupp { display: block; width:255px; height:43px;
 	background: url(img/fb1.gif) no-repeat;
 }
 
@@ -184,7 +200,7 @@ input:hover {
 
 #googlenupp:active {
 	background: url(img/ggl3.gif) no-repeat;
-}
+} */
 
 #idkaardinupp { display: block; width:255px; height:43px;
 	background: url(img/id1.gif) no-repeat;
@@ -206,19 +222,6 @@ input:hover {
 		background:#fff;
 		color:#000;
 	}
-
-.statmenu a {
-	position:relative;
-	float:inherit;
-	color:#ffffff;
-	background:#23282e url('img/taust.png') no-repeat;
-	font-size:1em;
-	/*font-padding:5em;*/
-	clear:both;
-	margin-right:0.3em;
-	padding:0.1em 1.17em; /* change menu width here */
-	text-decoration:none;
-}
 
 .riigistat {
 	float:center;
