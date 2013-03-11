@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	float:left;
 	margin:-5em 0 0 0;
 	padding:0em;
-	width:100em;
+	width:70em;
 	height:20em;
 }
 
@@ -17,11 +17,16 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	float:left;
 	margin:0px;
 	padding:3em 0 0 0;
-	width:77em;
+	width:70em;
 	height:16.5em;
 }
 
-html, body {
+#tabs li {
+	list-style:none;
+	display:inline
+}
+
+html {
 	background:#23282e url('img/taust.png') no-repeat;
 	height:57%; /* this should make page container from top to bottom fully white.*/
 }
@@ -30,7 +35,7 @@ html, body {
 {
 	margin: -2em auto;
 	padding: 0em 0 12em 0;
-	width: 77em;
+	width: 70em;
 	background:#FFFFFF;
 	height:300%;
 }
@@ -82,24 +87,34 @@ html, body {
 }
 
 .text {
-	margin-left:4em;
-	margin-right:4em;
+	clear:both;
+	margin:4em;
 }
 
 .active {
 	background:#ffffff;
 }
 
+.menu {
+	float:left;
+	margin-top:-1.5em;
+	margin-bottom:3em;
+	margin-left:-2.5em;
+	margin-right:-1em;
+}
+
 .menu a {
-	line-height:4em;
 	color:#ffffff;
-	background:#23282e url('img/taust.png') no-repeat;
+	background:#23282e url('img/button.png') no-repeat;
+	background-size:cover;
 	font-size:2em;
 	/*font-padding:5em;*/
-	clear:both;
-	margin-right:0.1em;
-	padding:0.1em 1.062em; /* change menu width here */
+	padding:0.1em 0.75em; /* change menu width here */
 	text-decoration:none;
+}
+
+#sisene a{
+	padding:0.2em;
 }
 
 .btn
@@ -187,10 +202,14 @@ input:hover {
 	padding-left:15px;
 }
 
+#tabs a.active {
+		background:#fff;
+		color:#000;
+	}
+
 .statmenu a {
 	position:relative;
 	float:inherit;
-	top:-2.4em;
 	color:#ffffff;
 	background:#23282e url('img/taust.png') no-repeat;
 	font-size:1em;
