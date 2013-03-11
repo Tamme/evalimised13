@@ -1,0 +1,336 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>E-valimine 2013</title>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+	
+  $(function() {
+    $( "#stattabs" ).tabs();
+  });
+  
+	$(function() {
+		$('#large-img').hide();
+		$('#large-img').load( function() {
+		$('#loader').hide();
+		$('#large-img').show();
+		} );
+		});
+	
+  </script>
+</head>
+<body>
+	<div class="container">
+		<div id="header" class="logo">
+			<a href="Evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
+		</div>
+		<div id="tabs">
+				<div class="menu">
+				  <ul>
+				    <li><a href="#esileht">Esileht</a></li>
+				    <li><a href="#kandidaadid">Kandidaadid</a></li>
+				    <li><a href="#sisene">Sisene</a></li>
+				    <li><a href="#kkk">KKK</a></li>
+				    <li><a href="#statistika">Statistika</a></li>
+				    <li><a href="#andmed">Minu andmed</a></li>
+				  </ul>
+			  </div>
+			<div id="esileht" class="text">
+				<h1>
+					Valimised ja e-hääletamine
+				</h1>
+				<h3>
+					Hiljemalt 01.08.2013
+				</h3>
+				<p>
+					Kandideerimisõigus on hääleõiguslikul Eesti kodanikul ja Euroopa Liidu kodanikl, kelle põsib elukoht, st. elukoht, mille aadressuandmed on 
+					kantud rahvastikuregistrisse, asub hiljemalt valimisaasta 1. augustil selles vallas või linnas.
+				</p>
+				<h3>
+					Alates 21.08.2013 kuni 05.09.2013
+				</h3>
+				<p>
+					Esitatakse valimisliit valla ja linna valimiskomisjonile registreerimiseks.
+				</p>
+				<h3>
+					Alates 21.08.2013
+				</h3>
+				<p>
+					Algab kandidaatide registreerimiseks esitamie.
+				</p>
+				<h3>
+					Hiljemalt 05.09.2013
+				</h3>
+				<p>
+					Valimistel osalev erakond ja valimisliit võib esitada valla- või linnasekretärile ühe jaskonnakomisjoni liikmeskandidaadi.
+				</p>
+				<br />
+				<br />
+				<br />
+			</div>
+			<div id="kandidaadid" class="text">
+				<div class="text">
+					<h3>
+						Otsi kandidaate
+					</h3>
+				</div>
+				<div class="searchCandidate">
+					<form id="candidateForm">
+						Vali piirkond:
+						<select name="area" id="areas">
+							<option value="eesti">Eesti</option>
+							<option value="tallinn">Tallinn</option>
+						</select>
+						Vali erakond:
+						<select name="party" id="parties">
+							<option value="allParties">Kõik</option>
+							<option value="sde">SDE</option>
+							<option value="ref">RE</option>
+						</select>
+						<button id="candSearch">Otsi</button>
+					</form>
+				</div>
+				<div class="text" id="candHeading">
+				</div>
+				<div id="list">
+				</div>
+			</div>
+				<div id="statistika" class="text">
+					<div id="stattabs">
+						<div class="statmenu">
+						  	<ul>
+							    <li><a href="#riigiSisu" id="RiigiStat">Statistika riigi lõikes</a></li>
+							    <li><a href="#piirkonnaSisu" id="PiirkonnaStat">Statistika piirkonna lõikes</a></li>
+							    <li><a href="#parteiSisu" id="ParteiStat">Statistika parteide lõikes</a></li>
+							    <li><a href="#kandidaadiSisu" id="KandidaadiStat">Statistika kandidaatide lõikes</a></li>
+						  	</ul>
+				 		</div>
+						<div id="riigiSisu" class="text">
+							<div class="printbutton">
+								<div class="print">
+									<h1>
+										Häälte jagunemine riigi lõikes
+									</h1>
+								</div>
+								<div class="riigistat">
+									<img class="riigistat" src="img/eestikaart1.gif"></img>
+								</div>
+							</div>
+							
+							<div class="text">
+								<h1>
+									Häälte jagunemine riigi lõikes
+								</h1>
+							</div>
+							<div class="riigistat">
+								<img class="riigistat" src="img/eestikaart1.gif"></img>
+							</div>
+						</div>
+						
+						<div id="piirkonnaSisu" class="text">
+							<div class="printbutton">
+								<a href="piirkonnastatprint.html">Prindi</a>
+							</div>
+							<div class="text">
+								<h1>
+									Häälte jagunemine piirkondade lõikes
+								</h1>
+							</div>
+							<div class="piirkonnastat">
+								<img class="piirkonnastat" src="img/eestikaart2.gif"></img>
+							</div>
+						</div>
+						<div id="parteiSisu">
+							<div class="printbutton">
+								<a href="parteistatprint.html">Prindi</a>
+							</div>
+							
+							<div class="text">
+								<h1>
+									Häälte jagunemine parteide lõikes
+								</h1>
+							</div>
+							<div class="parteistat">
+								<img class="parteistat" src="img/parteistat.png"></img>
+							</div>
+						</div>
+						<div id="kandidaadiSisu">
+							<div class="printbutton">
+								<a href="kandidaadistatprint.html">Prindi</a>
+							</div>
+							
+							<div class="text">
+								<h1>
+									Häälte jagunemine konktreetsete kandidaatide lõikes
+								</h1>
+							</div>
+							<div class="kandidaadistat">
+								<img class="kandidaadistat" src="img/kandidaadistat.png"></img>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="kkk" class="text">
+					<h1>
+						Korduma kippuvad küsimused
+					</h1>
+					<h3>
+						Kasutan IE6'te ning veebileht ei kuva korrektselt, mis ma peaksin tegema?
+					</h3>
+					<p>
+						<ul>
+							<li>Hetkel on võimalik kasutada ainult Google Chrome'i ja Mozilla Firefoxi uusimaid versioone.</li>
+						</ul>
+					</p>
+					<h3>
+						Kuidas hääletada?
+					</h3>
+					<p>
+						<ol>
+							<li>Hääletamise alustamiseks tuleb ennast autentida.</li>
+							<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene"</li>
+							<li>Autentida kasutades eelistatud autentimisviisi</li>
+							<li>Leida sobiv kandidaat kasutades selleks otsingut või kandidaatide nimekirja</li>
+							<li>Kandidaadi valimisel tuleb valik kinnitada</li>
+							<li>Eduka kinnituse puhul on hääletus on sooritatud</li>
+							<li>Turvalisuse tagamiseks soovitame lõpetamisel sulgeda brauseri aken</li>
+						</ol>
+					</p>
+					<h3>
+						Kuidas lisada kandidaate?
+					</h3>
+					<p>
+						<ol>
+							<li>Kandidaatide lisamiseks tuleb omada administratiivseid õiguseid ning ennast audentida</li>
+							<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene"</li>
+							<li>Autentida kasutades administreerimiseks mõeldud sisselogimist</li>
+							<li>Lisada kandidaat koos kõigi vajalike andmetega</li>
+							<li>Kandidaadi lisamiskes tuleb sisestatud andmed kinnitada</li>
+							<li>Eduka kinnituse korral on kandidaat lisatud</li>
+						</ol>
+					</p>
+				</div>
+				<div id="sisene" class="text">
+					<h1>
+						Autentimine
+					</h1>
+					<h3>
+						Sisenemiseks vali sobiv autentimismeetod:
+					</h3>
+					<!-- <div id=nupp1>
+						<a href="minuandmed.html" id="facebookinupp"></a>
+					</div>
+					<br>
+					
+					<div id=nupp2>
+						<a href="minuandmed.html" id="googlenupp"></a>
+					</div>
+					<br>
+							
+					<div id=nupp3>
+						<a href="minuandmed.html" id="twitterinupp"></a>
+					</div>
+					<br> -->
+					
+					<div id=nupp4>
+						<a href="minuandmed.html" id="idkaardinupp"></a>
+					</div>
+					<br>
+				</div>
+				<div id="andmed" class="text">
+					<h1>
+						Minu andmed
+					</h1>
+					<div id="specialcontainer">
+						<div id="row">
+							<div id="left">
+	  							<p>
+	  								<img id="loader" src="img/ajax-loader.gif"></img>
+	  								<img id="large-img" border="0" src="img/avatarm.jpg" width="80px"></img><br>
+	  								<a href="javascript:void(0)">Laadi pilt üles</a>
+	  							</p>
+	  						</div>
+							<div id="middle">
+	    						<form class="cmxform" id="commentForm" method="get" action="">
+	 								<fieldset>
+	   									<!--<legend>A simple comment form with submit validation and default messages</legend> -->
+	   									<p>
+	     									<label for="ceesnimi">Eesnimi</label>
+	     									<em>*</em><br><input id="ceesnimi" name="eesnimi" size="28" class="required" minlength="2" maxlength="25"/>
+	   									</p>
+	   									<p>
+	     									<label for="cperenimi">Perenimi</label>
+	     									<em>*</em><br><input id="cperenimi" name="perenimi" size="28" class="required" minlength="2" maxlength="25"/>
+	   									</p>
+	   									<p>
+	     									<label for="cisikukood">Isikukood</label>
+	     									<br><input id="cisikukood" name="isikukood" size="28" class="digits" minlength="11" maxlength="11"/>
+	   									</p>
+	   									<p>
+	     									<label for="cvalimisringkond">Valimisringkond</label>
+	     									<em>*</em><br><select id="cvalimisringkond" name="valimisringkond" class="required">
+	     									<option selected="" value=""> --Palun vali oma valimisringkond--</option>
+											<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+											<option value="valimisringkondnr2">Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+											<option value="valimisringkondnr3">Tallinna Mustamäe ja Nõmme linnaosa</option>
+											<option value="valimisringkondnr4">Harju- (v.a Tallinn) ja Raplamaa</option>
+											<option value="valimisringkondnr5">Hiiu-, Lääne- ja Saaremaa</option>
+											<option value="valimisringkondnr6">Lääne-Virumaa</option>
+											<option value="valimisringkondnr7">Ida-Virumaa</option>
+											<option value="valimisringkondnr8">Järva- ja Viljandimaa</option>
+											<option value="valimisringkondnr9">Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+											<option value="valimisringkondnr10">Tartu linn</option>
+											<option value="valimisringkondnr11">Võru-, Valga- ja Põlvamaa</option>
+											<option value="valimisringkondnr12">Pärnumaa</option>
+											</select>
+	   									</p>
+	   									<p>
+	     									<label for="erakond">Erakond</label>
+	     									<br><select id="cerakond" name="erakond">
+	     									<option selected="" value=""> --Palun vali oma erakond--</option>
+											<option value="erakondnr1">Eestimaa Ühendatud Vasakpartei</option>
+											<option value="erakondnr2">Isamaa ja Res Publica Liit</option>
+											<option value="erakondnr3">Iseseisvuspartei</option>
+											<option value="erakondnr4">Keskerakond</option>
+											<option value="erakondnr5">Kristlikud Demokraadid</option>
+											<option value="erakondnr6">Rahvaliit</option>
+											<option value="erakondnr7">Reformierakond</option>
+											<option value="erakondnr8">Rohelised</option>
+											<option value="erakondnr9">Sotsiaaldemokraatlik Erakond</option>
+											</select>
+	   									</p>
+	   									<p>
+	     									<input class="submit" type="submit" value="Salvesta"/>
+	   									</p>
+	 								</fieldset>
+	 							</form>			
+	   						</div>
+	  						<div id="right">
+	  							<p>
+	  								<div id="hääletama">
+	  								Hääletamine:<br>
+	  								<a href="kandidaadid.html">Häält andma</a><br><br>
+	  								</div>
+	  								Kandideerimine:<br>
+	  								<div id="kandideerima">
+	  									<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Kandideerima</a>
+	  								</div>
+	  						</p>
+						</div>
+					</div>		
+				</div>
+				</div>
+			</div>		
+	</div>
+ 
+ 
+</body>
+</html>
