@@ -1,4 +1,12 @@
 ﻿
+	$(function() {
+		$('#large-img').hide();
+		$('#large-img').load( function() {
+		$('#loader').hide();
+		$('#large-img').show();
+		} );
+		});
+	
 		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 		var candidateOne = "<h3>Kandidaadi info</h3>";
 		
