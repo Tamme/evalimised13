@@ -279,7 +279,6 @@ th {
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
-	/*font-padding:5em;*/
 	clear:both;
 	padding:0.1em 1.17em; /* change menu width here */
 	text-decoration:none;
@@ -295,7 +294,6 @@ th {
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
-	/*font-padding:5em;*/
 	clear:both;
 	padding:0.1em 1.17em; /* change menu width here */
 	text-decoration:none;
@@ -313,6 +311,7 @@ th {
 
 #left, #right, #middle {
 	padding-left:3em;
+	padding-top:-3em;
 	display: table-cell;
 	}
 	
@@ -333,14 +332,24 @@ th {
  text-decoration:none;
 }
 
-#overlay { 
-  display:none; 
-  position:absolute; 
-  background:#fff; 
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: block;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 99;
+  text-align: center;
 }
 
-#img-load { 
-  position:absolute; 
+#loading-image {
+  position: absolute;
+  top: 100px;
+  left: 240px;
+  z-index: 100;
 }
 
 /*Mittekasutatud nupud*/

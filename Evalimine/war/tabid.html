@@ -10,8 +10,8 @@
  
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-<!-- ajax googleapi suurendab lehe laadimist millisekunditest mitme sekundini -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" charset="utf-8"></script>
+<!--  Ajax script that is used increases page load time to 5 or more seconds -->
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
@@ -33,31 +33,50 @@
  	$("#commentForm").validate();
  });
 
- $t = $("#sorting");
-
- $("#overlay").css({
-   opacity : 0.5,
-   top     : $t.offset().top,
-   width   : $t.outerWidth(),
-   height  : $t.outerHeight()
+ $(window).load(function() {
+   $('#loading').hide();
  });
 
- $("#img-load").css({
-   top  : ($t.height() / 2),
-   left : ($t.width() / 2)
- });
- 
- /* Then when you're loading things you just say: */
- $t.mouseover(function(){
-  $("#overlay").fadeIn();
-});
- 
- /* And when you finished: */
- $("#overlay").fadeOut();
- 
+/* Active tab view still not implemented */
+/* 	// Wait until the DOM has loaded before querying the document
+	$(document).ready(function(){
+		$('ul.tabs').each(function(){
+			// For each set of tabs, we want to keep track of
+			// which tab is active and it's associated content
+			var $active, $content, $links = $(this).find('a');
+
+			// If the location.hash matches one of the links, use that as the active tab.
+			// If no match is found, use the first link as the initial active tab.
+			$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+			$active.addClass('active');
+			$content = $($active.attr('href'));
+
+			// Hide the remaining content
+			$links.not($active).each(function () {
+				$($(this).attr('href')).hide();
+			});
+
+			// Bind the click event handler
+			$(this).on('click', 'a', function(e){
+				// Make the old tab inactive.
+				$active.removeClass('active');
+				$content.hide();
+
+				// Update the variables with the new link and content
+				$active = $(this);
+				$content = $($(this).attr('href'));
+
+				// Make the tab active.
+				$active.addClass('active');
+				$content.show();
+
+				// Prevent the anchor's default click action
+				e.preventDefault();
+			});
+		});
+	});  */
  
 </script>  
-  
 </head>
   
 <body>
@@ -73,7 +92,7 @@
 				    <li><a href="#kkk">KKK</a></li>
 				    <li><a href="#statistika">Statistika</a></li>
 				    <li><a href="#andmed">Minu andmed</a></li>
-				     <li><a href="#sisene">Sisene</a></li>
+				    <li><a href="#sisene">Sisene</a></li>
 				  </ul>
 			</div>
 			<div id="esileht" class="text">
@@ -138,10 +157,11 @@
 				</div>
 			</div>
 			
-			<div id="statistika" class="text">
-				<div id="overlay">
+			<div id="loading">
   				<img src="img/ajax-loader.gif" id="img-load" />
-				</div>
+			</div>
+			
+			<div id="statistika" class="text">
 				<div id="stattabs">
 					<div class="statmenu">
 					  	<ul>
@@ -341,7 +361,7 @@
 							<div id="left">
 	  							<p>
 	  								<img id="loader" src="img/ajax-loader.gif"></img>
-	  								<img id="large-img" border="0" src="img/avatarm.jpg" width="80px"></img><br>
+	  								<img id="large-img" border="0" src="img/avatarm.jpg" width="120px"></img><br>
 	  								<a href="javascript:void(0)">Laadi pilt üles</a>
 	  							</p>
 	  						</div>
