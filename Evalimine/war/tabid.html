@@ -9,10 +9,12 @@
 <link rel="stylesheet" href="style.css" />
  
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-<script type="text/javascript" src="js/sort.js"></script>
+<!-- ajax googleapi suurendab lehe laadimist millisekunditest mitme sekundini -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
   
  <script>
  var TSort_Data = new Array ('sorting', 's', 'i', 'f');
@@ -24,9 +26,36 @@
 
      
  $(function() {
-  $( "#stattabs" ).tabs();
+ 	$( "#stattabs" ).tabs();
+ });
+ 
+ $(document).ready(function(){
+ 	$("#commentForm").validate();
  });
 
+ $t = $("#sorting");
+
+ $("#overlay").css({
+   opacity : 0.5,
+   top     : $t.offset().top,
+   width   : $t.outerWidth(),
+   height  : $t.outerHeight()
+ });
+
+ $("#img-load").css({
+   top  : ($t.height() / 2),
+   left : ($t.width() / 2)
+ });
+ 
+ /* Then when you're loading things you just say: */
+ $t.mouseover(function(){
+  $("#overlay").fadeIn();
+});
+ 
+ /* And when you finished: */
+ $("#overlay").fadeOut();
+ 
+ 
 </script>  
   
 </head>
@@ -80,6 +109,7 @@
 				<br />
 				<br />
 			</div>
+			
 			<div id="kandidaadid" class="text">
 				<div class="text">
 					<h3>
@@ -109,6 +139,9 @@
 			</div>
 			
 			<div id="statistika" class="text">
+				<div id="overlay">
+  				<img src="img/ajax-loader.gif" id="img-load" />
+				</div>
 				<div id="stattabs">
 					<div class="statmenu">
 					  	<ul>
@@ -123,6 +156,10 @@
 							Häälte jagunemine riigi lõikes
 						</h1>
 						<div id="statistikaSisu">
+						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
+							<div class="printbutton">
+								<a href="riigistatprint.html">Prindi</a>
+							</div>
 							<table id="sorting" class="candidateTable">
 								<thead>
 									<tr>
@@ -179,8 +216,9 @@
 							</table>
 						</div>
 					</div>
-					
+
 						<div id="piirkonnaSisu" class="text">
+						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
 							<div class="printbutton">
 								<a href="piirkonnastatprint.html">Prindi</a>
 							</div>
@@ -194,6 +232,7 @@
 							</div>
 						</div>
 						<div id="parteiSisu">
+						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
 							<div class="printbutton">
 								<a href="parteistatprint.html">Prindi</a>
 							</div>
@@ -208,6 +247,7 @@
 							</div>
 						</div>
 						<div id="kandidaadiSisu">
+						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
 							<div class="printbutton">
 								<a href="kandidaadistatprint.html">Prindi</a>
 							</div>
@@ -286,6 +326,8 @@
 					<br> -->
 					
 					<div id=nupp4>
+					
+					<!-- Viitab vanale lehele, peaks viitama #andmed tab'ile ja muutma sisene nupu "Logi välja"-ks-->
 						<a href="minuandmed.html" id="idkaardinupp"></a>
 					</div>
 					<br>
@@ -362,7 +404,7 @@
 	  							<p>
 	  								<div id="hääletama">
 	  								Hääletamine:<br>
-	  								<a href="kandidaadid.html">Häält andma</a><br><br>
+	  								<a href="javascript:void(0)">Häält andma</a><br><br>
 	  								</div>
 	  								Kandideerimine:<br>
 	  								<div id="kandideerima">

@@ -333,6 +333,16 @@ th {
  text-decoration:none;
 }
 
+#overlay { 
+  display:none; 
+  position:absolute; 
+  background:#fff; 
+}
+
+#img-load { 
+  position:absolute; 
+}
+
 /*Mittekasutatud nupud*/
 
 /* #facebookinupp { display: block; width:255px; height:43px;
