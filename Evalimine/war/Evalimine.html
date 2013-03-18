@@ -15,15 +15,37 @@
 <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.scrollTo.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.localscroll.js"></script>
   
  <script>
  var TSort_Data = new Array ('sorting', 's', 'i', 'f');
  var TSort_Initial =  new Array ('0A');
  
- $(function() {
-    $( "#tabs" ).tabs();
- });
+ $(document).ready(function(){
+     $("#tabs").tabs();
+     if($("#tabs") && document.location.hash){
+   		$.scrollTo("#tabs");
+   	}
+     $("#tabs ul").localScroll({ 
+       target:"#tabs",
+       duration:0,
+   		hash:true
+   	});
+   });
+ 
+//  $(function() {
+//     $( "#tabs" ).tabs();
+//  });
 
+//  if($("#tabs") && document.location.hash){
+// 		$.scrollTo("#tabs");
+// 	}
+// 	 $("#tabs ul").localScroll({ 
+// 	     target:"#tabs",
+// 	     duration:0,
+// 	 		hash:true
+// 	 	});
      
  $(function() {
  	$( "#stattabs" ).tabs();
@@ -85,16 +107,14 @@
 			<a href="Evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
 		</div>
 		<div id="tabs">
-			<div class="menu">
-				  <ul>
-				    <li><a href="#esileht">Esileht</a></li>
-				    <li><a href="#kandidaadid">Kandidaadid</a></li>
-				    <li><a href="#kkk">KKK</a></li>
-				    <li><a href="#statistika">Statistika</a></li>
-				    <li><a href="#andmed">Minu andmed</a></li>
-				    <li><a href="#sisene">Sisene</a></li>
-				  </ul>
-			</div>
+		  <ul class="menu">
+		    <li><a href="#esileht">Esileht</a></li>
+		    <li><a href="#kandidaadid">Kandidaadid</a></li>
+		    <li><a href="#kkk">KKK</a></li>
+		    <li><a href="#statistika">Statistika</a></li>
+		    <li><a href="#andmed">Minu andmed</a></li>
+		    <li><a href="#sisene">Sisene</a></li>
+		  </ul>
 			<div id="esileht" class="text">
 				<h1>
 					Valimised ja e-hääletamine
