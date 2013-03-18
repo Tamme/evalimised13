@@ -34,22 +34,22 @@
    	});
    });
  
-//  $(function() {
-//     $( "#tabs" ).tabs();
-//  });
+ $(document).ready(function(){
+     $("#stattabs").tabs();
+     if($("#stattabs") && document.location.hash){
+   		$.scrollTo("#stattabs");
+   	}
+     $("#stattabs ul").localScroll({ 
+       target:"#stattabs",
+       duration:0,
+   		hash:true
+   	});
+   });
 
-//  if($("#tabs") && document.location.hash){
-// 		$.scrollTo("#tabs");
-// 	}
-// 	 $("#tabs ul").localScroll({ 
-// 	     target:"#tabs",
-// 	     duration:0,
-// 	 		hash:true
-// 	 	});
      
- $(function() {
- 	$( "#stattabs" ).tabs();
- });
+//  $(function() {
+//  	$( "#stattabs" ).tabs();
+//  });
  
  $(document).ready(function(){
  	$("#commentForm").validate();
@@ -183,14 +183,12 @@
 			
 			<div id="statistika" class="text">
 				<div id="stattabs">
-					<div class="statmenu">
-					  	<ul>
+					  	<ul class="statmenu">
 						    <li><a href="#riigiSisu">Statistika riigi lõikes</a></li>
 						    <li><a href="#piirkonnaSisu">Statistika piirkonna lõikes</a></li>
 						    <li><a href="#parteiSisu">Statistika parteide lõikes</a></li>
 						    <li><a href="#kandidaadiSisu">Statistika kandidaatide lõikes</a></li>
 					  	</ul>
-			 		</div>
 					<div id="riigiSisu" class="text">
 						<h1>
 							Häälte jagunemine riigi lõikes
