@@ -115,6 +115,13 @@
 		    <li><a href="#andmed">Minu andmed</a></li>
 		    <li><a href="#sisene">Sisene</a></li>
 		  </ul>
+		  
+			<div id="pais">
+		  		<p>
+		  			Tähelepanu! Antud rakendus ei ole mõeldud kasutamiseks reaalsetel valimistel.
+		  		</p>
+			</div>
+			
 			<div id="esileht" class="text">
 				<h1>
 					Valimised ja e-hääletamine
@@ -123,7 +130,7 @@
 					Hiljemalt 01.08.2013
 				</h3>
 				<p>
-					Kandideerimisõigus on hääleõiguslikul Eesti kodanikul ja Euroopa Liidu kodanikl, kelle põsib elukoht, st. elukoht, mille aadressuandmed on 
+					Kandideerimisõigus on hääleõiguslikul Eesti kodanikul ja Euroopa Liidu kodanikul, kelle püsiv elukoht, st. elukoht, mille aadressiandmed on 
 					kantud rahvastikuregistrisse, asub hiljemalt valimisaasta 1. augustil selles vallas või linnas.
 				</p>
 				<h3>
@@ -136,25 +143,20 @@
 					Alates 21.08.2013
 				</h3>
 				<p>
-					Algab kandidaatide registreerimiseks esitamie.
+					Algab kandidaatide registreerimiseks esitamine.
 				</p>
 				<h3>
 					Hiljemalt 05.09.2013
 				</h3>
 				<p>
-					Valimistel osalev erakond ja valimisliit võib esitada valla- või linnasekretärile ühe jaskonnakomisjoni liikmeskandidaadi.
+					Valimistel osalev erakond ja valimisliit võib esitada valla- või linnasekretärile ühe jaoskonnakomisjoni liikmeskandidaadi.
 				</p>
-				<br />
-				<br />
-				<br />
 			</div>
 			
 			<div id="kandidaadid" class="text">
-				<div class="text">
-					<h3>
-						Otsi kandidaate
-					</h3>
-				</div>
+				<h3>
+					Otsi kandidaate
+				</h3>
 				<div class="searchCandidate">
 					<form id="candidateForm">
 						Vali piirkond:
@@ -194,10 +196,6 @@
 							Häälte jagunemine riigi lõikes
 						</h1>
 						<div id="statistikaSisu">
-						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
-							<div class="printbutton">
-								<a href="riigistatprint.html">Prindi</a>
-							</div>
 							<table id="sorting" class="candidateTable">
 								<thead>
 									<tr>
@@ -206,90 +204,92 @@
 										<th>Osakaal</th>
 									</tr>
 								</thead>
-								<tr>
-									<td>Eestimaa Ühendatud Vasakpartei</td>
-									<td>1000</td>		
-									<td>10%</td>
-								</tr>
-								<tr>
-									<td>Isamaa ja Res Publica Liit</td>
-									<td>2000</td>		
-									<td>20%</td>
-								</tr>
-								<tr>
-									<td>Iseseisvuspartei</td>
-									<td>200</td>		
-									<td>2%</td>
-								</tr>
-								<tr>
-									<td>Keskerakond</td>
-									<td>3000</td>		
-									<td>30%</td>
-								</tr>
-								<tr>
-									<td>Kristlikud Demokraadid</td>
-									<td>100</td>		
-									<td>1%</td>
-								</tr>
-								<tr>
-									<td>Rahvaliit</td>
-									<td>500</td>		
-									<td>5.5%</td>
-								</tr>
-								<tr>
-									<td>Reformierakond</td>
-									<td>2500</td>		
-									<td>25.6%</td>
-								</tr>
-								<tr>
-									<td>Rohelised</td>
-									<td>300</td>		
-									<td>25.7%</td>
-								</tr>
-								<tr>
-									<td>Sotsiaaldemokraatlik Erakond</td>
-									<td>400</td>		
-									<td>4%</td>
-								</tr>
+									<tr>
+										<td>Mustad</td>
+										<td>1000</td>		
+										<td>10%</td>
+									</tr>
+									<tr>
+										<td>Punased</td>
+										<td>2000</td>		
+										<td>20%</td>
+									</tr>
+									<tr>
+										<td>Sinised</td>
+										<td>200</td>		
+										<td>2%</td>
+									</tr>
+									<tr>
+										<td>Kollased</td>
+										<td>3000</td>		
+										<td>30%</td>
+									</tr>
+									<tr>
+										<td>Helesinised</td>
+										<td>100</td>		
+										<td>1%</td>
+									</tr>
+									<tr>
+										<td>Violetsed</td>
+										<td>550</td>		
+										<td>5.5%</td>
+									</tr>
+									<tr>
+										<td>Roosad</td>
+										<td>2500</td>		
+										<td>25%</td>
+									</tr>
+									<tr>
+										<td>Hallid</td>
+										<td>250</td>		
+										<td>2.5%</td>
+									</tr>
+									<tr>
+										<td>Valged</td>
+										<td>400</td>		
+										<td>4%</td>
+									</tr>
 							</table>
+							<br>
+							<br>
+							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
+							<div class="printbutton">
+								<a href="riigistatprint.html">Prindi</a>
+							</div>
 						</div>
 					</div>
 
 						<div id="piirkonnaSisu" class="text">
-						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
-							<div class="printbutton">
-								<a href="piirkonnastatprint.html">Prindi</a>
-							</div>
-							<div class="text">
-								<h1>
-									Häälte jagunemine piirkondade lõikes
-								</h1>
-							</div>
+							<h1>
+								Häälte jagunemine piirkondade lõikes
+							</h1>
 							<div class="piirkonnastat">
 								<img class="piirkonnastat" src="img/eestikaart2.gif"></img>
 							</div>
-						</div>
-						<div id="parteiSisu">
-						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
+							<br>
+							<br>
+							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
 							<div class="printbutton">
-								<a href="parteistatprint.html">Prindi</a>
+								<a href="piirkonnastatprint.html">Prindi</a>
 							</div>
-							
-							<div class="text">
-								<h1>
-									Häälte jagunemine parteide lõikes
-								</h1>
-							</div>
+						</div>
+						
+						<div id="parteiSisu" class="text">
+							<h1>
+								Häälte jagunemine parteide lõikes
+							</h1>
 							<div class="parteistat">
 								<img class="parteistat" src="img/parteistat.png"></img>
 							</div>
-						</div>
-						<div id="kandidaadiSisu">
-						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
+							<br>
+							<br>
+							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
 							<div class="printbutton">
-								<a href="kandidaadistatprint.html">Prindi</a>
+								<a href="parteistatprint.html">Prindi</a>
 							</div>
-							
+						</div>
+						
+						<div id="kandidaadiSisu">
 							<div class="text">
 								<h1>
 									Häälte jagunemine konktreetsete kandidaatide lõikes
@@ -298,49 +298,59 @@
 							<div class="kandidaadistat">
 								<img class="kandidaadistat" src="img/kandidaadistat.png"></img>
 							</div>
+							<br>
+							<br>
+							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
+							<div class="printbutton">
+								<a href="kandidaadistatprint.html">Prindi</a>
+							</div>
 						</div>
 					</div>
 			</div>
-			<div id="kkk" class="text">
-				<h1>
-					Korduma kippuvad küsimused
-				</h1>
-				<h3>
-					Kasutan IE6'te ning veebileht ei kuva korrektselt, mis ma peaksin tegema?
-				</h3>
-				<p>
-						<ul>
-							<li>Hetkel on võimalik kasutada ainult Google Chrome'i ja Mozilla Firefoxi uusimaid versioone.</li>
-						</ul>
-					</p>
-					<h3>
-						Kuidas hääletada?
-					</h3>
-					<p>
-						<ol>
-							<li>Hääletamise alustamiseks tuleb ennast autentida.</li>
-							<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene"</li>
-							<li>Autentida kasutades eelistatud autentimisviisi</li>
-							<li>Leida sobiv kandidaat kasutades selleks otsingut või kandidaatide nimekirja</li>
-							<li>Kandidaadi valimisel tuleb valik kinnitada</li>
-							<li>Eduka kinnituse puhul on hääletus on sooritatud</li>
-							<li>Turvalisuse tagamiseks soovitame lõpetamisel sulgeda brauseri aken</li>
-						</ol>
-					</p>
-					<h3>
-						Kuidas lisada kandidaate?
-					</h3>
-					<p>
-						<ol>
-							<li>Kandidaatide lisamiseks tuleb omada administratiivseid õiguseid ning ennast audentida</li>
-							<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene"</li>
-							<li>Autentida kasutades administreerimiseks mõeldud sisselogimist</li>
-							<li>Lisada kandidaat koos kõigi vajalike andmetega</li>
-							<li>Kandidaadi lisamiskes tuleb sisestatud andmed kinnitada</li>
-							<li>Eduka kinnituse korral on kandidaat lisatud</li>
-						</ol>
-					</p>
-				</div>
+
+		<div id="kkk" class="text">
+			<h1>
+				Korduma kippuvad küsimused
+			</h1>
+			<h3>
+				Kasutan IE6'te ning veebileht ei kuva korrektselt, mis ma peaksin tegema?
+			</h3>
+			<p>
+				<ul>
+					<li>Hetkel on võimalik kasutada ainult Google Chrome'i ja Mozilla Firefoxi uusimaid versioone.</li>
+				</ul>
+			</p>
+			<h3>
+				Kuidas hääletada?
+			</h3>
+			<p>
+				<ol>
+					<li>Selleks, et anda oma hääl tuleb ennast autentida.</li><br>
+					<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li><br>
+					<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li><br>
+					<li>Leia endale sobiv kandidaat kasutades selleks nupule "Kandidaadid" või "Häält andma".</li><br>
+					<li>Olles kandidaadi valinud tuleb tehtud valik kinnitada.</li><br>
+					<li>Eduka kinnituse puhul on hääletamine sooritatud.</li><br>
+					<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
+				</ol>
+			</p>
+			<h3>
+				Kuidas kandideerida?
+			</h3>
+			<p>
+				<ol>
+					<li>Selleks, et kandideerida tuleb ennast autentida.</li><br>
+					<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li><br>
+					<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li><br>
+					<li>Täida kohustuslikud väljad oma andmetega ning vajuta nupule "Salvesta".</li><br>
+					<li>Peale andmete salvestamist vajuta nupule "Soovin kandideerida".</li><br>
+					<li>Teie soov kandideerida tuleb kinnitada.</li><br>
+					<li>Eduka kinnituse puhul olete kandideeritud.</li><br>
+					<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
+				</ol>
+			</p>
+		</div>
+
 				<div id="sisene" class="text">
 					<h1>
 						Autentimine
@@ -348,25 +358,10 @@
 					<h3>
 						Sisenemiseks vali sobiv autentimismeetod:
 					</h3>
-					<!-- <div id=nupp1>
-						<a href="minuandmed.html" id="facebookinupp"></a>
-					</div>
-					<br>
-					
-					<div id=nupp2>
-						<a href="minuandmed.html" id="googlenupp"></a>
-					</div>
-					<br>
-							
-					<div id=nupp3>
-						<a href="minuandmed.html" id="twitterinupp"></a>
-					</div>
-					<br> -->
-					
 					<div id=nupp4>
 					
 					<!-- Viitab vanale lehele, peaks viitama #andmed tab'ile ja muutma sisene nupu "Logi välja"-ks-->
-						<a href="minuandmed.html" id="idkaardinupp"></a>
+						<a href="javascript:void(0)" id="idkaardinupp"></a>
 					</div>
 					<br>
 				</div>
@@ -419,17 +414,18 @@
 	   									</p>
 	   									<p>
 	     									<label for="erakond">Erakond</label>
-	     									<br><select id="cerakond" name="erakond">
-	     									<option selected="" value=""> --Palun vali oma erakond--</option>
-											<option value="erakondnr1">Eestimaa Ühendatud Vasakpartei</option>
-											<option value="erakondnr2">Isamaa ja Res Publica Liit</option>
-											<option value="erakondnr3">Iseseisvuspartei</option>
-											<option value="erakondnr4">Keskerakond</option>
-											<option value="erakondnr5">Kristlikud Demokraadid</option>
-											<option value="erakondnr6">Rahvaliit</option>
-											<option value="erakondnr7">Reformierakond</option>
-											<option value="erakondnr8">Rohelised</option>
-											<option value="erakondnr9">Sotsiaaldemokraatlik Erakond</option>
+	     									<br>
+	     									<select id="cerakond" name="erakond">
+	     										<option selected="" value=""> --Palun vali oma erakond--</option>
+												<option value="erakondnr1">Mustad</option>
+												<option value="erakondnr2">Punased</option>
+												<option value="erakondnr3">Sinised</option>
+												<option value="erakondnr4">Kollased</option>
+												<option value="erakondnr5">Helesinised</option>
+												<option value="erakondnr6">Violetsed</option>
+												<option value="erakondnr7">Roosad</option>
+												<option value="erakondnr8">Hallid</option>
+												<option value="erakondnr9">Valged</option>
 											</select>
 	   									</p>
 	   									<p>
@@ -446,14 +442,20 @@
 	  								</div>
 	  								Kandideerimine:<br>
 	  								<div id="kandideerima">
-	  									<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Kandideerima</a>
+	  									<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Soovin kandideerida</a>
 	  								</div>
 	  						</p>
 						</div>
 					</div>		
 				</div>
 				</div>
-			</div>		
+				<div id="jalus"><br><br>
+		  			<p>
+		  				Tähelepanu! Rakenduses realiseeritud e-valimiste näide on realiseeritud tehnoloogiate praktiseerimise eesmärgil 
+		  				ning ei ole mõeldud reaalsete e-valimiste korraldamiseks. Kokkulangevused reaalse e-valimiste protsessiga on juhuslikud.
+		  			</p>
+				</div> 
+		</div>		
 	</div>
 </body>
 </html>
