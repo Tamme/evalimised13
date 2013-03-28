@@ -1,0 +1,1 @@
+create table candidate ( `id` integer unsigned not null auto_increment, `first` varchar(255) NOT NULL, `last` varchar(255) NOT NULL, `code` bigint(12), `area` varchar(255) NOT NULL, `party` varchar(255), `picture` LONGBLOB, PRIMARY KEY(`id`) );
