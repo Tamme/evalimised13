@@ -1,30 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
   <!-- Servlets -->
   <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.evalimine.server.GreetingServiceImpl</servlet-class>
+    <servlet-name>HelloServlet</servlet-name>
+    <servlet-class>com.evalimine.server.HelloServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/evalimine/greet</url-pattern>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/HelloServlet</url-pattern>
   </servlet-mapping>
   
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>Evalimine.html</welcome-file>
-  </welcome-file-list>
+  	 <!--<servlet>
+	    <servlet-name>sign</servlet-name>
+	    <servlet-class>com.evalimine.server.SignGuestbookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>sign</servlet-name>
+	    <url-pattern>/sign</url-pattern>
+	</servlet-mapping>>-->
+	
+	   <servlet>
+        <servlet-name>sign</servlet-name>
+        <servlet-class>com.evalimine.server.GuestbookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sign</servlet-name>
+        <url-pattern>/sign</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>guestbook.jsp</welcome-file>
+    </welcome-file-list>
+  
 
-  <servlet>
-    <servlet-name>SystemServiceServlet</servlet-name>
-    <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
-    <init-param>
-      <param-name>services</param-name>
-      <param-value/>
-    </init-param>
-  </servlet>
-
+	<servlet>
+	  <servlet-name>SystemServiceServlet</servlet-name>
+	  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+	  <init-param>
+	    <param-name>services</param-name>
+	    <param-value/>
+	  </init-param>
+	</servlet>
+  
   <servlet-mapping>
     <servlet-name>SystemServiceServlet</servlet-name>
     <url-pattern>/_ah/spi/*</url-pattern>
