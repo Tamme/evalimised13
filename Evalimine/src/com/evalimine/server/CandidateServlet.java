@@ -3,6 +3,8 @@ package com.evalimine.server;
 import com.google.appengine.api.rdbms.AppEngineDriver;
 
 import java.sql.*;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +15,18 @@ import javax.servlet.http.*;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.sql.*;
+import java.lang.String.*;
+import com.google.appengine.api.rdbms.AppEngineDriver;
+import com.evalimine.server.ResultSetConverter;
+import org.json.*;
+import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
 
 public class CandidateServlet extends HttpServlet {
 	/* Võib sisse/välja logimise juures kasulik olla
@@ -29,16 +43,33 @@ public class CandidateServlet extends HttpServlet {
     }
 	*/
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-      UserService userService = UserServiceFactory.getUserService();
-      User user = userService.getCurrentUser();
-      resp.getWriter().println("Helkjhlkjlo, ");
-      if (user != null) {
-          resp.setContentType("text/plain");
-          resp.getWriter().println("Helkjhlkjlo, " + user.getNickname());
-      } else {
-          resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-      }
+	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		response.getWriter().println("Helkjhlkjlo, ");
+		req.getParameterNames();
+		try {
+		Connection c = null;
+		c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
+		ResultSet rs = c.createStatement().executeQuery("SELECT first, last, code FROM candidate");
+		while (rs.next()){
+		    String first = rs.getString("first");
+		    String last = rs.getString("last");
+		    String id = String.valueOf(rs.getLong("code"));
+		    
+		    Map<String, String> json = new LinkedHashMap<String, String>();
+		    //JSONObject json = new JSONObject();
+            json.put("guestName", first);
+            json.put("content", last);
+            json.put("id", id);
+            String jsonData = new Gson().toJson(json);  
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(jsonData);
+		}
+		c.close();
+		} catch (SQLException e) {
+	        e.printStackTrace();
+	    }
   }
     
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

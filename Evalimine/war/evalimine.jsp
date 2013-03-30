@@ -3,7 +3,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.lang.String.*" %>
 <%@ page import="com.google.appengine.api.rdbms.AppEngineDriver" %>
-
+<%@ page import="com.evalimine.server.ResultSetConverter" %>
+<%@ page import="org.json.*" %>
+ <%@ page import="org.json.simple.JSONObject"%>
 
 <!doctype html>
  
@@ -165,9 +167,9 @@
 					Otsi kandidaate
 				</h3>
 				<div class="searchCandidate">
-					<form id="candidateForm" action="/evalimine.jsp" method="get">
+					<form id="candidateForm">
 						Vali piirkond:
-					<select name="area">
+					<select name="area" id="areas">
 					<option selected="" value="Eesti"> --Palun vali oma valimisringkond--</option>
 					<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
 					<option value="valimisringkondnr2">Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
@@ -183,7 +185,7 @@
 					<option value="valimisringkondnr12">Pärnumaa</option>
 					</select>
 						Vali erakond:
-						<select name="party" id="parties">
+						<select name="party" id="partyID"e>
 						<option selected="" value="allParties"> --Palun vali oma erakond--</option>
 						<option value="erakondnr1">Mustad</option>
 						<option value="erakondnr2">Punased</option>
@@ -200,14 +202,6 @@
 				</div>
 				<div class="text" id="candHeading">
 				</div>
-				<% 
-					
-					String party = request.getParameter("party"); 
-					String area = request.getParameter("area"); 
-					if (party != null && area != null) {
-						%><p>what is this</p> <%
-					}
-				%>
 				<div id="list">
 				</div>
 			</div>
@@ -399,11 +393,6 @@
 					<br>
 				</div>
 				<div id="andmed" class="text">
-					<%
-						Connection c = null;
-						c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-						ResultSet rs = c.createStatement().executeQuery("SELECT guestName, content, entryID FROM entries"); 
-					%>
 					<h1>
 						Minu andmed
 					</h1>
@@ -417,7 +406,7 @@
 	  							</p>
 	  						</div>
 							<div id="middle">
-	    						<form class="cmxform" id="commentForm" method="post" action="/candidate">
+	    						<form class="cmxform" id="commentForm" method="post" action="/CandidateServlet">
 	 								<fieldset>
 	   									<!--<legend>A simple comment form with submit validation and default messages</legend> -->
 	   									<p>
@@ -482,10 +471,10 @@
 	  								<div id="kandideerima">
 	  									<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Soovin kandideerida</a>
 	  								</div>
-	  						</p>
-						</div>
-					</div>		
-				</div>
+	  							</p>
+							</div>
+						</div>		
+					</div>
 				</div>
 				<div id="jalus"><br><br>
 		  			<p>

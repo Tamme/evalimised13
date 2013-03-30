@@ -12,12 +12,12 @@
   
   
    <servlet>
-        <servlet-name>candidate</servlet-name>
+        <servlet-name>CandidateServlet</servlet-name>
         <servlet-class>com.evalimine.server.CandidateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>candidate</servlet-name>
-        <url-pattern>/candidate</url-pattern>
+        <servlet-name>CandidateServlet</servlet-name>
+        <url-pattern>/CandidateServlet/*</url-pattern>
     </servlet-mapping>
  
  
