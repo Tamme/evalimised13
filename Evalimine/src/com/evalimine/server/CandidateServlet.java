@@ -44,32 +44,63 @@ public class CandidateServlet extends HttpServlet {
 	*/
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		response.getWriter().println("Helkjhlkjlo, ");
-		req.getParameterNames();
-		try {
+
+		
+		String [] params=req.getParameter("values").split(" ");
+		
 		Connection c = null;
-		c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-		ResultSet rs = c.createStatement().executeQuery("SELECT first, last, code FROM candidate");
-		while (rs.next()){
-		    String first = rs.getString("first");
-		    String last = rs.getString("last");
-		    String id = String.valueOf(rs.getLong("code"));
-		    
-		    Map<String, String> json = new LinkedHashMap<String, String>();
-		    //JSONObject json = new JSONObject();
-            json.put("guestName", first);
-            json.put("content", last);
-            json.put("id", id);
-            String jsonData = new Gson().toJson(json);  
-            response.setContentType("application/json");
+		String full = "[";
+		try {
+			c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
+			String query = "";
+			if (params[0].equals("allParties") && params[1].equals("Eesti")) {
+				query = "SELECT first, last, code, area, party FROM candidate";
+			}
+			else if (params[0].equals("allParties") && !params[1].equals("Eesti")) {
+				query = "SELECT first, last, code, area, party FROM candidate WHERE area LIKE \"" + params[1] + "\"";
+			}
+			else if (!params[0].equals("allParties") && params[1].equals("Eesti")) {
+				query = "SELECT first, last, code, area, party FROM candidate WHERE party LIKE \"" + params[0] + "\"";
+			}
+			else {
+				query = "SELECT first, last, code, area, party FROM candidate WHERE area LIKE \"" + params[1] + "\" and party LIKE \"" + params[0] + "\"";
+			}
+			ResultSet rs = c.createStatement().executeQuery(query);
+			while (rs.next()){
+			    String first = rs.getString("first");
+			    String last = rs.getString("last");
+			    String area = rs.getString("area");
+			    String party = rs.getString("party");
+			    String code = String.valueOf(rs.getLong("code"));
+			    Map<String, String> json = new LinkedHashMap<String, String>();
+	            json.put("first", first);
+	            json.put("last", last);
+	            json.put("area", area);
+	            json.put("party", party);
+	            json.put("code", code);
+	            String jsonData = new Gson().toJson(json);
+	            if (full.length() != 1) {
+	            	full += ", ";
+	            }
+	            full += jsonData;
+	            
+			}
+			full += "]";
+		} catch (Exception e) {
+	        System.out.println(e);
+			e.printStackTrace();
+	    } finally {
+	        if (c != null) {
+	        	try {
+		            c.close();
+		            } catch (SQLException ignore) {
+		         }
+	        }
+	        //System.out.println(full);
+	        response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(jsonData);
-		}
-		c.close();
-		} catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+            response.getWriter().write(full);
+	    }  
   }
     
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

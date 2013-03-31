@@ -11,24 +11,40 @@
 		var candidateOne = "<h3>Kandidaadi info</h3>";
 		var ctx = "${pageContext.request.contextPath}";
 		
-//		function getPerson() {
-//			$(document).ready(function(){
-//				$.getJSON('candidate.real.json', function(data) {
-//					var items = data;
-//					var text = "<table class='candidateInfo' border='1'>" +
-//						"<tr><th>Isiku (isiku)kood</th><td>" + items.person.id + "</td><tr>" +
-//						"<tr><th>Isiku nimi</th><td>" + items.person.name + "</td><tr>" +
-//						"<tr><th>Valimisnumber</th><td>" + items.id + "</td><tr>" + 
-//						"<tr><th>Erakonna lühend</th><td>" + items.party.id  + "</td><tr>" +
-//						"<tr><th>Erakonna nimi</th><td>" + items.party.name  + "</td><tr>" +
-//						"<tr><th>Piirkonna lühend</th><td>" + items.region.id + "</td><tr>" +
-//						"<tr><th>Piirkonna nimi</th><td>" + items.region.name + "</td><tr>" + "</table>";
-//						
-//					$('#list').html(text);
-//				});
-//				$('#candHeading').html(candidateOne);
-//			});
-//		}
+		$(document).ready(function() {
+	        $('#country').change(function(event) {  
+	        var $country=$("select#country").val();
+	           $.get('ActionServlet',{countryname:$country},function(responseJson) {   
+	        	   alert("momom");
+	            var $select = $('#states');                           
+	               $select.find('option').remove();                          
+	               $.each(responseJson, function(key, value) {               
+	                   $('<option>').val(key).text(value).appendTo($select);      
+	                    });
+	            });
+	        });
+	    });          
+		
+		function getPerson() {
+			$(document).ready(function(){
+				alert("not cool");
+				$.getJSON('candidate.real.json', function(data) {
+					var items = data;
+					var text = "<table class='candidateInfo' border='1'>" +
+						"<tr><th>Isiku (isiku)kood</th><td>" + items.person.id + "</td><tr>" +
+						"<tr><th>Isiku nimi</th><td>" + items.person.name + "</td><tr>" +
+						"<tr><th>Valimisnumber</th><td>" + items.id + "</td><tr>" + 
+						"<tr><th>Erakonna lühend</th><td>" + items.party.id  + "</td><tr>" +
+						"<tr><th>Erakonna nimi</th><td>" + items.party.name  + "</td><tr>" +
+						"<tr><th>Piirkonna lühend</th><td>" + items.region.id + "</td><tr>" +
+						"<tr><th>Piirkonna nimi</th><td>" + items.region.name + "</td><tr>" + "</table>";
+						
+					$('#list').html(text);
+				});
+				$('#candHeading').html(candidateOne);
+			});
+		}
+		
 		$(document).ready(function(){
 			$('#candidateForm').submit(function(e) {
 				e.preventDefault(); 
@@ -37,16 +53,21 @@
 				var params = new Array();
 				params[0] = party;
 				params[1] = area;
-			    var param = party + " " + area;
-			    alert('siia jouab');
-			    $.get("CandidateServlet", param, function(responseJson) {   
-			    	alert("siia mitte");   
-			    	$.each(responseJson, function(key, value) {               
-				 		$('<option>').val(key).text(value).appendTo($select);      
-				 	});
+			    var $param = party + " " + area;
+			    $.get("CandidateServlet", {values:$param}, function(items) {   
+			    	var text = "<table class='candidateTable' border='1'><tr><th>Eesnimi</th><th>Perenimi</th><th>Piirkond</th><th>Isikukood</th><th>Erakonna nimi</th><th></th></tr>";
+					for (var i = 0; i < items.length; i++) {
+						text += "<tr><td>" + items[i].first + "</td><td>" + items[i].last + "</td><td>" + items[i].area + 
+							"</td><td>" + items[i].code + "</td><td>" + items[i].party +
+							"</td><td><button type='button' onclick=getPerson() class='button'>Info</button></tr>";
+					}
+					text += "</table>";
+					$('#list').html(text);
+				});
+				$('#candHeading').html(candidateList);
 				});
 			});
-		});
+		
 		
 
 //		$.ajax({
