@@ -56,7 +56,25 @@
 				});
 			});
 		
-		
+		function getPersonData() {
+			$(document).ready(function(){
+				
+					var $id = 5;
+					$.get("CandidateServlet", {values:$id}, function(items) { 
+						var text = "<table class='candidateInfo' border='1'>" +
+							"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
+							"<tr><th>Isiku eesnimi</th><td>" + items[0].first + "</td><tr>" +
+							"<tr><th>Isiku perenimi</th><td>" + items[0].last + "</td><tr>" + 
+							"<tr><th>Erakonna lühend</th><td>" + items[0].short  + "</td><tr>" +
+							"<tr><th>Erakonna nimi</th><td>" + items[0].name  + "</td><tr>" +
+							"<tr><th>Piirkonna nimi</th><td>" + items[0].area + "</td><tr>" +
+							"<tr><th>Valimis nr</th><td>" + items[0].id + "</td><tr>" + "</table>";
+						$('#middle').html(text);
+					});
+					
+				
+			});
+		}
 		
 //		$(document).ready(function(){
 //			$.getJSON("evalimine.jsp", function(json) {

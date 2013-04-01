@@ -1,9 +1,14 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.lang.String.*" %>
 <%@ page import="com.google.appengine.api.rdbms.AppEngineDriver" %>
+<%@ page import="org.json.*" %>
+<%@ page import="org.json.simple.JSONObject"%>
+<%@ page import="com.google.appengine.api.users.User" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!doctype html>
  
@@ -56,7 +61,9 @@
 //    		hash:true
 //    	});
 //    });
-
+function goVote() {
+ 	$("#tabs").tabs( "option", "active", 1);
+};
      
  
  $(document).ready(function(){
@@ -236,7 +243,7 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 </script>  
 </head>
   
-<body>
+<body onload="getPersonData()">
 	<div class="container">
 		<div id="header" class="logo">
 			<a href="Evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
@@ -515,9 +522,25 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 						Sisenemiseks vali sobiv autentimismeetod:
 					</h3>
 					<div id=nupp4>
+					<%
+					    UserService userService = UserServiceFactory.getUserService();
+					    User user = userService.getCurrentUser();
+					    if (user != null) {
+					      pageContext.setAttribute("user", user);
+					%>
+					<p>Oled sisse logitud nimega ${fn:escapeXml(user.nickname)}. (
+					<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logi v&#228;lja</a>.)</p>
+					<%
+					    } else {
+					%>
 					
+					<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" id="idkaardinupp"></a>
+					
+					<%
+					    }
+					%>
 					<!-- Viitab vanale lehele, peaks viitama #andmed tab'ile ja muutma sisene nupu "Logi välja"-ks-->
-						<a href="javascript:void(0)" id="idkaardinupp"></a>
+						
 					</div>
 					<br>
 				</div>
@@ -526,75 +549,20 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 						Minu andmed
 					</h1>
 					<div id="specialcontainer">
+						<%
+							boolean logitud = userService.isUserLoggedIn();
+					    	if(logitud==true){
+						%>
 						<div id="row">
-							<div id="left">
-	  							<p>
-	  								<img id="loader" src="img/ajax-loader.gif"></img>
-	  								<img id="large-img" border="0" src="img/avatarm.jpg" width="120px"></img><br>
-	  								<a href="javascript:void(0)">Laadi pilt üles</a>
-	  							</p>
-	  						</div>
+							
 							<div id="middle">
-	    						<form class="cmxform" id="commentForm" method="post" action="/CandidateServlet">
-	 								<fieldset>
-	   									<!--<legend>A simple comment form with submit validation and default messages</legend> -->
-	   									<p>
-	     									<label for="ceesnimi">Eesnimi</label>
-	     									<em>*</em><br><input id="ceesnimi" name="eesnimi" size="28" class="required" minlength="2" maxlength="25"/>
-	   									</p>
-	   									<p>
-	     									<label for="cperenimi">Perenimi</label>
-	     									<em>*</em><br><input id="cperenimi" name="perenimi" size="28" class="required" minlength="2" maxlength="25"/>
-	   									</p>
-	   									<p>
-	     									<label for="cisikukood">Isikukood</label>
-	     									<br><input id="cisikukood" name="isikukood" size="28" class="digits" minlength="11" maxlength="11"/>
-	   									</p>
-	   									<p>
-	     									<label for="cvalimisringkond">Valimisringkond</label>
-	     									<em>*</em><br><select id="cvalimisringkond" name="valimisringkond" class="required">
-	     									<option selected="" value=""> --Palun vali oma valimisringkond--</option>
-											<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-											<option value="valimisringkondnr2">Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
-											<option value="valimisringkondnr3">Tallinna Mustamäe ja Nõmme linnaosa</option>
-											<option value="valimisringkondnr4">Harju- (v.a Tallinn) ja Raplamaa</option>
-											<option value="valimisringkondnr5">Hiiu-, Lääne- ja Saaremaa</option>
-											<option value="valimisringkondnr6">Lääne-Virumaa</option>
-											<option value="valimisringkondnr7">Ida-Virumaa</option>
-											<option value="valimisringkondnr8">Järva- ja Viljandimaa</option>
-											<option value="valimisringkondnr9">Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
-											<option value="valimisringkondnr10">Tartu linn</option>
-											<option value="valimisringkondnr11">Võru-, Valga- ja Põlvamaa</option>
-											<option value="valimisringkondnr12">Pärnumaa</option>
-											</select>
-	   									</p>
-	   									<p>
-	     									<label for="erakond">Erakond</label>
-	     									<br>
-	     									<select id="cerakond" name="erakond">
-	     										<option selected="" value=""> --Palun vali oma erakond--</option>
-												<option value="erakondnr1">Mustad</option>
-												<option value="erakondnr2">Punased</option>
-												<option value="erakondnr3">Sinised</option>
-												<option value="erakondnr4">Kollased</option>
-												<option value="erakondnr5">Helesinised</option>
-												<option value="erakondnr6">Violetsed</option>
-												<option value="erakondnr7">Roosad</option>
-												<option value="erakondnr8">Hallid</option>
-												<option value="erakondnr9">Valged</option>
-											</select>
-	   									</p>
-	   									<p>
-	     									<input class="submit" type="submit" value="Salvesta"/>
-	   									</p>
-	 								</fieldset>
-	 							</form>			
-	   						</div>
+	    					</div>
+	    					
 	  						<div id="right">
 	  							<p>
-	  								<div id="hääletama">
-	  								Hääletamine:<br>
-	  								<a href="javascript:void(0)">Häält andma</a><br><br>
+	  								<div id="h��letama">
+	  								H&auml;&auml;letamine:<br>
+	  								<a href="#kandidaadid">H&auml;&auml;lt andma</a><br><br>
 	  								</div>
 	  								Kandideerimine:<br>
 	  								<div id="kandideerima">
@@ -602,7 +570,14 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 	  								</div>
 	  							</p>
 							</div>
-						</div>		
+						</div>
+						<%
+						    } else {
+						%>
+							Andmete n&#228;gemiseks ja h&#228;&#228;letamiseks peate olema sisse logitud.	
+						<%
+						    }
+						%>				
 					</div>
 				</div>
 				<div id="jalus"><br><br>
