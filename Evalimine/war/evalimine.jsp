@@ -4,9 +4,8 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.lang.String.*" %>
 <%@ page import="com.google.appengine.api.rdbms.AppEngineDriver" %>
-<%@ page import="com.evalimine.server.ResultSetConverter" %>
 <%@ page import="org.json.*" %>
- <%@ page import="org.json.simple.JSONObject"%>
+<%@ page import="org.json.simple.JSONObject"%>
 
 <!doctype html>
  
@@ -69,6 +68,13 @@
    $('#loading').hide();
  });
 
+ $(function() {
+	   $( "#searcharea" ).autocomplete({
+	           source: "/GoogleSuggestServlet/*",
+	           minLength: 2,
+	   });
+ });
+ 
 /* Active tab view still not implemented */
 /* 	// Wait until the DOM has loaded before querying the document
 	$(document).ready(function(){
@@ -186,7 +192,7 @@
 					<option value="valimisringkondnr12">Pärnumaa</option>
 					</select>
 						Vali erakond:
-						<select name="party" id="partyID"e>
+						<select name="party" id="partyID">
 						<option selected="" value="allParties"> --Palun vali oma erakond--</option>
 						<option value="erakondnr1">Mustad</option>
 						<option value="erakondnr2">Punased</option>
@@ -198,6 +204,9 @@
 						<option value="erakondnr8">Hallid</option>
 						<option value="erakondnr9">Valged</option>
 						</select>
+						<br>
+						Kandidaatide otsing nime järgi:
+          				<input type="text" class="ui-widget" id="searcharea" size="40" autocomplete="off">
 						<button id="candSearch">Otsi</button>
 					</form>
 				</div>

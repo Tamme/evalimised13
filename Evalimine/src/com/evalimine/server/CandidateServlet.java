@@ -22,7 +22,6 @@ import java.util.Map;
 import java.sql.*;
 import java.lang.String.*;
 import com.google.appengine.api.rdbms.AppEngineDriver;
-import com.evalimine.server.ResultSetConverter;
 import org.json.*;
 import org.json.simple.JSONObject;
 
@@ -45,8 +44,8 @@ public class CandidateServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
-		String [] params=req.getParameter("values").split(" ");
-		
+		String [] params=req.getParameter("values").split(",");
+				
 		Connection c = null;
 		String full = "[";
 		try {
@@ -54,11 +53,11 @@ public class CandidateServlet extends HttpServlet {
 			String query = "";
 			String queryStart = "SELECT candidate.*, party.name, party.short FROM candidate LEFT JOIN party ON (party.party_id=candidate.party) ";
 			//one person view
-			if (params.length == 1) {
+			if (params.length == 1){
 				query = queryStart + "WHERE candidate.id LIKE \"" + params[0] + "\"";
 			}
 			//candidate search view
-			else {
+			else if (params.length == 2) {
 			
 				if (params[0].equals("allParties") && params[1].equals("Eesti")) {
 					query = queryStart;
@@ -72,8 +71,26 @@ public class CandidateServlet extends HttpServlet {
 				else {
 					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\"";
 				}
-			
 			}
+			else if (params.length == 3) {
+				//kui otsitakse ainult nime järgi
+				if (params[0].equals("allParties") && params[1].equals("Eesti")){
+					query = queryStart + "WHERE candidate.last LIKE \"" + params[2] + "\"";
+				}
+				//kui otsitakse piirkonna ja nime järgi
+				else if (params[0].equals("allParties") && !params[1].equals("Eesti")) {
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.last LIKE \"" + params[2] + "\"";
+				}
+				//kui otsitakse erakonna ja nime järgi
+				else if (!params[0].equals("allParties") && params[1].equals("Eesti")) {
+					query = queryStart + "WHERE candidate.party LIKE \"" + params[0] + "\" and candidate.last LIKE \"" + params[2] + "\"";
+				}
+				//kui otsitakse piirkonna, erakonna ja nime järgi
+				else {
+					query = queryStart + "WHERE candidate.last LIKE \"" + params[2] + "\" and candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\"";
+				}
+			}
+			
 			ResultSet rs = c.createStatement().executeQuery(query);
 			while (rs.next()){
 			    String first = rs.getString("first");
