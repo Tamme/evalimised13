@@ -6,15 +6,21 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 #pais {
 	float: left;
 	font-size:75%;
-	margin:-3.5em 0 0 0; 
-	padding-left:6%;
+	margin-left:auto;
+	text-align: center;
+	margin-right:auto;
+	width:100%;
+	background:#FE2E2E;
 }
 
 #jalus {
 	float: left;
 	font-size:75%;
-	margin:-3.5em 0 0 0; 
-	padding-left:6%;
+	margin-left:auto;
+	text-align: center;
+	margin-right:auto;
+	width:100%;
+	background:#FE2E2E;
 }
 
 #header {
@@ -32,7 +38,7 @@ a {
 .logo {
 	float:left;
 	margin:0px;
-	padding:3.2em 0 0 0;
+	padding:5.5em 0 0 0;
 	width:70em;
 	height:16.27em;
 }
@@ -49,10 +55,10 @@ html {
 
 .container {
 	margin: -2em auto;
-	padding: 0em 0 12em 0;
+	padding: 0em 0 0em 0;
 	width: 70em;
 	background:#FFFFFF;
-	height:300%;
+	height:100%;
 }
 
 .title {
@@ -73,7 +79,7 @@ html {
 	background:#3a75c4;
 	font-size:2em;
 	clear:both;
-	padding:0.1em 1.75em;
+	padding:0em 1.75em;
 	text-decoration:none;
 }
 
@@ -100,7 +106,7 @@ html {
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	font-size:2em;
-	padding:0em 0.81em; /* change menu width here */
+	padding:0em 1.16em; /* change menu width here */
 	text-decoration:none;
 }
 
@@ -118,7 +124,7 @@ html {
 	background:#23282e url('img/taust.png') no-repeat;
 	background-size:cover;
 	font-size:1em;
-	padding:0em 2.57em; /*change statmenu width here*/
+	padding:0.3em 2em; /*change statmenu width here*/
 	text-decoration:none;
 }
 
@@ -154,7 +160,22 @@ html {
 	color:#FFFFFF;
 	text-decoration:none;
 }
+
+#candSearch {
+	color:#ffffff;
+	background:#23282e url('img/button.png') no-repeat;
+	background-size:cover;
+	clear:both;
+	padding:0.1em 1.17em; /* change menu width here */
+	text-decoration:none;
+}
+
+#candSearch:hover, .button:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
 	
+}
+
 input:hover {
 	background:#FFFFFF;
 	color:#3a75c4;
@@ -278,22 +299,36 @@ th {
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	clear:both;
-	padding:0.1em 1.17em; /* change menu width here */
+	padding:0em 1.17em; /* change menu width here */
 	text-decoration:none;
 }
 
 #candSearch:hover, .button:hover {
 	background:#FFFFFF;
 	color:#3a75c4;
-	
 }
+
+#submitcandidate {
+	color:#ffffff;
+	background:#23282e url('img/button.png') no-repeat;
+	background-size:cover;
+	clear:both;
+	padding:0em 1.17em; /* change menu width here */
+	text-decoration:none;
+}
+
+#submitcandidate:hover, .button:hover {
+	background:#FFFFFF;
+	color:#3a75c4;
+}
+
 
 .button {
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	clear:both;
-	padding:0.1em 1.17em; /* change menu width here */
+	padding:0em 1.17em; /* change menu width here */
 	text-decoration:none;
 }
 
@@ -309,23 +344,29 @@ th {
 
 #left {
 	display: table-cell;
-	}
+	vertical-align: top;
+	text-align: center;
+}
 	
 #middle {
 	display: table-cell;
 	padding-left:1em;
 	padding-top:-5em;
+	vertical-align: top;
+	text-align: left;
 }
 
 #right {
 	padding-left:1em;
 	display: table-cell;
-	}
+	vertical-align: top;
+	text-align: left;
+}
 
 	
 #select {
 	width:4em;
-	}
+}
 	
 .tabs li {
  list-style:none;
@@ -333,7 +374,7 @@ th {
 }
 
 .tabs a {
- padding:5px 10px;
+ padding:0px 0px;
  display:inline-block;
  background:#666;
  color:#fff;

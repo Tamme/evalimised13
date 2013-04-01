@@ -74,6 +74,8 @@ function goVote() {
    $('#loading').hide();
  });
 
+ /*  jq191 = jQuery.noConflict(true); */
+ 
  $(function() {
 	   $( "#searcharea" ).autocomplete({
 	           source: "/GoogleSuggestServlet/*",
@@ -560,7 +562,7 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 	    					
 	  						<div id="right">
 	  							<p>
-	  								<div id="h��letama">
+	  								<div id="h��letama">
 	  								H&auml;&auml;letamine:<br>
 	  								<a href="#kandidaadid">H&auml;&auml;lt andma</a><br><br>
 	  								</div>
@@ -580,10 +582,10 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 						%>				
 					</div>
 				</div>
-				<div id="jalus"><br><br>
+				<div id="jalus">
 		  			<p>
-		  				Tähelepanu! Rakenduses realiseeritud e-valimiste näide on realiseeritud tehnoloogiate praktiseerimise eesmärgil 
-		  				ning ei ole mõeldud reaalsete e-valimiste korraldamiseks. Kokkulangevused reaalse e-valimiste protsessiga on juhuslikud.
+		  				Rakenduses realiseeritud e-valimiste näide on realiseeritud tehnoloogiate praktiseerimise eesmärgil 
+		  				ning ei ole mõeldud reaalsete e-valimiste korraldamiseks. <br> Kokkulangevused reaalse e-valimiste protsessiga on juhuslikud.
 		  			</p>
 				</div> 
 		</div>		
