@@ -136,11 +136,15 @@ html {
 	top:0.5em;
 }
 
+.ui-tabs {
+    height: auto !important;
+}
+
 .menu a:hover, .statmenu a:hover {
-	background:#FFFFFF;
 	color:#3a75c4;
 	
 }
+
 .menu a:active {
 	background:#FFFFFF;
 	color:#3a75c4;

@@ -4,8 +4,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.lang.String.*" %>
 <%@ page import="com.google.appengine.api.rdbms.AppEngineDriver" %>
-<%@ page import="org.json.*" %>
-<%@ page import="org.json.simple.JSONObject"%>
 
 <!doctype html>
  
@@ -16,6 +14,7 @@
   
 <!-- script 1 -->
 <link rel="stylesheet" href="style.css" />
+<link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
  
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
@@ -24,6 +23,9 @@
 <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery-1.6.4.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.address-1.5.min.js" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.scrollTo.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.localscroll.js"></script>
   
@@ -31,34 +33,31 @@
  var TSort_Data = new Array ('sorting', 's', 'i', 'f');
  var TSort_Initial =  new Array ('0A');
  
- $(document).ready(function(){
-     $("#tabs").tabs();
-     if($("#tabs") && document.location.hash){
-   		$.scrollTo("#tabs");
-   	}
-     $("#tabs ul").localScroll({ 
-       target:"#tabs",
-       duration:0,
-   		hash:true
-   	});
-   });
+//  $(document).ready(function(){
+//      $("#tabs").tabs();
+//      if($("#tabs") && document.location.hash){
+//    		$.scrollTo("#tabs");
+//    	}
+//      $("#tabs ul").localScroll({ 
+//        target:"#tabs",
+//        duration:0,
+//    		hash:true
+//    	});
+//    });
  
- $(document).ready(function(){
-     $("#stattabs").tabs();
-     if($("#stattabs") && document.location.hash){
-   		$.scrollTo("#stattabs");
-   	}
-     $("#stattabs ul").localScroll({ 
-       target:"#stattabs",
-       duration:0,
-   		hash:true
-   	});
-   });
+//  $(document).ready(function(){
+//      $("#stattabs").tabs();
+//      if($("#stattabs") && document.location.hash){
+//    		$.scrollTo("#stattabs");
+//    	}
+//      $("#stattabs ul").localScroll({ 
+//        target:"#stattabs",
+//        duration:0,
+//    		hash:true
+//    	});
+//    });
 
      
-//  $(function() {
-//  	$( "#stattabs" ).tabs();
-//  });
  
  $(document).ready(function(){
  	$("#commentForm").validate();
@@ -75,44 +74,164 @@
 	   });
  });
  
-/* Active tab view still not implemented */
-/* 	// Wait until the DOM has loaded before querying the document
-	$(document).ready(function(){
-		$('ul.tabs').each(function(){
-			// For each set of tabs, we want to keep track of
-			// which tab is active and it's associated content
-			var $active, $content, $links = $(this).find('a');
+//------------------------------------------------messing with menu
+ 
+ var tabs,
+ tabEvent = false,
+ initialTab = 'Esileht',
+ navSelector = '#tabs .ui-tabs-nav',
+ navFilter = function(el) {
+     return $(el).attr('href').replace(/^#/, '');
+ },
+ panelSelector = '#tabs .ui-tabs-panel',
+ panelFilter = function() {
+     $(panelSelector + ' a').filter(function() {
+         return $(navSelector + ' a[title=' + $(this).attr('title') + ']').size() != 0;
+     }).each(function(event) {
+         $(this).attr('href', '#' + $(this).attr('title').replace(/ /g, '_'));
+     });
+ };
 
-			// If the location.hash matches one of the links, use that as the active tab.
-			// If no match is found, use the first link as the initial active tab.
-			$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-			$active.addClass('active');
-			$content = $($active.attr('href'));
+// Initializes plugin features
+$.address.strict(false).wrap(true);
 
-			// Hide the remaining content
-			$links.not($active).each(function () {
-				$($(this).attr('href')).hide();
-			});
+if ($.address.value() == '') {
+ $.address.history(false).value(initialTab).history(true);
+}
 
-			// Bind the click event handler
-			$(this).on('click', 'a', function(e){
-				// Make the old tab inactive.
-				$active.removeClass('active');
-				$content.hide();
+// Address handler
+$.address.init(function(event) {
 
-				// Update the variables with the new link and content
-				$active = $(this);
-				$content = $($(this).attr('href'));
+ // Adds the ID in a lazy manner to prevent scrolling
+ $(panelSelector).attr('id', initialTab);
 
-				// Make the tab active.
-				$active.addClass('active');
-				$content.show();
+ // Enables the plugin for all the content links
+ $(panelSelector + ' a').address(function() {
+     return navFilter(this);
+ });
+ 
+ panelFilter();
 
-				// Prevent the anchor's default click action
-				e.preventDefault();
-			});
-		});
-	});  */
+ // Tabs setup
+ tabs = $('#tabs')
+     .tabs({
+         load: function(event, ui) {
+             // Filters the content and applies the plugin if needed
+             $(ui.panel).html($(panelSelector, ui.panel).html());
+             panelFilter();
+         },
+         fx: {
+             opacity: 'toggle', 
+             duration: 'fast'
+         }
+     })
+     .css('display', 'block');
+
+ // Enables the plugin for all the tabs
+ $(navSelector + ' a').click(function(event) {
+ 	tabEvent = true;
+     $.address.value(navFilter(event.target));
+     tabEvent = false;
+     return false;
+ });
+
+}).change(function(event) {
+
+ var current = $('a[href=#' + event.value + ']:first');
+ 
+ // Sets the page title
+ $.address.title($.address.title().split(' | ')[0] + ' | ' + current.text());
+
+ // Selects the proper tab
+ if (!tabEvent) {
+     tabs.tabs('select', current.attr('href'));
+ }
+ 
+});
+
+// Hides the tabs during initialization
+document.write('<style type="text/css"> #tabs { display: none; } </style>');
+
+//--------------------------------------------messing with submenu
+
+ var tabs2,
+ tabEvent2 = false,
+ initialTab2 = 'Esileht',
+ navSelector2 = '#stattabs .ui-tabs-nav',
+ navFilter2 = function(el2) {
+     return $(el2).attr('href').replace(/^#/, '');
+ },
+ panelSelector2 = '#stattabs .ui-tabs-panel',
+ panelFilter2 = function() {
+     $(panelSelector2 + ' a').filter(function() {
+         return $(navSelector2 + ' a[title=' + $(this).attr('title') + ']').size() != 0;
+     }).each(function(event) {
+         $(this).attr('href', '#' + $(this).attr('title').replace(/ /g, '_'));
+     });
+ };
+
+// Initializes plugin features
+$.address.strict(false).wrap(true);
+
+if ($.address.value() == '') {
+ $.address.history(false).value(initialTab2).history(true);
+}
+
+// Address handler
+$.address.init(function(event) {
+
+ // Adds the ID in a lazy manner to prevent scrolling
+ $(panelSelector2).attr('id', initialTab2);
+
+ // Enables the plugin for all the content links
+ $(panelSelector2 + ' a').address(function() {
+     return navFilter2(this);
+ });
+ 
+ panelFilter();
+
+ // Tabs setup
+ tabs2 = $('#stattabs')
+     .tabs({
+         load: function(event, ui) {
+             // Filters the content and applies the plugin if needed
+             $(ui.panel).html($(panelSelector2, ui.panel).html());
+             panelFilter2();
+         },
+         fx: {
+             opacity: 'toggle', 
+             duration: 'fast'
+         }
+     })
+     .css('display', 'block');
+
+ // Enables the plugin for all the tabs
+ $(navSelector2 + ' a').click(function(event) {
+ 	tabEvent2 = true;
+     $.address.value(navFilter2(event.target));
+     tabEvent2 = false;
+     return false;
+ });
+
+}).change(function(event) {
+
+ var current2 = $('a[href=#' + event.value + ']:first');
+ 
+ // Sets the page title
+ $.address.title($.address.title().split(' | ')[0] + ' | ' + current2.text());
+
+ // Selects the proper tab
+ if (!tabEvent2) {
+     tabs2.tabs('select', current2.attr('href'));
+ }
+ 
+});
+
+// Hides the tabs during initialization
+document.write('<style type="text/css"> #stattabs { display: none; } </style>');
+
+
+//--------------------------------------------end of messing with submenu	
  
 </script>  
 </head>
@@ -122,14 +241,14 @@
 		<div id="header" class="logo">
 			<a href="Evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
 		</div>
-		<div id="tabs">
-		  <ul class="menu">
-		    <li><a href="#esileht">Esileht</a></li>
-		    <li><a href="#kandidaadid">Kandidaadid</a></li>
-		    <li><a href="#kkk">KKK</a></li>
-		    <li><a href="#statistika">Statistika</a></li>
-		    <li><a href="#andmed">Minu andmed</a></li>
-		    <li><a href="#sisene">Sisene</a></li>
+		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+		  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all menu">
+		    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#esileht">Esileht</a></li>
+		    <li class="ui-corner-top ui-state-default"><a href="#kandidaadid">Kandidaadid</a></li>
+		    <li class="ui-corner-top ui-state-default"><a href="#kkk">KKK</a></li>
+		    <li class="ui-corner-top ui-state-default"><a href="#statistika">Statistika</a></li>
+		    <li class="ui-corner-top ui-state-default"><a href="#andmed">Minu andmed</a></li>
+		    <li class="ui-corner-top ui-state-default"><a href="#sisene">Sisene</a></li>
 		  </ul>
 		  
 			<div id="pais">
@@ -221,12 +340,12 @@
 			</div>
 			
 			<div id="statistika" class="text">
-				<div id="stattabs">
-					  	<ul class="statmenu">
-						    <li><a href="#riigiSisu">Statistika riigi lõikes</a></li>
-						    <li><a href="#piirkonnaSisu">Statistika piirkonna lõikes</a></li>
-						    <li><a href="#parteiSisu">Statistika parteide lõikes</a></li>
-						    <li><a href="#kandidaadiSisu">Statistika kandidaatide lõikes</a></li>
+		  			<div id="stattabs">
+					  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#riigiSisu">Statistika riigi lõikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#piirkonnaSisu">Statistika piirkonna lõikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#parteiSisu">Statistika parteide lõikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#kandidaadiSisu">Statistika kandidaatide lõikes</a></li>
 					  	</ul>
 					<div id="riigiSisu" class="text">
 						<h1>

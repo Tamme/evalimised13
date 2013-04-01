@@ -19,17 +19,9 @@
         <url-pattern>/GoogleSuggestServlet/*</url-pattern>
     </servlet-mapping>
  
-   <servlet>
-        <servlet-name>sign</servlet-name>
-        <servlet-class>com.evalimine.server.GuestbookServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>sign</servlet-name>
-        <url-pattern>/sign</url-pattern>
-    </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>guestbook.jsp</welcome-file>
+        <welcome-file>evalimine.jsp</welcome-file>
     </welcome-file-list>
  
 	<servlet>
