@@ -45,7 +45,6 @@ public class CandidateServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
-		
 		String [] params=req.getParameter("values").split(" ");
 		
 		Connection c = null;
@@ -53,31 +52,46 @@ public class CandidateServlet extends HttpServlet {
 		try {
 			c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
 			String query = "";
-			if (params[0].equals("allParties") && params[1].equals("Eesti")) {
-				query = "SELECT first, last, code, area, party FROM candidate";
+			String queryStart = "SELECT candidate.*, party.name, party.short FROM candidate LEFT JOIN party ON (party.party_id=candidate.party) ";
+			//one person view
+			if (params.length == 1) {
+				query = queryStart + "WHERE candidate.id LIKE \"" + params[0] + "\"";
 			}
-			else if (params[0].equals("allParties") && !params[1].equals("Eesti")) {
-				query = "SELECT first, last, code, area, party FROM candidate WHERE area LIKE \"" + params[1] + "\"";
-			}
-			else if (!params[0].equals("allParties") && params[1].equals("Eesti")) {
-				query = "SELECT first, last, code, area, party FROM candidate WHERE party LIKE \"" + params[0] + "\"";
-			}
+			//candidate search view
 			else {
-				query = "SELECT first, last, code, area, party FROM candidate WHERE area LIKE \"" + params[1] + "\" and party LIKE \"" + params[0] + "\"";
+			
+				if (params[0].equals("allParties") && params[1].equals("Eesti")) {
+					query = queryStart;
+				}
+				else if (params[0].equals("allParties") && !params[1].equals("Eesti")) {
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\"";
+				}
+				else if (!params[0].equals("allParties") && params[1].equals("Eesti")) {
+					query = queryStart + "WHERE candidate.party LIKE \"" + params[0] + "\"";
+				}
+				else {
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\"";
+				}
+			
 			}
 			ResultSet rs = c.createStatement().executeQuery(query);
 			while (rs.next()){
 			    String first = rs.getString("first");
 			    String last = rs.getString("last");
 			    String area = rs.getString("area");
-			    String party = rs.getString("party");
 			    String code = String.valueOf(rs.getLong("code"));
+			    String id = String.valueOf(rs.getInt("id"));
+			    String shorts = rs.getString("short");
+			    String name = rs.getString("name");
+			    
 			    Map<String, String> json = new LinkedHashMap<String, String>();
 	            json.put("first", first);
 	            json.put("last", last);
 	            json.put("area", area);
-	            json.put("party", party);
+	            json.put("short", shorts);
 	            json.put("code", code);
+	            json.put("name", name);
+	            json.put("id", id);
 	            String jsonData = new Gson().toJson(json);
 	            if (full.length() != 1) {
 	            	full += ", ";

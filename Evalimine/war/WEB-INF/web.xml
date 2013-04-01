@@ -10,14 +10,6 @@
     <url-pattern>/HelloServlet</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-    <servlet-name>ActionServlet</servlet-name>
-    <servlet-class>com.evalimine.server.ActionServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>ActionServlet</servlet-name>
-    <url-pattern>/ActionServlet/*</url-pattern>
-</servlet-mapping>
 
    <servlet>
         <servlet-name>CandidateServlet</servlet-name>
@@ -28,6 +20,14 @@
         <url-pattern>/CandidateServlet/*</url-pattern>
     </servlet-mapping>
  
+	   <servlet>
+        <servlet-name>SignGuestbookServlet</servlet-name>
+        <servlet-class>com.evalimine.server.SignGuestbookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignGuestbookServlet</servlet-name>
+        <url-pattern>/SignGuestbookServlet</url-pattern>
+    </servlet-mapping> 
  
    <servlet>
         <servlet-name>sign</servlet-name>
@@ -38,7 +38,7 @@
         <url-pattern>/sign</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>guestbook.jsp</welcome-file>
+        <welcome-file>evalimine.jsp</welcome-file>
     </welcome-file-list>
  
 

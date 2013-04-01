@@ -1,3 +1,13 @@
 create table candidate ( `id` integer unsigned not null auto_increment, `first` varchar(255) NOT NULL, `last` varchar(255) NOT NULL, `code` bigint(12), `area` varchar(255) NOT NULL, `party` varchar(255), `picture` LONGBLOB, PRIMARY KEY(`id`) );
 
+create table party( `id` integer unsigned not null auto_increment, `name` varchar(255) NOT NULL, `short` varchar(255) NOT NULL, `party_id` varchar(255), PRIMARY KEY(`id`) );
+
 Select * from candidate where party like "erakondnr2"
+
+INSERT INTO party (name, short, party_id) VALUES ("Mustad", 'MU', "erakondnr1"), ("Punased", "PU", "erakondnr2"), ("Sinised", "SI", "erakondnr3"), ("Kollased", "KO", "erakondnr4"), ("Helesinised", "HS", "erakondnr5"), ("Violetsed", "VI", "erakondnr6"), ("Roosad", "RO", "erakondnr7"), ("Hallid", "HA", "erakondnr8"), ("Valged", "VA", "erakondnr9");
+
+JOIN query:
+SELECT candidate.last, party.name
+FROM candidate
+LEFT JOIN party
+ON (party.party_id=candidate.party )
