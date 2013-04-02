@@ -3,8 +3,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.lang.String.*" %>
 <%@ page import="com.google.appengine.api.rdbms.AppEngineDriver" %>
-<%@ page import="org.json.*" %>
-<%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -21,16 +19,15 @@
 <link rel="stylesheet" href="style.css" />
 <link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
  
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <!--  Ajax script that is used increases page load time to 5 or more seconds -->
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/jquery-1.6.4.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/jquery.address-1.5.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.address-1.6.min.js" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.scrollTo.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.localscroll.js"></script>
   
@@ -84,7 +81,7 @@ function goVote() {
  });
  
 //------------------------------------------------messing with menu
- 
+
  var tabs,
  tabEvent = false,
  initialTab = 'Esileht',
@@ -248,7 +245,7 @@ document.write('<style type="text/css"> #stattabs { display: none; } </style>');
 <body onload="getPersonData()">
 	<div class="container">
 		<div id="header" class="logo">
-			<a href="Evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
+			<a href="evalimine.jsp"><img class="logo" src="img/logo3.png"></img></a>
 		</div>
 		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 		  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all menu">
