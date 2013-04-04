@@ -9,10 +9,9 @@
 	
 		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 		var candidateOne = "<h3>Kandidaadi info</h3>";
-		//var ctx = "${pageContext.request.contextPath}";
+		
 		function getPerson(id) {
-		$(document).ready(function(){
-			
+		//$(document).ready(function(){	not working with doc ready
 				var $id = id;
 				$.get("CandidateServlet", {values:$id}, function(items) { 
 					var text = "<table class='candidateInfo' border='1'>" +
@@ -27,7 +26,7 @@
 				});
 				$('#candHeading').html(candidateOne);
 			
-		});
+		//});
 		}		
 		
 		$(document).ready(function(){
@@ -57,8 +56,7 @@
 			});
 		
 		function getPersonData() {
-			$(document).ready(function(){
-				
+//			$(document).ready(function(){
 					var $id = 5;
 					$.get("CandidateServlet", {values:$id}, function(items) { 
 						var text = "<table class='candidateInfo' border='1'>" +
@@ -71,9 +69,7 @@
 							"<tr><th>Valimis nr</th><td>" + items[0].id + "</td><tr>" + "</table>";
 						$('#middle').html(text);
 					});
-					
-				
-			});
+//			});
 		}
 		
 //		$(document).ready(function(){
