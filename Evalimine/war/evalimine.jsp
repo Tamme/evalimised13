@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="style.css" />
 <link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
  
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="js/jquery-1.8.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/jquery.address-1.6.min.js" charset="utf-8"></script>

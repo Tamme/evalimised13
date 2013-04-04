@@ -10,11 +10,9 @@
 		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 		var candidateOne = "<h3>Kandidaadi info</h3>";
 		
-		
-			
-		function getPerson(id) {
-			//$(document).ready(function(){
-			var logged = document.getElementById("logging").value;
+		$(document).ready(function(){
+			function getPerson(id) {
+				var logged = document.getElementById("logging").value;
 				var $id = id;
 				$.get("CandidateServlet", {values:$id}, function(items) { 
 					extra = "";
@@ -32,9 +30,9 @@
 					$('#list').html(text);
 				});
 				$('#candHeading').html(candidateOne);
-			//});		
+				
 			}
-		
+		});
 		
 		function sendVote (id) {
 			var $id = id;
@@ -51,7 +49,7 @@
 				params[0] = party;
 				params[1] = area;
 				params[2] = search;
-			    var $param = party + "," + area + "," + search;
+			    var $param = party + ";" + area + ";" + search;
 			    $.get("CandidateServlet", {values:$param}, function(items) {   
 			    	var text = "<table class='candidateTable' border='1'><tr><th>Eesnimi</th><th>Perenimi</th><th>Piirkond</th><th>Isikukood</th><th>Erakonna nimi</th><th>Erakonna lühend</th><th></th></tr>";
 					for (var i = 0; i < items.length; i++) {
