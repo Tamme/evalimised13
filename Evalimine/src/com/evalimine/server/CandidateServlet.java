@@ -12,19 +12,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.*;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
-
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.sql.*;
-import java.lang.String.*;
-import com.google.appengine.api.rdbms.AppEngineDriver;
-import org.json.*;
-import org.json.simple.JSONObject;
-
 import com.google.gson.Gson;
 
 public class CandidateServlet extends HttpServlet {
@@ -63,20 +52,20 @@ public class CandidateServlet extends HttpServlet {
 			else if (params.length == 3) {
 				//kui otsitakse ainult nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				if (params[0].equals("allParties") && params[1].equals("Eesti")){
-					query = queryStart + "WHERE candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE (candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\")";
 					System.out.println(query);
 				}
 				//kui otsitakse piirkonna ja nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				else if (params[0].equals("allParties") && !params[1].equals("Eesti")) {
-					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and (candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\")";
 				}
 				//kui otsitakse erakonna ja nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				else if (!params[0].equals("allParties") && params[1].equals("Eesti")) {
-					query = queryStart + "WHERE candidate.party LIKE \"" + params[0] + "\" and candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE candidate.party LIKE \"" + params[0] + "\" and (candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\")";
 				}
 				//kui otsitakse piirkonna, erakonna ja nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				else {
-					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\" and candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\" and (candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\")";
 				}
 			}
 //			System.out.println(query);
