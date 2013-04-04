@@ -59,7 +59,10 @@
 
 </script>  
 </head>
-  
+<%
+	UserService userService = UserServiceFactory.getUserService();
+	User user = userService.getCurrentUser();
+%>
 <body onload="getPersonData()">
 	<div class="container">
 		<div id="header" class="logo">
@@ -116,44 +119,51 @@
 				<h3>
 					Otsi kandidaate
 				</h3>
-<%-- 				<% --%>
-// 					boolean logitud = userService.isUserLoggedIn();
-// 			    	if(logitud==true){
-<%-- 				%> --%>
+				<%
+					boolean logged = userService.isUserLoggedIn();
+				%>
 				<div class="searchCandidate">
 					<form id="candidateForm">
 						Vali piirkond:
-					<select name="area" id="areas">
-					<option selected="" value="Eesti"> --Palun vali oma valimisringkond--</option>
-					<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
-					<option value="valimisringkondnr2">Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
-					<option value="valimisringkondnr3">Tallinna Mustamäe ja Nõmme linnaosa</option>
-					<option value="valimisringkondnr4">Harju- (v.a Tallinn) ja Raplamaa</option>
-					<option value="valimisringkondnr5">Hiiu-, Lääne- ja Saaremaa</option>
-					<option value="valimisringkondnr6">Lääne-Virumaa</option>
-					<option value="valimisringkondnr7">Ida-Virumaa</option>
-					<option value="valimisringkondnr8">Järva- ja Viljandimaa</option>
-					<option value="valimisringkondnr9">Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
-					<option value="valimisringkondnr10">Tartu linn</option>
-					<option value="valimisringkondnr11">Võru-, Valga- ja Põlvamaa</option>
-					<option value="valimisringkondnr12">Pärnumaa</option>
-					</select>
+						<select name="area" id="areas">
+							<option selected="" value="Eesti"> --Palun vali oma valimisringkond--</option>
+							<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
+							<option value="valimisringkondnr2">Tallinna Kesklinna, Lasnamäe ja Pirita linnaosa</option>
+							<option value="valimisringkondnr3">Tallinna Mustamäe ja Nõmme linnaosa</option>
+							<option value="valimisringkondnr4">Harju- (v.a Tallinn) ja Raplamaa</option>
+							<option value="valimisringkondnr5">Hiiu-, Lääne- ja Saaremaa</option>
+							<option value="valimisringkondnr6">Lääne-Virumaa</option>
+							<option value="valimisringkondnr7">Ida-Virumaa</option>
+							<option value="valimisringkondnr8">Järva- ja Viljandimaa</option>
+							<option value="valimisringkondnr9">Jõgeva- ja Tartumaa (v.a Tartu linn)</option>
+							<option value="valimisringkondnr10">Tartu linn</option>
+							<option value="valimisringkondnr11">Võru-, Valga- ja Põlvamaa</option>
+							<option value="valimisringkondnr12">Pärnumaa</option>
+						</select>
 						Vali erakond:
 						<select name="party" id="partyID">
-						<option selected="" value="allParties"> --Palun vali oma erakond--</option>
-						<option value="erakondnr1">Mustad</option>
-						<option value="erakondnr2">Punased</option>
-						<option value="erakondnr3">Sinised</option>
-						<option value="erakondnr4">Kollased</option>
-						<option value="erakondnr5">Helesinised</option>
-						<option value="erakondnr6">Violetsed</option>
-						<option value="erakondnr7">Roosad</option>
-						<option value="erakondnr8">Hallid</option>
-						<option value="erakondnr9">Valged</option>
+							<option selected="" value="allParties"> --Palun vali oma erakond--</option>
+							<option value="erakondnr1">Mustad</option>
+							<option value="erakondnr2">Punased</option>
+							<option value="erakondnr3">Sinised</option>
+							<option value="erakondnr4">Kollased</option>
+							<option value="erakondnr5">Helesinised</option>
+							<option value="erakondnr6">Violetsed</option>
+							<option value="erakondnr7">Roosad</option>
+							<option value="erakondnr8">Hallid</option>
+							<option value="erakondnr9">Valged</option>
 						</select>
 						<br>
 						Kandidaatide otsing nime järgi:
-          				<input type="text" class="ui-widget" id="searcharea" size="40" autocomplete="off">
+         				<input type="text" class="ui-widget" id="searcharea" size="40" autocomplete="off">
+						<%if (logged) {%>
+							<input type="hidden" name="isLogged" id="logging" value="true">
+						<%}
+						else { %>
+							<input type="hidden" name="isLogged" id="logging" value="false">
+						<%}
+						%>
+						
 						<button id="candSearch">Otsi</button>
 					</form>
 				</div>
@@ -344,8 +354,6 @@
 					</h3>
 					<div id=nupp4>
 					<%
-					    UserService userService = UserServiceFactory.getUserService();
-					    User user = userService.getCurrentUser();
 					    if (user != null) {
 					      pageContext.setAttribute("user", user);
 					%>

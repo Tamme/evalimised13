@@ -10,10 +10,15 @@
 		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 		var candidateOne = "<h3>Kandidaadi info</h3>";
 		
-		function getPerson(id) {
-		//$(document).ready(function(){	not working with doc ready
+		$(document).ready(function(){
+			function getPerson(id) {
+				var logged = document.getElementById("logging").value;
 				var $id = id;
 				$.get("CandidateServlet", {values:$id}, function(items) { 
+					extra = "";
+					if (logged == "true") {
+						extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
+					}
 					var text = "<table class='candidateInfo' border='1'>" +
 						"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
 						"<tr><th>Isiku eesnimi</th><td>" + items[0].first + "</td><tr>" +
@@ -21,13 +26,18 @@
 						"<tr><th>Erakonna lühend</th><td>" + items[0].short  + "</td><tr>" +
 						"<tr><th>Erakonna nimi</th><td>" + items[0].name  + "</td><tr>" +
 						"<tr><th>Piirkonna nimi</th><td>" + items[0].area + "</td><tr>" +
-						"<tr><th>Valimis nr</th><td>" + items[0].id + "</td><tr>" + "</table>";
+						"<tr><th>Valimis nr</th><td>" + items[0].id + "</td><tr>" + extra + "</table>";
 					$('#list').html(text);
 				});
 				$('#candHeading').html(candidateOne);
-			
-		//});
-		}		
+				
+			}
+		});
+		
+		function sendVote (id) {
+			var $id = id;
+			//TODO
+		}
 		
 		$(document).ready(function(){
 			$('#candidateForm').submit(function(e) {
@@ -46,7 +56,7 @@
 						text += "<tr><td>" + items[i].first + "</td><td>" + items[i].last + "</td><td>" + items[i].area + 
 							"</td><td>" + items[i].code + "</td><td>" + items[i].name + 
 							"</td><td>" + items[i].short +
-							"</td><td><button type='button' onclick=getPerson(" + items[i].id + ") class='button'>Info</button></tr>";
+							"</td><td><button type='button' onclick=getPerson(" + items[i].id + ") class='button'>Info</button></td></tr>";
 					}
 					text += "</table>";
 					$('#list').html(text);
