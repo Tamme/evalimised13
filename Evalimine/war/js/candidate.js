@@ -10,9 +10,9 @@
 		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 		var candidateOne = "<h3>Kandidaadi info</h3>";
 		
-		$(document).ready(function(){
-			function getPerson(id) {
-				var logged = document.getElementById("logging").value;
+		function getPerson(id) {
+			//$(document).ready(function(){
+			var logged = document.getElementById("logging").value;
 				var $id = id;
 				$.get("CandidateServlet", {values:$id}, function(items) { 
 					extra = "";
@@ -30,13 +30,23 @@
 					$('#list').html(text);
 				});
 				$('#candHeading').html(candidateOne);
-				
+			//});		
 			}
-		});
 		
 		function sendVote (id) {
 			var $id = id;
 			//TODO
+		}
+		
+		function setCandidate (id) {
+			var $id = id;
+			$.post("MyDataServlet", {values:$id}, function(reply) { 
+				extra = "";
+//				if (logged == "true") {
+//					extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
+//				}
+				$('#kandideerima').html(reply);
+			});
 		}
 		
 		$(document).ready(function(){
@@ -67,7 +77,7 @@
 		
 		function getPersonData() {
 //			$(document).ready(function(){
-					var $id = 5;
+					var $id = 4;
 					$.get("CandidateServlet", {values:$id}, function(items) { 
 						var text = "<table class='candidateInfo' border='1'>" +
 							"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
@@ -78,6 +88,9 @@
 							"<tr><th>Piirkonna nimi</th><td>" + items[0].area + "</td><tr>" +
 							"<tr><th>Valimis nr</th><td>" + items[0].id + "</td><tr>" + "</table>";
 						$('#middle').html(text);
+						if (items[0].is_candidate) {
+							$('#kandideerima').html("Kandideerid");
+						}
 					});
 //			});
 		}

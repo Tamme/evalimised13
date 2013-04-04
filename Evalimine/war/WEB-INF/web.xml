@@ -11,6 +11,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>MyDataServlet</servlet-name>
+        <servlet-class>com.evalimine.server.MyDataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyDataServlet</servlet-name>
+        <url-pattern>/MyDataServlet/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>GoogleSuggestServlet</servlet-name>
         <servlet-class>com.evalimine.server.GoogleSuggestServlet</servlet-class>
     </servlet>

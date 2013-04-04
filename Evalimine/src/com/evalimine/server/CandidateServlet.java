@@ -28,20 +28,9 @@ import org.json.simple.JSONObject;
 import com.google.gson.Gson;
 
 public class CandidateServlet extends HttpServlet {
-	/* Võib sisse/välja logimise juures kasulik olla
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
-        resp.getWriter().println("Helkjhlkjlo, ");
-        if (user != null) {
-            resp.setContentType("text/plain");
-            resp.getWriter().println("Helkjhlkjlo, " + user.getNickname());
-        } else {
-            resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-        }
-    }
-	*/
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
 		String [] params=req.getParameter("values").split(";");
@@ -101,6 +90,7 @@ public class CandidateServlet extends HttpServlet {
 			    String id = String.valueOf(rs.getInt("id"));
 			    String shorts = rs.getString("short");
 			    String name = rs.getString("name");
+			    String isCandidate = rs.getString("is_candidate");
 			    
 			    Map<String, String> json = new LinkedHashMap<String, String>();
 	            json.put("first", first);
@@ -110,6 +100,7 @@ public class CandidateServlet extends HttpServlet {
 	            json.put("code", code);
 	            json.put("name", name);
 	            json.put("id", id);
+	            json.put("is_candidate", isCandidate);
 	            String jsonData = new Gson().toJson(json);
 	            if (full.length() != 1) {
 	            	full += ", ";
@@ -128,7 +119,6 @@ public class CandidateServlet extends HttpServlet {
 		            } catch (SQLException ignore) {
 		         }
 	        }
-	        //System.out.println(full);
 	        response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(full);
