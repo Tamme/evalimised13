@@ -9,7 +9,12 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class HelloServlet extends HttpServlet
 {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException
     {
         String q = req.getParameter("q");

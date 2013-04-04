@@ -27,13 +27,13 @@ public class GoogleSuggestServlet extends HttpServlet {
 			DriverManager.registerDriver(new AppEngineDriver());
 			String searchParameter = req.getParameter("term");
 		    c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-		    String statement ="SELECT last, first FROM candidate WHERE last LIKE ?";
+		    String statement ="SELECT fullname FROM candidate WHERE last LIKE ?";
 		    PreparedStatement s = c.prepareStatement(statement);
 		    s.setString(1, searchParameter + "%");
 		    ResultSet resultIsSuccessful = s.executeQuery();
 		    List<String> candidateList = new ArrayList<String>();
 		    while (resultIsSuccessful.next()) {
-		    	String candidateInfo = resultIsSuccessful.getString("last") + ", " + resultIsSuccessful.getString("first");
+		    	String candidateInfo = resultIsSuccessful.getString("fullname");
 		    	candidateList.add(candidateInfo);
 		    }
 		    String gson = new Gson().toJson(candidateList);

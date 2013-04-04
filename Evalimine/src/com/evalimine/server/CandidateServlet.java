@@ -42,10 +42,15 @@ public class CandidateServlet extends HttpServlet {
     }
 	*/
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
-		String [] params=req.getParameter("values").split(",");
-				
+		String [] params=req.getParameter("values").split(";");
+//		System.out.println(params[0] + params[1] + params[2]);
 		Connection c = null;
 		String full = "[";
 		try {
@@ -58,7 +63,6 @@ public class CandidateServlet extends HttpServlet {
 			}
 			//candidate search view
 			else if (params.length == 2) {
-			
 				if (params[0].equals("allParties") && params[1].equals("Eesti")) {
 					query = queryStart;
 				}
@@ -73,23 +77,25 @@ public class CandidateServlet extends HttpServlet {
 				}
 			}
 			else if (params.length == 3) {
-				//kui otsitakse ainult nime järgi
+				//kui otsitakse ainult nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				if (params[0].equals("allParties") && params[1].equals("Eesti")){
-					query = queryStart + "WHERE candidate.last LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
+					System.out.println(query);
 				}
-				//kui otsitakse piirkonna ja nime järgi
+				//kui otsitakse piirkonna ja nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				else if (params[0].equals("allParties") && !params[1].equals("Eesti")) {
-					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.last LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
 				}
-				//kui otsitakse erakonna ja nime järgi
+				//kui otsitakse erakonna ja nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				else if (!params[0].equals("allParties") && params[1].equals("Eesti")) {
-					query = queryStart + "WHERE candidate.party LIKE \"" + params[0] + "\" and candidate.last LIKE \"" + params[2] + "\"";
+					query = queryStart + "WHERE candidate.party LIKE \"" + params[0] + "\" and candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
 				}
-				//kui otsitakse piirkonna, erakonna ja nime järgi
+				//kui otsitakse piirkonna, erakonna ja nime järgi ja kasutatakse suggestiga saadud nime kuju "Perenimi, Eesnimi" või otsitakse lihtsalt perenime või eesnime järgi
 				else {
-					query = queryStart + "WHERE candidate.last LIKE \"" + params[2] + "\" and candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\"";
+					query = queryStart + "WHERE candidate.area LIKE \"" + params[1] + "\" and candidate.party LIKE \"" + params[0] + "\" and candidate.fullname LIKE \"" + params[2] + "\" or candidate.last LIKE \"" + params[2] + "\" or candidate.first LIKE \"" + params[2] + "\"";
 				}
 			}
+//			System.out.println(query);
 			
 			ResultSet rs = c.createStatement().executeQuery(query);
 			while (rs.next()){

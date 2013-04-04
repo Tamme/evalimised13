@@ -182,16 +182,16 @@ input:hover {
 	text-decoration:none;
 }
 
-#idkaardinupp { display: block; width:255px; height:43px;
-	background: url(img/id1.gif) no-repeat;
+#googlenupp { display: block; width:255px; height:43px;
+	background: url(img/ggl1.gif) no-repeat;
 }
 
-#idkaardinupp:hover {
-	background: url(img/id2.gif) no-repeat;
+#googlenupp:hover {
+	background: url(img/ggl2.gif) no-repeat;
 }
 
-#idkaardinupp:active {
-	background: url(img/id3.gif) no-repeat;
+#googlenupp:active {
+	background: url(img/ggl3.gif) no-repeat;
 }
 
 #form{
