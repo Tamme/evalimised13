@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="style.css" />
 <link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
  
-<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/jquery.address-1.6.min.js" charset="utf-8"></script>
@@ -27,11 +27,7 @@
 <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
-<!-- <script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.scrollTo.js"></script> -->
-<!-- <script type="text/javascript" charset="utf-8" src="http://muledesign.com/demo/tabs/js/jquery.localscroll.js"></script> -->
-<!--  Ajax script that is used increases page load time to 5 or more seconds -->
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
-  
+
  <script>
  var TSort_Data = new Array ('sorting', 's', 'i', 'f');
  var TSort_Initial =  new Array ('0A');
@@ -180,16 +176,16 @@
 			<div id="statistika" class="text">
 		  			<div id="stattabs">
 					  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#riigiSisu">Statistika riigi lõikes</a></li>
-						    <li class="ui-corner-top ui-state-default"><a href="#piirkonnaSisu">Statistika piirkonna lõikes</a></li>
-						    <li class="ui-corner-top ui-state-default"><a href="#parteiSisu">Statistika parteide lõikes</a></li>
-						    <li class="ui-corner-top ui-state-default"><a href="#kandidaadiSisu">Statistika kandidaatide lõikes</a></li>
+						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu">Statistika riigi lõikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu">Statistika piirkonna lõikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide lõikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu">Statistika kandidaatide lõikes</a></li>
 					  	</ul>
 					<div id="riigiSisu" class="text">
 						<h1>
 							Häälte jagunemine riigi lõikes
 						</h1>
-						<div id="statistikaSisu">
+						<div id="statistika-riigiSisu">
 							<table id="sorting" class="candidateTable">
 								<thead>
 									<tr>
@@ -253,7 +249,7 @@
 						</div>
 					</div>
 
-						<div id="piirkonnaSisu" class="text">
+						<div id="statistika-piirkonnaSisu" class="text">
 							<h1>
 								Häälte jagunemine piirkondade lõikes
 							</h1>
@@ -268,7 +264,7 @@
 							</div>
 						</div>
 						
-						<div id="parteiSisu" class="text">
+						<div id="statistika-parteiSisu" class="text">
 							<h1>
 								Häälte jagunemine parteide lõikes
 							</h1>
@@ -283,7 +279,7 @@
 							</div>
 						</div>
 						
-						<div id="kandidaadiSisu">
+						<div id="statistika-kandidaadiSisu">
 							<div class="text">
 								<h1>
 									Häälte jagunemine konktreetsete kandidaatide lõikes

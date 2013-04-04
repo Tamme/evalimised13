@@ -10,9 +10,11 @@
 		var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 		var candidateOne = "<h3>Kandidaadi info</h3>";
 		
-		$(document).ready(function(){
-			function getPerson(id) {
-				var logged = document.getElementById("logging").value;
+		
+			
+		function getPerson(id) {
+			//$(document).ready(function(){
+			var logged = document.getElementById("logging").value;
 				var $id = id;
 				$.get("CandidateServlet", {values:$id}, function(items) { 
 					extra = "";
@@ -30,9 +32,9 @@
 					$('#list').html(text);
 				});
 				$('#candHeading').html(candidateOne);
-				
+			//});		
 			}
-		});
+		
 		
 		function sendVote (id) {
 			var $id = id;
