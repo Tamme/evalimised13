@@ -7,7 +7,7 @@ $(function() {
 				$('#large-img').show();
 			});
 	});
-	
+
 	var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 	var candidateOne = "<h3>Kandidaadi info</h3>";
 
@@ -31,6 +31,22 @@ $(function() {
 			});
 		$('#candHeading').html(candidateOne);
 	}	
+	
+	function sendVote (id) {
+		 var $id = id;
+		 //TODO
+	}
+	
+	function setCandidate (id) {
+		var $id = id;
+		$.post("MyDataServlet", {values:$id}, function(reply) { 
+			extra = "";
+		//	  if (logged == "true") {
+		//  	  extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
+		//    }
+			$('#kandideerima').html(reply);
+		});
+	}
 	
 	$(document).ready(function(){
 		$('#candidateForm').submit(function(e) {
