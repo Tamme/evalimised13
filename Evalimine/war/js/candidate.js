@@ -108,11 +108,27 @@ $(function() {
 					text += "</table>";
 					$('#list').html(text);
 				});
-				$('#candHeading').html(candidateList);
+			    $('#candHeading').html(candidateList);
 			}
+			});
 		});
-	});
-		
+
+	function getPersonData() {
+		//$(document).ready(function(){
+		var $id = 4;
+		$.get("CandidateServlet", {values:$id}, function(items) {
+			var text = "<table class='candidateInfo' border='1'>" +	"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
+			"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first 	+ "</td><tr>" + "<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
+			"<tr><th>Erakonna lühend</th><td>"	+ items[0].short  	+ "</td><tr>" + "<tr><th>Erakonna nimi</th><td>" 	+ items[0].name + "</td><tr>" +
+			"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" + "<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" + "</table>";
+			$('#middle').html(text);
+			if (items[0].is_candidate) {
+				$('#kandideerima').html("Kandideerid");
+				}
+			});
+		//});
+	}
+
 //	    $.get("CandidateServlet", {values:$param}, function(items) {
 //    	var text = "<table class='candidateTable' border='1'><tr><th>Eesnimi</th><th>Perenimi</th><th>Piirkond</th><th>Isikukood</th><th>Erakonna nimi</th><th>Erakonna lühend</th><th></th></tr>";
 //		for (var i = 0; i < items.length; i++) {
