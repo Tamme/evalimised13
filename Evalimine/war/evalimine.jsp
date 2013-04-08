@@ -15,14 +15,14 @@
 <meta charset="utf-8" />
 <title>E-valimine 2013</title>
   
-<!-- script 1 -->
+<!-- CSS -->
 <link rel="stylesheet" href="style.css" />
 <link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
 
 <!-- KUI KÕIK NEED SCRIPTI READ EEMALDADA MILLEL ON KOMMENTAAR SIIS GOOGLE SUGGEST TÖÖTAB AGA LEHT LÄHEB KATKI -->
-<script src="js/jquery-1.8.2.min.js"></script>														
-<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js" charset="utf-8"></script>	<!-- Kui see eemaldada siis tabid ei tööta -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js" charset="utf-8"></script>														
+<!-- <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>  -->
+<script type="text/javascript" src="js/jquery-ui-1.8.13.js" charset="utf-8"></script>	<!-- Kui see eemaldada siis tabid ei tööta -->
 <script type="text/javascript" src="js/jquery.address-1.6.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/menu.js" charset="utf-8"></script>							<!-- Kui see eemaldada siis on lehed üksteise all -->
 <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
@@ -32,11 +32,6 @@
  <script>
  var TSort_Data = new Array ('sorting', 's', 'i', 'f');
  var TSort_Initial =  new Array ('0A');
-
-// function goVote() {
-//  	$("#tabs").tabs( "option", "active", 1);
-// };
-     
  
  $(document).ready(function(){
  	$("#commentForm").validate();
@@ -53,7 +48,8 @@
 	   });
  });
  
-</script>  
+</script>
+  
 </head>
 <%
 	UserService userService = UserServiceFactory.getUserService();
