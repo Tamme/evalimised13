@@ -25,14 +25,25 @@
 <script type="text/javascript" src="js/jquery-ui-1.8.13.js" charset="utf-8"></script>	<!-- Kui see eemaldada siis tabid ei tööta -->
 <script type="text/javascript" src="js/jquery.address-1.6.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/menu.js" charset="utf-8"></script>							<!-- Kui see eemaldada siis on lehed üksteise all -->
-<script type="text/javascript" src="js/sort.js" charset="utf-8"></script>
+<!--  <script type="text/javascript" src="js/sort.js" charset="utf-8"></script>-->
+<!--  <script type="text/javascript" src="js/gs_sortable.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="js/sorttable.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
 
  <script>
- var TSort_Data = new Array ('sorting', 's', 'i', 'f');
- var TSort_Initial =  new Array ('0A');
- 
+//  var TSort_Data = new Array ('sorting', 's', 'i');
+//  var TSort_Initial =  new Array ('0A');
+  
+//  function InitDynTable1()
+//  {	
+//    TSort_Data = new Array ('sorting', 's');
+//    var TSort_Initial =  new Array ('0A');
+//    tsRegister();
+//    tsSetTable ('sorting');
+//    tsInit();
+//  }
+  
  $(document).ready(function(){
  	$("#commentForm").validate();
  });
@@ -65,7 +76,7 @@
 		    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#esileht">Esileht</a></li>
 		    <li class="ui-corner-top ui-state-default"><a href="#kandidaadid">Kandidaadid</a></li>
 		    <li class="ui-corner-top ui-state-default"><a href="#kkk">KKK</a></li>
-		    <li class="ui-corner-top ui-state-default"><a href="#statistika">Statistika</a></li>
+		    <li class="ui-corner-top ui-state-default"><a href="#statistika" >Statistika</a></li>
 		    <li class="ui-corner-top ui-state-default"><a href="#andmed">Minu andmed</a></li>
 		    <li class="ui-corner-top ui-state-default"><a href="#sisene">Sisene</a></li>
 		  </ul>
@@ -172,70 +183,38 @@
 			<div id="statistika" class="text">
 		  			<div id="stattabs">
 					  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu">Statistika riigi lõikes</a></li>
+						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu" onclick="getCountryStat()">Statistika riigi lõikes</a></li>
 						    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu">Statistika piirkonna lõikes</a></li>
 						    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide lõikes</a></li>
 						    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu">Statistika kandidaatide lõikes</a></li>
 					  	</ul>
-					<div id="riigiSisu" class="text">
+					<div id="statistika-riigiSisu"   class="text">
 						<h1>
 							Häälte jagunemine riigi lõikes
 						</h1>
-						<div id="statistika-riigiSisu">
-							<table id="sorting" class="candidateTable">
-								<thead>
-									<tr>
-										<th>Erakond</th>
-										<th>Hääli</th>
-										<th>Osakaal</th>
-									</tr>
-								</thead>
-									<tr>
-										<td>Mustad</td>
-										<td>1000</td>		
-										<td>10%</td>
-									</tr>
-									<tr>
-										<td>Punased</td>
-										<td>2000</td>		
-										<td>20%</td>
-									</tr>
-									<tr>
-										<td>Sinised</td>
-										<td>200</td>		
-										<td>2%</td>
-									</tr>
-									<tr>
-										<td>Kollased</td>
-										<td>3000</td>		
-										<td>30%</td>
-									</tr>
-									<tr>
-										<td>Helesinised</td>
-										<td>100</td>		
-										<td>1%</td>
-									</tr>
-									<tr>
-										<td>Violetsed</td>
-										<td>550</td>		
-										<td>5.5%</td>
-									</tr>
-									<tr>
-										<td>Roosad</td>
-										<td>2500</td>		
-										<td>25%</td>
-									</tr>
-									<tr>
-										<td>Hallid</td>
-										<td>250</td>		
-										<td>2.5%</td>
-									</tr>
-									<tr>
-										<td>Valged</td>
-										<td>400</td>		
-										<td>4%</td>
-									</tr>
-							</table>
+						<div id="riigiSisu">
+							<div id="sortingdiv" >
+<!--  							<table id="sorting" class="sortable">  -->
+<!-- 								<thead> -->
+<!-- 									<tr> -->
+<!-- 										<th>Erakond</th> -->
+<!-- 										<th>Hääli</th> -->
+<!-- 										<th>Osakaal</th> -->
+<!-- 									</tr> -->
+<!-- 								</thead> -->
+<!-- 									</tr> -->
+<!-- 									<tr> -->
+<!-- 										<td>Valged</td> -->
+<!-- 										<td>400</td>		 -->
+<!-- 										<td>4%</td> -->
+<!-- 									</tr> -->
+<!-- 									<tr> -->
+<!-- 										<td>Malged</td> -->
+<!-- 										<td>4100</td>		 -->
+<!-- 										<td>42%</td> -->
+<!-- 									</tr> -->
+<!--  							</table>  -->
+							</div>
 							<br>
 							<br>
 							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->

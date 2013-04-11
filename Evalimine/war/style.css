@@ -256,7 +256,7 @@ input:hover {
 	text-decoration:none;
 }
 
-.candidateTable {
+.candidateTable, .sortable {
  	margin-left:4em;
 	width:90%;
 	height:10%;
@@ -281,7 +281,7 @@ input:hover {
 	margin-bottom:1em;
 }
 
-table.candidateTable td, table.candidateTable th {
+table.candidateTable td, table.candidateTable th, table.sortable td, table.sortable th {
  	border:0.2em solid #3a75c4;
 	padding:0.3em;
  	text-decoration:none;

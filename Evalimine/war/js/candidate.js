@@ -10,7 +10,46 @@ $(function() {
 
 	var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 	var candidateOne = "<h3>Kandidaadi info</h3>";
+	
 
+
+	
+//	function getCountryStat() {
+//		var $id = 1;
+//		$.get("StatisticsServlet", {values:$id}, function(items) { 
+//			//var text = "<table id='sorting' class='sortable' border='1'><thead><tr><th>Erakond</th><th>Hääli</th><th>Osakaal</th></tr></thead>";
+//			var text = "";
+//			for (var i = 0; i < items.length; i++) {
+//				text +=	"<tr><td>" 	+ items[i].name + 	"</td><td>" +	 items[i].votes + 	"</td><td>" +	 items[i].percentage + 	"</td>";
+//			}
+//			//text += "</table>";
+//			$('#sortingdiv tbody').append(text);
+//		});
+//		 //InitDynTable1();
+//		
+//		
+//	}
+	
+	function getCountryStat() {
+		var $id = 1;
+		$.get("StatisticsServlet", {values:$id}, function(items) { 
+			var text = "<table id='sorting' class='sortable' border='1'><thead><tr><th>Erakond</th><th>Hääli</th><th>Osakaal</th></tr></thead>";
+			for (var i = 0; i < items.length; i++) {
+				text +=	"<tr><td>" 	+ items[i].name + 	"</td><td>" +	 items[i].votes + 	"</td><td>" +	 items[i].percentage + 	"</td>";
+			}
+			text += "</table>";
+			$('#sortingdiv').html(text);
+			var newTableObject = document.getElementById("sorting");
+			sorttable.makeSortable(newTableObject);
+			//sorttable.makeSortable($("#sorting"));
+		});
+		
+
+		
+		
+	}
+	
+	
 	function getPerson(id) {
 		var logged = document.getElementById("logging").value;
 		var $id = id;

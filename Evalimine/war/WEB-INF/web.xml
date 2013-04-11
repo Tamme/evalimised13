@@ -11,6 +11,16 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <servlet-class>com.evalimine.server.StatisticsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatisticsServlet</servlet-name>
+        <url-pattern>/StatisticsServlet/*</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
         <servlet-name>MyDataServlet</servlet-name>
         <servlet-class>com.evalimine.server.MyDataServlet</servlet-class>
     </servlet>
