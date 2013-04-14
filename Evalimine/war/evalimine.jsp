@@ -10,7 +10,7 @@
 
 <!doctype html>
  
-<html lang="en">
+<html manifest="cache.manifest" lang="et" >
 <head>
 <meta charset="utf-8" />
 <title>E-valimine 2013</title>

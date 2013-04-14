@@ -1,0 +1,43 @@
+CACHE MANIFEST
+
+#version 3.0 4-14-2013
+
+CACHE:
+
+#images
+/img/ajax-loader.gif
+/img/eestikaart2.gif
+/img/kandidaadistat.png
+/img/logo3.png
+/img/parteistat.png
+
+#internal HTML documents
+/evalimine.jsp
+/kandidaadistatprint.html
+/parteistatprint.html
+/piirkonnastatprint.html
+/riigistatprint.html
+
+#style sheets
+/jquery-ui-1.8.13.custom.css
+/style.css
+
+#style sheet images
+/img/button.png
+/img/ggl1.gif
+/img/ggl2.gif
+/img/ggl3.gif
+/img/taust.png
+/img/ui-anim_basic_16x16.gif
+
+#javascript files
+/js/jquery-1.8.2.min.js
+/js/jquery-ui-1.8.13.js
+/js/jquery.address-1.6.min.js
+/js/menu.js
+/js/sorttable.js
+/js/candidate.js
+/js/validate.js
+
+NETWORK:
+*
