@@ -29,7 +29,7 @@ public class CandidateServlet extends HttpServlet {
 		try {
 			c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
 			String query = "";
-			String queryStart = "SELECT candidate.*, party.name, party.short FROM candidate LEFT JOIN party ON (party.party_id=candidate.party) ";
+			String queryStart = "SELECT candidate.*, party.name, area.name, party.short FROM candidate LEFT JOIN party ON (party.party_id=candidate.party) LEFT JOIN area ON (candidate.area = area.area_id) ";
 			//one person view
 			if (params.length == 1){
 				query = queryStart + "WHERE candidate.id LIKE \"" + params[0] + "\"";
@@ -74,7 +74,7 @@ public class CandidateServlet extends HttpServlet {
 			while (rs.next()){
 			    String first = rs.getString("first");
 			    String last = rs.getString("last");
-			    String area = rs.getString("area");
+			    String area = rs.getString("area.name");
 			    String code = String.valueOf(rs.getLong("code"));
 			    String id = String.valueOf(rs.getInt("id"));
 			    String shorts = rs.getString("short");

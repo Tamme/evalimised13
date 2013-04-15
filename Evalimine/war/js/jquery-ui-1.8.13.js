@@ -11285,9 +11285,9 @@ $.widget( "ui.tabs", {
 			// and remove dotted border from clicked link. This is controlled via CSS
 			// in modern browsers; blur() removes focus from address bar in Firefox
 			// which can become a usability and annoying problem with tabs('rotate').
-			if ( $.browser.msie ) {
-				this.blur();
-			}
+			//if ( $.browser.msie ) {
+			//	this.blur();
+			//}
 		});
 
 		// disable click in any case

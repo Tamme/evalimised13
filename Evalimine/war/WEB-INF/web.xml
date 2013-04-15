@@ -18,7 +18,15 @@
         <servlet-name>StatisticsServlet</servlet-name>
         <url-pattern>/StatisticsServlet/*</url-pattern>
     </servlet-mapping>
-    
+
+	<servlet>
+        <servlet-name>ChannelServlet</servlet-name>
+        <servlet-class>com.evalimine.server.ChannelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChannelServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>    
     
     <servlet>
         <servlet-name>MyDataServlet</servlet-name>
@@ -70,7 +78,7 @@
         <url-pattern>/sign</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>evalimine.jsp</welcome-file>
+        <welcome-file>evalimine.html</welcome-file>
     </welcome-file-list>
  
 

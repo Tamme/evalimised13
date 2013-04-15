@@ -161,7 +161,7 @@ html {
 	text-decoration:none;
 }
 
-#candSearch {
+#candSearch, #areaSearch {
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
@@ -222,6 +222,12 @@ input:hover {
 }
 
 .kandidaadid {
+	text-align:center;
+	margin-left:4em;
+	margin-bottom:2em;
+}
+
+#areaStatistics  {
 	text-align:center;
 	margin-left:4em;
 	margin-bottom:2em;

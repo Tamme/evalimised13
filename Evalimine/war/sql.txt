@@ -11,3 +11,11 @@ SELECT candidate.last, party.name
 FROM candidate
 LEFT JOIN party
 ON (party.party_id=candidate.party )
+
+INSERT INTO area (name, short, area_id) VALUES ("Tallinna Haabersti, Pıhja-Tallinna ja Kristiine linnaosa", 'Haabersti-P-Tallinn-Kristiine', "valimisringkondnr1"),
+("Tallinna Kesklinna, Lasnam‰e ja Pirita linnaosa", 'Kesk-Lasna-Pirita', "valimisringkondnr2"), ("Tallinna Mustam‰e ja Nımme linnaosa", 'Musta-Nımm', "valimisringkondnr3"),
+("Harju- (v.a Tallinn) ja Raplamaa", 'Harju-Rapla', "valimisringkondnr4"), ("Hiiu-, L‰‰ne- ja Saaremaa", 'Saared-L‰‰ne', "valimisringkondnr5"), ("L‰‰ne-Virumaa", 'L-Viru', "valimisringkondnr6"), 
+("Ida-Virumaa", 'I-Viru', "valimisringkondnr7"), ("J‰rva- ja Viljandimaa", 'J‰rva-Viljandi', "valimisringkondnr8"), ("Jıgeva- ja Tartumaa (v.a Tartu linn)", 'Jıgeva-Tartu', "valimisringkondnr9"),
+("Tartu linn", 'Tartu', "valimisringkondnr10"), ("Vıru-, Valga- ja Pılvamaa", 'Vıru-Valga-Pılva', "valimisringkondnr11"), ("P‰rnumaa", 'P‰rnu', "valimisringkondnr12")
+
+create table votes ( `id` integer unsigned not null auto_increment, `voted_id` varchar(255) NOT NULL, `voter_id` varchar(255) NOT NULL, `voted_party` varchar(255) NOT NULL, PRIMARY KEY(`id`) );

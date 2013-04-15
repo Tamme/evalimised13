@@ -1,38 +1,24 @@
 ﻿
-$(function() {
-	$('#large-img').hide();
-	$('#large-img').load( 
-			function() {
-				$('#loader').hide();
-				$('#large-img').show();
-			});
-	});
+	$(function() {
+		$('#large-img').hide();
+		$('#large-img').load( 
+				function() {
+					$('#loader').hide();
+					$('#large-img').show();
+				});
+		});
 
 	var candidateList = "<h3>Kandidaatide nimekiri</h3>";
 	var candidateOne = "<h3>Kandidaadi info</h3>";
-	
-
-
-	
-//	function getCountryStat() {
-//		var $id = 1;
-//		$.get("StatisticsServlet", {values:$id}, function(items) { 
-//			//var text = "<table id='sorting' class='sortable' border='1'><thead><tr><th>Erakond</th><th>Hääli</th><th>Osakaal</th></tr></thead>";
-//			var text = "";
-//			for (var i = 0; i < items.length; i++) {
-//				text +=	"<tr><td>" 	+ items[i].name + 	"</td><td>" +	 items[i].votes + 	"</td><td>" +	 items[i].percentage + 	"</td>";
-//			}
-//			//text += "</table>";
-//			$('#sortingdiv tbody').append(text);
-//		});
-//		 //InitDynTable1();
-//		
-//		
-//	}
+	var nameArray = new Array();
+	var voteArray = new Array();
+	var test = [1,2,3,34,4];
+	var ctx;
+	var counter = 0;
 	
 	function getCountryStat() {
-		var $id = 1;
-		$.get("StatisticsServlet", {values:$id}, function(items) { 
+		var param = "country";
+		$.get("StatisticsServlet", {values:param}, function(items) { 
 			var text = "<table id='sorting' class='sortable' border='1'><thead><tr><th>Erakond</th><th>Hääli</th><th>Osakaal</th></tr></thead>";
 			for (var i = 0; i < items.length; i++) {
 				text +=	"<tr><td>" 	+ items[i].name + 	"</td><td>" +	 items[i].votes + 	"</td><td>" +	 items[i].percentage + 	"</td>";
@@ -41,22 +27,57 @@ $(function() {
 			$('#sortingdiv').html(text);
 			var newTableObject = document.getElementById("sorting");
 			sorttable.makeSortable(newTableObject);
-			//sorttable.makeSortable($("#sorting"));
 		});
-		
-
+	}
+	
+	function getCandidateStat(isModify) {
+		var param = "candidate";
+		$.get("StatisticsServlet", {values:param}, function(items) {
+			for (var i = 0; i < items.length; i++) {
+				nameArray[i] = items[i].fullname;
+				voteArray[i] = items[i].votes;
+			}
+			if (!isModify && counter < 1) {
+				create();
+			}
+			esimene();
+			counter++;
+		});
 		
 		
 	}
 	
+
+	$(document).ready(function(){
+		$('#areaStatForm').submit(function(e) {
+			e.preventDefault(); 
+			var param = $("#areaId option:selected").val();
+			var text = "Vali mõni piirkond";
+			if (param == "Eesti") {
+				$('#areaStatistics').html(text);
+			}
+			else {
+			    $.get("StatisticsServlet", {values:param}, function(items) {
+					var text = "<table id='sorting' class='sortable' border='1'><thead><tr><th>Erakond</th><th>Hääli</th><th>Osakaal</th></tr></thead>";
+					for (var i = 0; i < items.length; i++) {
+						text +=	"<tr><td>" 	+ items[i].name + 	"</td><td>" +	 items[i].votes + 	"</td><td>" +	 items[i].percentage + 	"</td>";
+					}
+					text += "</table>";
+					$('#areaStatistics').html(text);
+			    });
+			}
+		});
+	});
 	
 	function getPerson(id) {
-		var logged = document.getElementById("logging").value;
+		//NEED TO ADD LOGGED IN PERSON ID INTO AS PARAMETER!!!!!!!!!!! FOR NOW JUST MADE UP ONE
+		loggedId = 5;
+		//var logged = document.getElementById("logging").value;
 		var $id = id;
 		$.get("CandidateServlet", {values:$id}, function(items) { 
 			extra = "";
-			if (logged == "true") {
-				extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
+			if (items[0].is_candidate) {
+				extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + "," + loggedId + ") class='button'>Hääleta</button></tr>"
 			}
 			var text = "<table class='candidateInfo' border='1'>" +
 			"<tr><th>Isiku (isiku)kood	</th><td>" 	+ items[0].code + 	"</td><tr>" +
@@ -70,11 +91,7 @@ $(function() {
 			});
 		$('#candHeading').html(candidateOne);
 	}	
-	
-	function sendVote (id) {
-		 var $id = id;
-		 //TODO
-	}
+
 	
 	function setCandidate (id) {
 		var $id = id;
