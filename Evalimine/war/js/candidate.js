@@ -1,4 +1,80 @@
-﻿
+﻿//------------------ config section starts ------------------
+	//input variables
+	var fbAppId = "507516239283608"; //your app Id goes here
+	var permissions_needed = "email";
+	
+	//output variables available in JS after Fb login
+	var fb_id; 				//unique fb id/key of logged in user
+	var first_name;	
+	var last_name;
+	var full_name;			//full name as on Fb profile
+	var email;				//email id 
+
+
+	//------------------ config section ends --------------------
+	
+    // Load the SDK Asynchronously
+    (function(d){
+      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      d.getElementsByTagName('head')[0].appendChild(js);
+    }(document));
+	
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : fbAppId, 
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+      
+      FB.getLoginStatus(function(response) {
+    	  if (response.status === 'connected') {
+    	    // connected
+    	  } else if (response.status === 'not_authorized') {
+    	    // not_authorized
+    	  } else {
+    	    // not_logged_in
+    	  }
+    	 });
+	  
+	    // listen for and handle auth.statusChange events
+        FB.Event.subscribe('auth.statusChange', function(response) {
+			if (response.authResponse) {
+				// user has auth'd your app and is logged into Facebook
+				FB.api('/me', function(user){
+					if (user.name) {
+						fb_id = user.id;
+						first_name = user.first_name;
+						last_name = user.last_name;
+						full_name = user.name;
+						email =  user.email;
+						
+						
+						//this is my JS function to display output variables mentioned in config
+						//you can replace with your own function.
+					}
+				})
+				document.getElementById('auth-loggedout').style.display = 'none';
+				document.getElementById('auth-loggedin').style.display = 'block';
+			} else {
+				// user has not auth'd your app, or is not logged into Facebook
+				document.getElementById('auth-loggedout').style.display = 'block';
+				document.getElementById('auth-loggedin').style.display = 'none';
+			}
+        });
+    };
+	
+	//call facebook login
+	function fbLogin() {
+		FB.login(function (response) {}, {scope: permissions_needed});
+	}
+
+	//call facebook logout
+	function fbLogout() {
+		FB.logout();
+	}
 	$(function() {
 		$('#large-img').hide();
 		$('#large-img').load( 
@@ -96,10 +172,15 @@
 	function setCandidate (id) {
 		var $id = id;
 		$.post("MyDataServlet", {values:$id}, function(reply) { 
-			extra = "";
-		//	  if (logged == "true") {
-		//  	  extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
-		//    }
+			
+			$('#kandideerima').html(reply);
+		});
+	}
+	
+	function removeCandidate (id) {
+		var $id = id;
+		$.post("MyDataServlet2", {values:$id}, function(reply) { 
+			
 			$('#kandideerima').html(reply);
 		});
 	}
@@ -171,17 +252,41 @@
 
 	function getPersonData() {
 		//$(document).ready(function(){
-		var $id = 4;
+		var $id = 13;
 		$.get("CandidateServlet", {values:$id}, function(items) {
-			var text = "<table class='candidateInfo' border='1'>" +	"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
-			"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first 	+ "</td><tr>" + "<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
-			"<tr><th>Erakonna lühend</th><td>"	+ items[0].short  	+ "</td><tr>" + "<tr><th>Erakonna nimi</th><td>" 	+ items[0].name + "</td><tr>" +
-			"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" + "<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" + "</table>";
-			$('#middle').html(text);
 			if (items[0].is_candidate) {
-				$('#kandideerima').html("Kandideerid");
-				}
-			});
+				var text = "<table class='candidateInfo' border='1'>" +	"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
+				"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first 	+ "</td><tr>" + "<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
+				"<tr><th>Erakonna lühend</th><td>"	+ items[0].short  	+ "</td><tr>" + "<tr><th>Erakonna nimi</th><td>" 	+ items[0].name + "</td><tr>" +
+				"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" + "<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" + 
+				"<tr><th>Sinu hääl</th><td>" 		+ items[0].voting 	+ "</td><tr>" + "</table>";
+				$('#minu').html(text);
+				$('#kandideerima').html("<a href='javascript:void(0)' onclick=removeCandidate("+ items[0].id +")>Tühista kandidatuur</a>");
+			}
+			else{
+				var text = "<table class='candidateInfo' border='1'>" +	
+				"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
+				"<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" +
+				"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first + "</td><tr>" + 
+				"<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
+				"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" +
+				"<tr><th>Erakonna nimi</th><td><select id='cerakond' name='erakond'>" +
+				"<option selected='' value=''> --Palun vali oma erakond--</option>" +
+				"<option value='erakondnr1'>Mustad</option><option value='erakondnr2'>Punased</option>" +
+				"<option value='erakondnr3'>Sinised</option>" +
+				"<option value='erakondnr4'>Kollased</option>" +
+				"<option value='erakondnr5'>Helesinised</option>" +
+				"<option value='erakondnr6'>Violetsed</option>" +
+				"<option value='erakondnr7'>Roosad</option>" +
+				"<option value='erakondnr8'>Hallid</option>" +
+				"<option value='erakondnr9'>Valged</option>" +
+				"</select></td><tr>" +  
+				"<tr><th>Sinu hääl</th><td>" 		+ items[0].voting + "</td><tr>" + "</table>";
+				$('#minu').html(text);
+				$('#kandideerima').html("<a href='javascript:void(0)' onclick='setCandidate("+ items[0].id +")'>Soovin kandideerida</a>");
+			}
+		});
+		
 		//});
 	}
 

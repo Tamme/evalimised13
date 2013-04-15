@@ -125,17 +125,13 @@ public class CandidateServlet extends HttpServlet {
     		      String last = req.getParameter("perenimi");
     		      String code = req.getParameter("isikukood");
     		      String area = req.getParameter("valimisringkond");
-    		      String party = req.getParameter("erakond");
+    		      String fb_id = req.getParameter("values");
     		      if (first == "" || last == "") {
     		        out.println("<html><head></head><body>You are missing either a message or a name! Try again! Redirecting in 3 seconds...</body></html>");
     		      } else {
-    		      String statement ="INSERT INTO candidate (first, last, code, area, party) VALUES( ? , ? , ? , ? , ? )";
+    		      String statement ="INSERT INTO candidate (first, last, code, area, party, fullname) values (\"" + first + "\" , \""+ last + "\" , \""+ code + "\" , \""+ area + "\" , NULL ,\"" + last +", "+ first + "\" )";
+    		      System.out.println(statement);
     		      PreparedStatement stmt = c.prepareStatement(statement);
-    		      stmt.setString(1, first);
-    		      stmt.setString(2, last);
-    		      stmt.setString(3, code);
-    		      stmt.setString(4, area);
-    		      stmt.setString(5, party);
     		      int success = 2;
     		      success = stmt.executeUpdate();
     		      if(success == 1) {

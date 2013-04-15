@@ -19,12 +19,13 @@ public class MyDataServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse response) throws IOException {
 		System.out.println(req.getParameter("values"));
 		String id = req.getParameter("values");
+		String party =req.getParameter("erakond");
 		String result = "";
 		Connection c = null;
 		try {
 		      DriverManager.registerDriver(new AppEngineDriver());
 		      c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-			  String statement ="UPDATE candidate set is_candidate = 1 where id = " + id;
+			  String statement ="UPDATE candidate set is_candidate = 1, party = '" + party +"' where id = " + id;
 			  System.out.println(statement);
 			  PreparedStatement stmt = c.prepareStatement(statement);
 			  int success = 2;

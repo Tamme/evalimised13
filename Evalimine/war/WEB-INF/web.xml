@@ -36,6 +36,14 @@
         <servlet-name>MyDataServlet</servlet-name>
         <url-pattern>/MyDataServlet/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MyDataServlet2</servlet-name>
+        <servlet-class>com.evalimine.server.MyDataServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyDataServlet2</servlet-name>
+        <url-pattern>/MyDataServlet2/*</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>GoogleSuggestServlet</servlet-name>

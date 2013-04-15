@@ -47,7 +47,7 @@
 
 </head>
 
-<body>
+<body onload="getPersonData()">
 
 		
 		
@@ -365,17 +365,16 @@
 				<h1>
 					Autentimine
 				</h1>
-				<h3>
-					Sisenemiseks vali sobiv autentimismeetod:
-				</h3>
-				<div id=nupp4>
-
-
-
-				<!-- Viitab vanale lehele, peaks viitama #andmed tab'ile ja muutma sisene nupu "Logi v√§lja"-ks-->
-					
+				<div id="auth-status">
+						<div id="auth-loggedout" style="width:200px; margin:0px auto;">
+							<img src="img/fb1.gif" onclick="fbLogin();" onMouseOver="this.style.cursor='pointer';"/>
+						</div>
+						<div id="auth-loggedin" style="display:none; width:250px; margin:0px auto;">
+							
+							<br/><br/><br/><img src="img/fb2.gif" onclick="fbLogout();" onMouseOver="this.style.cursor='pointer';"/>
+						</div>
 				</div>
-				<br>
+					<br>
 			</div>
 		
 			<div id="andmed" class="text">
@@ -387,7 +386,47 @@
 					<div id="row">
 						
 						<div id="middle">
-    					</div>
+                  <form class="cmxform" id="commentForm" method="post" action="/CandidateServlet">
+                   <fieldset>
+                       <!--<legend>A simple comment form with submit validation and default messages</legend> -->
+                       <p>
+                         <label for="ceesnimi">Eesnimi</label>
+                         <em>*</em><br><input id="ceesnimi" name="eesnimi" size="28" class="required" minlength="2" maxlength="25"/>
+                       </p>
+                       <p>
+                         <label for="cperenimi">Perenimi</label>
+                         <em>*</em><br><input id="cperenimi" name="perenimi" size="28" class="required" minlength="2" maxlength="25"/>
+                       </p>
+                       <p>
+                         <label for="cisikukood">Isikukood</label>
+                         <br><input id="cisikukood" name="isikukood" size="28" class="digits" minlength="11" maxlength="11"/>
+                       </p>
+                       <p>
+                         <label for="cvalimisringkond">Valimisringkond</label>
+                         <em>*</em><br><select id="cvalimisringkond" name="valimisringkond" class="required">
+                         <option selected="" value=""> --Palun vali oma valimisringkond--</option>
+                      <option value="valimisringkondnr1">Tallinna Haabersti, Pıhja-Tallinna ja Kristiine linnaosa</option>
+                      <option value="valimisringkondnr2">Tallinna Kesklinna, Lasnam‰e ja Pirita linnaosa</option>
+                      <option value="valimisringkondnr3">Tallinna Mustam‰e ja Nımme linnaosa</option>
+                      <option value="valimisringkondnr4">Harju- (v.a Tallinn) ja Raplamaa</option>
+                      <option value="valimisringkondnr5">Hiiu-, L‰‰ne- ja Saaremaa</option>
+                      <option value="valimisringkondnr6">L‰‰ne-Virumaa</option>
+                      <option value="valimisringkondnr7">Ida-Virumaa</option>
+                      <option value="valimisringkondnr8">J‰rva- ja Viljandimaa</option>
+                      <option value="valimisringkondnr9">Jıgeva- ja Tartumaa (v.a Tartu linn)</option>
+                      <option value="valimisringkondnr10">Tartu linn</option>
+                      <option value="valimisringkondnr11">Vıru-, Valga- ja Pılvamaa</option>
+                      <option value="valimisringkondnr12">P‰rnumaa</option>
+                      </select>
+                       </p>
+                       <p>
+                         <input class="submit" type="submit" value="Salvesta"/>
+                       </p>
+                   </fieldset>
+                 </form>  
+                 </div>   
+                 <div id="minu"> 
+                 </div> 
     					
   						<div id="right">
   							<p>
@@ -397,7 +436,7 @@
   								</div>
   								Kandideerimine:<br>
   								<div id="kandideerima">
-  									<a href="javascript:void(0)" onclick="kandideerimisFunktsioon()">Soovin kandideerida</a>
+  									
   								</div>
   							</p>
 						</div>
