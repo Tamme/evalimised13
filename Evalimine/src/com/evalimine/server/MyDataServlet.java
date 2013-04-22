@@ -1,7 +1,14 @@
 package com.evalimine.server;
 
 import com.google.appengine.api.rdbms.AppEngineDriver;
+import com.google.gson.Gson;
+import com.google.gwt.dev.util.Empty;
+
 import java.sql.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -16,10 +23,11 @@ public class MyDataServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest req, HttpServletResponse response) throws IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(req.getParameter("values"));
 		String id = req.getParameter("values");
-		String party =req.getParameter("erakond");
+		String party = "erakondnr2";
+		//String party =req.getParameter("erakond");
 		String result = "";
 		Connection c = null;
 		try {
@@ -49,4 +57,6 @@ public class MyDataServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(result);
 	}
+	
+	
 }

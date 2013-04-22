@@ -83,7 +83,7 @@ public class ChannelServlet extends HttpServlet {
         
         
         FileReader reader = new FileReader("evalimine.jsp");
-        CharBuffer buffer = CharBuffer.allocate(16384);
+        CharBuffer buffer = CharBuffer.allocate(26384);
         reader.read(buffer);
         String index = new String(buffer.array());
         //index = index.replaceAll("\\{\\{ me \\}\\}", userId);

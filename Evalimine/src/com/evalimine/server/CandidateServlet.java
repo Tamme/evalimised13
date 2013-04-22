@@ -80,6 +80,7 @@ public class CandidateServlet extends HttpServlet {
 			    String shorts = rs.getString("short");
 			    String name = rs.getString("name");
 			    String isCandidate = rs.getString("is_candidate");
+			    String fbid = String.valueOf(rs.getLong("fb_id"));
 			    
 			    Map<String, String> json = new LinkedHashMap<String, String>();
 	            json.put("first", first);
@@ -90,6 +91,7 @@ public class CandidateServlet extends HttpServlet {
 	            json.put("name", name);
 	            json.put("id", id);
 	            json.put("is_candidate", isCandidate);
+	            json.put("fbid", fbid);
 	            String jsonData = new Gson().toJson(json);
 	            if (full.length() != 1) {
 	            	full += ", ";
@@ -121,33 +123,36 @@ public class CandidateServlet extends HttpServlet {
     		    try {
     		      DriverManager.registerDriver(new AppEngineDriver());
     		      c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-    		      String first = req.getParameter("eesnimi");
-    		      String last = req.getParameter("perenimi");
-    		      String code = req.getParameter("isikukood");
-    		      String area = req.getParameter("valimisringkond");
-    		      String fb_id = req.getParameter("values");
+    		      String [] param = req.getParameter("values").split(" ");
+    		      String first = param[0];
+    		      String last = param[1];
+    		      String code = param[2];;
+    		      String area = param[3];
+    		      String fullname = last + ", " + first;
+    		      String fb_id = param[4];
     		      if (first == "" || last == "") {
     		        out.println("<html><head></head><body>You are missing either a message or a name! Try again! Redirecting in 3 seconds...</body></html>");
     		      } else {
-    		      String statement ="INSERT INTO candidate (first, last, code, area, party, fullname) values (\"" + first + "\" , \""+ last + "\" , \""+ code + "\" , \""+ area + "\" , NULL ,\"" + last +", "+ first + "\" )";
+    		      String statement ="INSERT INTO candidate (first, last, code, area, fullname, fb_id) values (\"" + first + "\" , \""+ last + "\" , \""+ code + "\" , \""+ area + "\" , \""+ fullname + "\", \""+ fb_id + "\" )";
     		      System.out.println(statement);
+    		      out.println(statement);
     		      PreparedStatement stmt = c.prepareStatement(statement);
     		      int success = 2;
     		      success = stmt.executeUpdate();
     		      if(success == 1) {
-    		        out.println("<html><head></head><body>Success! Redirecting in 3 seconds...</body></html>");
+    		      out.println("<html><head></head><body>Success! Redirecting in 3 seconds...</body></html>");
     		      } else if (success == 0) {
-    		        out.println("<html><head></head><body>Failure! Please try again! Redirecting in 3 seconds...</body></html>");
+    		      out.println("<html><head></head><body>Failure! Please try again! Redirecting in 3 seconds...</body></html>");
     		      }
-    		     }
-    		    } catch (SQLException e) {
-    		        e.printStackTrace();
-    		    } finally {
-    		        if (c != null) 
-    		          try {
-    		            c.close();
-    		            } catch (SQLException ignore) {
-    		         }
-    		      } resp.setHeader("Refresh","3; url=/evalimine.jsp");
+    		      }
+    		      } catch (SQLException e) {
+    		      e.printStackTrace();
+    		      } finally {
+    		     if (c != null) 
+    		                  try {
+    		                          c.close();
+    		                          } catch (SQLException ignore) {
+    		                       }
+    		                    } resp.setHeader("Refresh","3; url=/evalimine.jsp");
     		  }
 }

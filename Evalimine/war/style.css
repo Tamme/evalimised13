@@ -8,6 +8,9 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	float:left;
 }
 
+
+ 
+
 #auth-display-name {
 	height:30px; 
 	float:left; 
@@ -184,7 +187,7 @@ html {
 	text-decoration:none;
 }
 
-#candSearch, #areaSearch {
+#candSearch, #areaSearch, #saveData {
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;

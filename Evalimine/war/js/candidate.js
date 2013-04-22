@@ -1,7 +1,6 @@
 ﻿//------------------ config section starts ------------------
 	//input variables
 	var fbAppId = "507516239283608"; //your app Id goes here
-	var permissions_needed = "email";
 	
 	//output variables available in JS after Fb login
 	var fb_id; 				//unique fb id/key of logged in user
@@ -9,7 +8,14 @@
 	var last_name;
 	var full_name;			//full name as on Fb profile
 	var email;				//email id 
-
+	var personId = -1;
+	$(function() {
+		if(personId==-1){
+			$("#middle").hide();
+			$('#logisisse').html("Andmete nägemiseks või salvestamiseks peate olema sisse logitud");
+		}
+		
+	});
 
 	//------------------ config section ends --------------------
 	
@@ -29,15 +35,7 @@
         xfbml      : true  // parse XFBML
       });
       
-      FB.getLoginStatus(function(response) {
-    	  if (response.status === 'connected') {
-    	    // connected
-    	  } else if (response.status === 'not_authorized') {
-    	    // not_authorized
-    	  } else {
-    	    // not_logged_in
-    	  }
-    	 });
+    
 	  
 	    // listen for and handle auth.statusChange events
         FB.Event.subscribe('auth.statusChange', function(response) {
@@ -46,6 +44,18 @@
 				FB.api('/me', function(user){
 					if (user.name) {
 						fb_id = user.id;
+						$.get("LoginServlet", {facebook:fb_id}, function(items) { 
+							personId=items[0].id;
+							if(personId>0){
+								$("#middle").hide();
+								$('#logisisse').html("");
+							}
+							else{
+								$("#middle").show();
+								$('#logisisse').html("");
+							}
+								
+						});
 						first_name = user.first_name;
 						last_name = user.last_name;
 						full_name = user.name;
@@ -68,13 +78,21 @@
 	
 	//call facebook login
 	function fbLogin() {
-		FB.login(function (response) {}, {scope: permissions_needed});
+		FB.login(function (response) {
+			
+		});
+		
 	}
 
 	//call facebook logout
 	function fbLogout() {
 		FB.logout();
 	}
+	
+
+	
+
+	
 	$(function() {
 		$('#large-img').hide();
 		$('#large-img').load( 
@@ -123,6 +141,23 @@
 		
 	}
 	
+	$(document).ready(function(){
+		$('#commentForm').submit(function(e) {
+			var eesnimi = $("#ceesnimi").val();
+			var perenimi = $("#cperenimi").val();
+			var isikukood = $("#cisikukood").val();
+			var area = $("#cvalimisringkond option:selected").val();
+			var param = eesnimi + " " + perenimi + " " + isikukood + " " + area + " " + fb_id;
+			
+			    $.post("CandidateServlet", {values:param}, function(items) {
+			    	alert(items);
+			    	getPersonData();
+			    	window.location.href = document.getElementById("andmed").href;
+			    	
+			    });
+			    
+		});
+	});
 
 	$(document).ready(function(){
 		$('#areaStatForm').submit(function(e) {
@@ -147,7 +182,7 @@
 	
 	function getPerson(id) {
 		//NEED TO ADD LOGGED IN PERSON ID INTO AS PARAMETER!!!!!!!!!!! FOR NOW JUST MADE UP ONE
-		loggedId = 5;
+		loggedId = personId;
 		//var logged = document.getElementById("logging").value;
 		var $id = id;
 		$.get("CandidateServlet", {values:$id}, function(items) { 
@@ -169,8 +204,9 @@
 	}	
 
 	
+	
 	function setCandidate (id) {
-		var $id = id;
+		var $id = personId;
 		$.post("MyDataServlet", {values:$id}, function(reply) { 
 			
 			$('#kandideerima').html(reply);
@@ -178,7 +214,7 @@
 	}
 	
 	function removeCandidate (id) {
-		var $id = id;
+		var $id = personId;
 		$.post("MyDataServlet2", {values:$id}, function(reply) { 
 			
 			$('#kandideerima').html(reply);
@@ -252,20 +288,24 @@
 
 	function getPersonData() {
 		//$(document).ready(function(){
-		var $id = 13;
+		var $id = personId;
 		$.get("CandidateServlet", {values:$id}, function(items) {
 			if (items[0].is_candidate) {
-				var text = "<table class='candidateInfo' border='1'>" +	"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
-				"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first 	+ "</td><tr>" + "<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
-				"<tr><th>Erakonna lühend</th><td>"	+ items[0].short  	+ "</td><tr>" + "<tr><th>Erakonna nimi</th><td>" 	+ items[0].name + "</td><tr>" +
-				"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" + "<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" + 
-				"<tr><th>Sinu hääl</th><td>" 		+ items[0].voting 	+ "</td><tr>" + "</table>";
+				var text = "<table class='candidateInfo' border='1'>" +	
+				"<tr><th>Isikukood</th><td>" + items[0].code + "</td><tr>" +
+				"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first 	+ "</td><tr>" + 
+				"<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
+				"<tr><th>Erakond</th><td>" 	+ items[0].name + "</td><tr>" +
+				"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" + 
+				"<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" + 
+				"<tr><th>Sinu hääl</th><td>" 	+ items[0].voting 	+ "</td><tr>" + "</table>";
 				$('#minu').html(text);
+				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div></p>");
 				$('#kandideerima').html("<a href='javascript:void(0)' onclick=removeCandidate("+ items[0].id +")>Tühista kandidatuur</a>");
 			}
 			else{
 				var text = "<table class='candidateInfo' border='1'>" +	
-				"<tr><th>Isiku (isiku)kood</th><td>" + items[0].code + "</td><tr>" +
+				"<tr><th>Isikukood</th><td>" + items[0].code + "</td><tr>" +
 				"<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" +
 				"<tr><th>Isiku eesnimi</th><td>" 	+ items[0].first + "</td><tr>" + 
 				"<tr><th>Isiku perenimi</th><td>" 	+ items[0].last + "</td><tr>" + 
@@ -283,6 +323,7 @@
 				"</select></td><tr>" +  
 				"<tr><th>Sinu hääl</th><td>" 		+ items[0].voting + "</td><tr>" + "</table>";
 				$('#minu').html(text);
+				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div></p>");
 				$('#kandideerima').html("<a href='javascript:void(0)' onclick='setCandidate("+ items[0].id +")'>Soovin kandideerida</a>");
 			}
 		});
