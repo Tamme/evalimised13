@@ -39,6 +39,7 @@ CACHE:
 /js/sorttable.js
 /js/candidate.js
 /js/validate.js
+/js/html5-canvas-bar-graph.js
 
 NETWORK:
 *

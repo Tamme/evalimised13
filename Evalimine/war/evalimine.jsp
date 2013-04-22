@@ -206,14 +206,14 @@
 			<div id="statistika" class="text">
 	  			<div id="stattabs">
 				  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-					    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu" onclick="getCountryStat()">Statistika riigi lõikes</a></li>
-					    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu" >Statistika piirkonna lõikes</a></li>
-					    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide lõikes</a></li>
-					    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu" onclick="getCandidateStat(false)">Statistika kandidaatide lõikes</a></li>
+					    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu" onclick="getCountryStat()">Statistika riigi l&otilde;ikes</a></li>
+					    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu" >Statistika piirkonna l&otildeikes</a></li>
+					    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide l&otildeikes</a></li>
+					    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu" onclick="getCandidateStat(false)">Statistika kandidaatide l&otilde;ikes</a></li>
 				  	</ul>
 					<div id="statistika-riigiSisu"   class="text">
 						<h1>
-							Häälte jagunemine riigi lõikes
+							Häälte jagunemine riigi l&otilde;ikes
 						</h1>
 						<div id="riigiSisu">
 							<div id="sortingdiv" >
