@@ -5,11 +5,15 @@
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gson-2.2.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gson-2.2.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gson-2.2.2-sources.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/impl/mysql-connector-java-5.1.24-bin.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/selenium-java-2.32.0-srcs.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/selenium-java-2.32.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/selenium-server-standalone-2.32.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
