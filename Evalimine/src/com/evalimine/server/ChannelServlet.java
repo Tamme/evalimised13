@@ -81,12 +81,11 @@ public class ChannelServlet extends HttpServlet {
        // users.put(userId, token);
         System.out.println(token);
         
-        
-        FileReader reader = new FileReader("evalimine.jsp");
+        //evalimine.jsp
+        FileReader reader = new FileReader("evalimine.html");
         CharBuffer buffer = CharBuffer.allocate(26384);
         reader.read(buffer);
         String index = new String(buffer.array());
-        //index = index.replaceAll("\\{\\{ me \\}\\}", userId);
         index = index.replaceAll("\\{\\{ token \\}\\}", token);
         
         resp.setContentType("text/html");//võid plain ka proovida

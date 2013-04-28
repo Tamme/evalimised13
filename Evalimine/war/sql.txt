@@ -19,3 +19,9 @@ INSERT INTO area (name, short, area_id) VALUES ("Tallinna Haabersti, Põhja-Talli
 ("Tartu linn", 'Tartu', "valimisringkondnr10"), ("Võru-, Valga- ja Põlvamaa", 'Võru-Valga-Põlva', "valimisringkondnr11"), ("Pärnumaa", 'Pärnu', "valimisringkondnr12")
 
 create table votes ( `id` integer unsigned not null auto_increment, `voted_id` varchar(255) NOT NULL, `voter_id` varchar(255) NOT NULL, `voted_party` varchar(255) NOT NULL, PRIMARY KEY(`id`) );
+
+alter table votes add column voted_area varchar(255)
+
+update votes set voted_area = "valimisringkondnr11" where mod(id, 4) = 3;
+
+select  voted_area as a, voted_party, round(count(voted_party)/(select count(voted_area) from votes where voted_area = a), 2) as pro from votes group by voted_party, voted_area ORDER BY voted_area, pro DESC

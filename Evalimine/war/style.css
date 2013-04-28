@@ -264,10 +264,13 @@ input:hover {
 	width:40em;
 	height:25em;
 }
-.parteistat {
-	float:center;
-	width:40em;
-	height:25em;
+
+#parteistat {
+  float:center;
+  margin:0%;
+  padding:10%;
+  height:390px;
+  width:70%;
 }
 
 .print {

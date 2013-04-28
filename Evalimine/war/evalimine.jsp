@@ -1,8 +1,15 @@
-<!doctype html>
- 
-<html manifest="cache.manifest" lang="et" >
+<!DOCTYPE html>
+<!-- manifest="cache.manifest" -->
+<html  lang="et" >
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+ <style type="text/css">
+   html { height: 100% }
+   body { height: 100%; margin: 0; padding: 0 }
+ </style>
+
 <title>E-valimine 2013</title>
   
 <!-- CSS -->
@@ -21,11 +28,10 @@
 <script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 <script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
 <script type="text/javascript" src="/_ah/channel/jsapi"></script>
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false"></script>  -->
 <!-- <script type="text/javascript" src="/js/channel.js"></script> -->
 
- <script>
-//  var TSort_Data = new Array ('sorting', 's', 'i');
-//  var TSort_Initial =  new Array ('0A');
+ <script type="text/javascript">
 
 
  $(document).ready(function(){
@@ -43,11 +49,29 @@
 	   });
  });
  
+ function initialize() {
+	 alert("hello");
+     var mapOptions = {
+       center: new google.maps.LatLng(-34.397, 150.644),
+       zoom: 8,
+       mapTypeId: google.maps.MapTypeId.ROADMAP
+     };
+     var map = new google.maps.Map(document.getElementById("parteistat"),
+         mapOptions);
+   }
+ 
+ function loadScript() {
+	  var script = document.createElement("script");
+	  script.type = "text/javascript";
+	  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false&callback=initialize";
+	  document.body.appendChild(script);
+	}
+   //google.maps.event.addDomListener(window, 'load', initialize);
+   
 </script>
+ 
 
-</head>
-
-<body>
+<body >
 
 	<script type="text/javascript">
 
@@ -208,7 +232,7 @@
 				  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 					    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu" onclick="getCountryStat()">Statistika riigi l&otilde;ikes</a></li>
 					    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu" >Statistika piirkonna l&otildeikes</a></li>
-					    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide l&otildeikes</a></li>
+					    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu" onclick="loadScript()">Statistika parteide l&otildeikes</a></li>
 					    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu" onclick="getCandidateStat(false)">Statistika kandidaatide l&otilde;ikes</a></li>
 				  	</ul>
 					<div id="statistika-riigiSisu"   class="text">
@@ -291,9 +315,7 @@
 						<h1>
 							Häälte jagunemine parteide lõikes
 						</h1>
-						<div class="parteistat">
-							<img class="parteistat" src="img/parteistat.png"></img>
-						</div>
+						<div id="parteistat"/>
 						<br>
 						<br>
 						<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
@@ -326,9 +348,6 @@
 								ctx = createCanvas("kandidaadistat");
 							}
 							function esimene() {
-							 
-							        
-							       
 							        var graph = new BarGraph(ctx);
 							        graph.maxValue = 50;
 							        graph.margin = 122;

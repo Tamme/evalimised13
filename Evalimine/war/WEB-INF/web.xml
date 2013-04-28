@@ -19,14 +19,14 @@
         <url-pattern>/StatisticsServlet/*</url-pattern>
     </servlet-mapping>
     
-    <servlet>
+<!--     <servlet>
         <servlet-name>ChannelServlet</servlet-name>
         <servlet-class>com.evalimine.server.ChannelServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ChannelServlet</servlet-name>
         <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
 
    <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -44,6 +44,15 @@
     <servlet-mapping>
         <servlet-name>MyDataServlet</servlet-name>
         <url-pattern>/MyDataServlet/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>PartyServlet</servlet-name>
+        <servlet-class>com.evalimine.server.PartyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PartyServlet</servlet-name>
+        <url-pattern>/PartyServlet/*</url-pattern>
     </servlet-mapping>
     
     <servlet>
