@@ -11,6 +11,24 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>voteServlet</servlet-name>
+        <servlet-class>com.evalimine.server.voteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>voteServlet</servlet-name>
+        <url-pattern>/voteServlet/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>removeVoteServlet</servlet-name>
+        <servlet-class>com.evalimine.server.removeVoteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>removeVoteServlet</servlet-name>
+        <url-pattern>/removeVoteServlet/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>StatisticsServlet</servlet-name>
         <servlet-class>com.evalimine.server.StatisticsServlet</servlet-class>
     </servlet>

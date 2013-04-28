@@ -95,33 +95,7 @@ public class StatisticsServlet extends HttpServlet {
 	    }  
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ChannelService channelService = ChannelServiceFactory.getChannelService();
-		String channelKey = "xyz";
-		Connection c = null;
-		String [] params = request.getParameter("values").split(" ");
-		try {
-			DriverManager.registerDriver(new AppEngineDriver());
-		    c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-	      String statement = "insert into votes(voted_id, voter_id, voted_party) Select \"" + params[1] + "\", \"" + params[2] + "\", party from candidate where id = \"" + params[1] + "\"";
-	      PreparedStatement stmt = c.prepareStatement(statement);
-	      int success = 2;
-	      success = stmt.executeUpdate();
-	      //if unsuccessful then TODO...
-		} catch (Exception e) {
-	        System.out.println(e);
-			e.printStackTrace();
-	    } finally {
-	        if (c != null) {
-	        	try {
-		            c.close();
-		            } catch (SQLException ignore) {
-		         }
-	        }
-	    }
-		channelService.sendMessage(new ChannelMessage(channelKey, "voted"));
-
-	}
+	
 	
 }
 

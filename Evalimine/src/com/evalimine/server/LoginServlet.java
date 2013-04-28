@@ -31,18 +31,21 @@ public class LoginServlet extends HttpServlet {
 		      c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
 			  String statement= "";
 		      if (!fb_id.equals("")){
-					statement ="select id from candidate where fb_id=" + fb_id;
+					statement ="select id, voting from candidate where fb_id=" + fb_id;
 			  }
 			  System.out.println(statement);
 			  ResultSet rs = c.createStatement().executeQuery(statement);
 			  int isId = 0;
 				while (rs.next()){
 				    String id = rs.getString("id");
+				    String voting = String.valueOf(rs.getInt("voting"));
 				    System.out.println(id);
+				    System.out.println(voting);
 				    isId = 1;
 				    
 				    Map<String, String> json = new LinkedHashMap<String, String>();
 		            json.put("id", id);
+		            json.put("voting", voting);
 		            
 		            String jsonData = new Gson().toJson(json);
 		            if (full.length() != 1) {

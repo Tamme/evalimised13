@@ -9,6 +9,8 @@
 	var full_name;			//full name as on Fb profile
 	var email;				//email id 
 	var personId = -1;
+	var voted;
+	var votedname;
 	$(function() {
 		if(personId==-1){
 			$("#middle").hide();
@@ -46,6 +48,7 @@
 						fb_id = user.id;
 						$.get("LoginServlet", {facebook:fb_id}, function(items) { 
 							personId=items[0].id;
+							voted=items[0].voting;
 							if(personId>0){
 								$("#middle").hide();
 								$('#logisisse').html("");
@@ -150,9 +153,6 @@
 			var param = eesnimi + " " + perenimi + " " + isikukood + " " + area + " " + fb_id;
 			
 			    $.post("CandidateServlet", {values:param}, function(items) {
-			    	alert(items);
-			    	getPersonData();
-			    	window.location.href = document.getElementById("andmed").href;
 			    	
 			    });
 			    
@@ -187,8 +187,8 @@
 		var $id = id;
 		$.get("CandidateServlet", {values:$id}, function(items) { 
 			extra = "";
-			if (items[0].is_candidate) {
-				extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + "," + loggedId + ") class='button'>Hääleta</button></tr>"
+			if (personId>0 && voted==0) {
+				extra = "<tr><th>Vali antud kandidaat</th><td><a href='evalimine.html'><button type='button' onclick=sendVote(" + items[0].id + "," + loggedId + ") class='button'>Hääleta</button></a></tr>"
 			}
 			var text = "<table class='candidateInfo' border='1'>" +
 			"<tr><th>Isiku (isiku)kood	</th><td>" 	+ items[0].code + 	"</td><tr>" +
@@ -201,11 +201,11 @@
 			$('#list').html(text);
 			});
 		$('#candHeading').html(candidateOne);
-	}	
+	}		
 
 	
 	
-	function setCandidate (id) {
+	function setCandidate () {
 		var $id = personId;
 		$.post("MyDataServlet", {values:$id}, function(reply) { 
 			
@@ -213,11 +213,18 @@
 		});
 	}
 	
-	function removeCandidate (id) {
+	function removeCandidate () {
 		var $id = personId;
 		$.post("MyDataServlet2", {values:$id}, function(reply) { 
 			
 			$('#kandideerima').html(reply);
+		});
+	}
+	
+	function removeVote () {
+		var $id = personId;
+		$.post("removeVoteServlet", {values:$id}, function(reply) { 
+			$('#tühistamine').html(reply);
 		});
 	}
 	
@@ -290,6 +297,13 @@
 		//$(document).ready(function(){
 		var $id = personId;
 		$.get("CandidateServlet", {values:$id}, function(items) {
+			extra = "";
+			extra2 = "";
+			if (voted==1) {
+				extra = "<tr><th>Sinu hääl</th><td>" + votedname + "</td><tr>"
+				extra2 = "Hääle tühistamine:<br><div id='tühistamine'></div></p>"
+				
+			}
 			if (items[0].is_candidate) {
 				var text = "<table class='candidateInfo' border='1'>" +	
 				"<tr><th>Isikukood</th><td>" + items[0].code + "</td><tr>" +
@@ -298,10 +312,11 @@
 				"<tr><th>Erakond</th><td>" 	+ items[0].name + "</td><tr>" +
 				"<tr><th>Piirkonna nimi</th><td>" 	+ items[0].area 	+ "</td><tr>" + 
 				"<tr><th>Valimis nr</th><td>" 		+ items[0].id 	+ "</td><tr>" + 
-				"<tr><th>Sinu hääl</th><td>" 	+ items[0].voting 	+ "</td><tr>" + "</table>";
+				extra + "</table>";
 				$('#minu').html(text);
-				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div></p>");
-				$('#kandideerima').html("<a href='javascript:void(0)' onclick=removeCandidate("+ items[0].id +")>Tühista kandidatuur</a>");
+				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div><br><br</p>"+extra2);
+				$('#kandideerima').html("<a href='evalimine.html' onclick=removeCandidate()>Tühista kandidatuur</a>");
+				$('#tühistamine').html("<a href='evalimine.html' onclick=removeVote()>Tühista</a>");
 			}
 			else{
 				var text = "<table class='candidateInfo' border='1'>" +	
@@ -321,10 +336,10 @@
 				"<option value='erakondnr8'>Hallid</option>" +
 				"<option value='erakondnr9'>Valged</option>" +
 				"</select></td><tr>" +  
-				"<tr><th>Sinu hääl</th><td>" 		+ items[0].voting + "</td><tr>" + "</table>";
+				extra + "</td><tr>" + "</table>";
 				$('#minu').html(text);
-				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div></p>");
-				$('#kandideerima').html("<a href='javascript:void(0)' onclick='setCandidate("+ items[0].id +")'>Soovin kandideerida</a>");
+				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div></p>"+extra2);
+				$('#kandideerima').html("<a href='evalimine.html' onclick='setCandidate()'>Soovin kandideerida</a>");
 			}
 		});
 		
