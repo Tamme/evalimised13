@@ -149,6 +149,30 @@ function initialize() {
 	            name: 'Kollased',
 	            icon: 'img/icon2.png',
 	          },
+	          Violetsed: {
+		            name: 'Violetsed',
+		            icon: 'img/icon4.png',
+	          },
+	          Mustad: {
+	            name: 'Mustad',
+	            icon: 'img/icon6.png',
+	          },
+	          Helesinised: {
+	            name: 'Helesinised',
+	            icon: 'img/icon7.png',
+	          },
+	          Roosad: {
+		            name: 'Roosad',
+		            icon: 'img/icon8.png',
+	          },
+	          Hallid: {
+	            name: 'Hallid',
+	            icon: 'img/icon9.png',
+	          },
+	          Valged: {
+		            name: 'Valged',
+		            icon: 'img/icon10.png',
+	          },
 	          Default: {
 		            name: 'Teised',
 		            icon: 'img/icon5.png',
