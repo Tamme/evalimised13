@@ -1,2 +1,3 @@
 # Module evalimine
 # RPC service class, partial path of RPC policy file
+com.evalimine.client.GreetingService, 0BB9D482132F15AA5DA0BE1E14FECB50.gwt.rpc

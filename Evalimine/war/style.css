@@ -8,8 +8,10 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	float:left;
 }
 
-
- 
+#legend {
+  background: white;
+  padding: 5px;
+}
 
 #auth-display-name {
 	height:30px; 

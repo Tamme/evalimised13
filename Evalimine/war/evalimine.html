@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-
+    
 	<!-- CSS -->
 	<link rel="stylesheet" href="style.css" />
 	<link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
@@ -18,7 +18,8 @@
 	<script type="text/javascript" src="js/sorttable.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false"></script>
+	<script type="text/javascript" src="js/map.js" charset="utf-8"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false"></script> -->
 	<script type="text/javascript" src="/_ah/channel/jsapi"></script>
     
 <script>
@@ -41,7 +42,6 @@
 	 var map;
 	
 	function getColor(partyName) {
-		//alert(partyName);
 		switch (partyName)
 		{
 		case 'Mustad':
@@ -56,8 +56,23 @@
 		case 'Kollased':
 			color="FFFF00";
 		  break;
-		default:
+		case 'Helesinised':
+		  color="00FFFF";
+		  break;
+		case 'Violetsed':
 			color="CC00CC";
+		  break;
+		case 'Roosad':
+			color="FF66CC";
+		  break;
+		case 'Hallid':
+			color="D1D1D1";
+		  break;
+		case 'Valged':
+			color="FFFFFF";
+		  break;
+		default:
+			color="FFA319";
 		  break;
 		}
 		return color;
@@ -71,67 +86,42 @@
 	var nameArray = new Array();
 	var proArray = new Array();
 	var color;
-	$.get("PartyServlet", {values:"1"}, function(items) { 
-		for (var i = 0; i < items.length; i++) {
-			nameArray[items[i].area] = items[i].name;
-			proArray[items[i].area] = items[i].percentage;
-		}
+	
+	$.ajax({
+	    type: "GET",
+	    url: "PartyServlet", 
+	    success: function(items) {
+			for (var i = 0; i < items.length; i++) {
+				nameArray[items[i].area] = items[i].name;
+				proArray[items[i].area] = items[i].percentage;
+			}
+			loadScript();
+			
+	    },
+	    error: function(err) {
+	        alert(err.toString());
+	    }
 	});
 	
 	function getFromArray(array) {
 		if (typeof array == "undefined") {
 			return "-";
 		}
+		else {
+			return array;	
+		}
 	}
 	
-	function initialize() {
-	
-		var mapOptions = {
-		  zoom: 7,
-		  center: new google.maps.LatLng(58.397, 25.944),
-		  mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		map = new google.maps.Map(document.getElementById('parteistat'),
-		    mapOptions);
+	function loadScript() {
+		  var script = document.createElement('script');
+		  script.type = 'text/javascript';
+		  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false&' +
+		      'callback=initialize';
+		  document.body.appendChild(script);
+		}
+
 		
-		<!--  Each area marker -->
-		
-		var markerTart = new google.maps.Marker({
-		    position: new google.maps.LatLng(58.371928,26.72905),
-		    map: map,
-		    title: 'Tartu linn',
-		    icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + getColor(nameArray["valimisringkondnr10"]))
-		});
-		google.maps.event.addListener(markerTart, 'click', function() {
-		 new google.maps.InfoWindow({ content: "Tartu info. Erakonnaks on " + nameArray["valimisringkondnr10"] + " ja protsent " + proArray["valimisringkondnr10"] +"%" }).open(map, markerTart);
-		});
-		
-		// ----------------
-		var markerMust = new google.maps.Marker({
-		    position: new google.maps.LatLng(59.397613,24.672332),
-		    map: map,
-		    title: 'Mustamäe ja Nõmme linnaosad',
-		    icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + getColor(nameArray["valimisringkondnr3"]))
-		});
-		google.maps.event.addListener(markerMust, 'click', function() {
-		 new google.maps.InfoWindow({ content: "Mustamäe ja Nõmme linnaosade valimisinfo. Erakonnaks on " + getFromArray(nameArray["valimisringkondnr3"])  + " ja protsent " + getFromArray(proArray["valimisringkondnr3"]) +"%" }).open(map, markerMust);
-		});
-		
-		//-------------
-		
-		var markerPärnu = new google.maps.Marker({
-		    position: new google.maps.LatLng(58.383707,24.496272),
-		    map: map,
-		    title: 'Pärnumaa',
-		    icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + getColor(nameArray["valimisringkondnr12"]))
-		});
-		google.maps.event.addListener(markerPärnu, 'click', function() {
-		 new google.maps.InfoWindow({ content: "Pärnu info. Erakonnaks on " + nameArray["valimisringkondnr12"] + " ja protsent " + proArray["valimisringkondnr12"] +"%" }).open(map, markerPärnu);
-		});
-	  
-	}
-	
-		google.maps.event.addDomListener(window, 'load', initialize);
+		//google.maps.event.addDomListener(window, 'load', initialize);
 	
 	 	
 
@@ -189,7 +179,6 @@
 				});
 	   	}
 	   </script>
-		
 		<div class="container">
 			<div id="header" class="logo">
 				<a href="evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
@@ -362,6 +351,10 @@
 							</h1>
 							<div id="parteistat">
 							</div>
+							<div id="legend">
+							  Legend:
+							</div>
+							
 							<br>
 							<br>
 							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->

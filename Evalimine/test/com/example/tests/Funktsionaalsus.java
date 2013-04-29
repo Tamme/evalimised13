@@ -12,7 +12,7 @@ public class Funktsionaalsus {
 
 	@Before
 	public void setUp() throws Exception {
-		selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://127.0.0.1:8888/evalimine.jsp?gwt.codesvr=127.0.0.1:9999#/esileht");
+		selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://127.0.0.1:8888/evalimine.html?gwt.codesvr=127.0.0.1:9999#/esileht");
 		selenium.start();
 	}
 

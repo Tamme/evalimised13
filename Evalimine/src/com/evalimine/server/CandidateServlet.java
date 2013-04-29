@@ -151,6 +151,6 @@ public class CandidateServlet extends HttpServlet {
     			  	  catch (SQLException ignore) {
     		          }
     		  } 
-    		  resp.setHeader("Refresh","3; url=/evalimine.jsp");
+    		  resp.setHeader("Refresh","3; url=/evalimine.html");
     }
 }
