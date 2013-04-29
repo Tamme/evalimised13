@@ -340,6 +340,7 @@
 				$('#minu').html(text);
 				$('#right').html("<p><div>Hääletamine:<br><a href='#kandidaadid'>Häält andma</a><br><br></div>Kandideerimine:<br><div id='kandideerima'></div></p>"+extra2);
 				$('#kandideerima').html("<a href='evalimine.html' onclick='setCandidate()'>Soovin kandideerida</a>");
+				$('#tühistamine').html("<a href='evalimine.html' onclick=removeVote()>Tühista</a>");
 			}
 		});
 		
