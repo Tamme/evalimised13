@@ -10,11 +10,10 @@
 	<link rel="stylesheet" href="style.css" />
 	<link type="text/css" href="jquery-ui-1.8.13.custom.css" rel="stylesheet">
 	    
-    <!-- KUI KÃIK NEED SCRIPTI READ EEMALDADA MILLEL ON KOMMENTAAR SIIS GOOGLE SUGGEST TÃÃTAB AGA LEHT LÃHEB KATKI -->
 	<script type="text/javascript" src="js/jquery-1.9.0.min.js" charset="utf-8"></script>														
-	<script type="text/javascript" src="js/jquery-ui-1.8.13.js" charset="utf-8"></script>	<!-- Kui see eemaldada siis tabid ei tÃ¶Ã¶ta -->
+	<script type="text/javascript" src="js/jquery-ui-1.8.13.js" charset="utf-8"></script>	<!-- Blocks autocomplete -->
 	<script type="text/javascript" src="js/jquery.address-1.6.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/menu.js" charset="utf-8"></script>							<!-- Kui see eemaldada siis on lehed Ã¼ksteise all -->
+	<script type="text/javascript" src="js/menu.js" charset="utf-8"></script>							<!-- Blocks autocomplete -->
 	<script type="text/javascript" src="js/sorttable.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/candidate.js" charset="utf-8"></script>
 	<script type="text/javascript" src="js/validate.js" charset="utf-8"></script>
@@ -181,7 +180,7 @@
 	   </script>
 		<div class="container">
 			<div id="header" class="logo">
-				<a href="evalimine.html"><img class="logo" src="img/logo3.png"></img></a>
+				<a href="evalimine.html"><img class="logo" src="img/logo3.png" alt="Logo of our website"/></a>
 			</div>
 			<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 				<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all menu">
@@ -278,15 +277,15 @@
 				</div>
 				
 				<div id="loading">
-					<img src="img/ajax-loader.gif" id="img-load" />
+					<img src="img/ajax-loader.gif" id="img-load" alt="loading..."/>
 				</div>
 				
 				<div id="statistika" class="text">
 		  			<div id="stattabs">
 					  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu" onclick="getCountryStat()">Statistika riigi l&otilde;ikes</a></li>
-						    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu" >Statistika piirkonna l&otildeikes</a></li>
-						    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide l&otildeikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu" >Statistika piirkonna l&otilde;ikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide l&otilde;ikes</a></li>
 						    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu" onclick="getCandidateStat(false)">Statistika kandidaatide l&otilde;ikes</a></li>
 					  	</ul>
 						<div id="statistika-riigiSisu"   class="text">
@@ -333,7 +332,7 @@
 									</form>
 								</div>
 								<div id = "areaStatistics">
-									<img class="piirkonnastat" src="img/eestikaart2.gif"></img>
+									<img class="piirkonnastat" src="img/eestikaart2.gif" alt="Vali piirkond"/>
 								</div>
 								
 							</div>
@@ -418,40 +417,34 @@
 					<h3>
 						Kasutan IE6'te ning veebileht ei kuva korrektselt, mis ma peaksin tegema?
 					</h3>
-					<p>
-						<ul>
-							<li>Hetkel on võimalik kasutada ainult Google Chrome'i ja Mozilla Firefoxi uusimaid versioone.</li>
-						</ul>
-					</p>
+					<ul>
+						<li>Hetkel on võimalik kasutada ainult Google Chrome'i ja Mozilla Firefoxi uusimaid versioone.</li>
+					</ul>
 					<h3>
 						Kuidas hääletada?
 					</h3>
-					<p>
-						<ol>
-							<li>Selleks, et anda oma hääl tuleb ennast autentida.</li><br>
-							<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li><br>
-							<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li><br>
-							<li>Leia endale sobiv kandidaat kasutades selleks nupule "Kandidaadid" või "Häält andma".</li><br>
-							<li>Olles kandidaadi valinud tuleb tehtud valik kinnitada.</li><br>
-							<li>Eduka kinnituse puhul on hääletamine sooritatud.</li><br>
-							<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
-						</ol>
-					</p>
+					<ul>
+						<li>Selleks, et anda oma hääl tuleb ennast autentida.</li>
+						<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li>
+						<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li>
+						<li>Leia endale sobiv kandidaat kasutades selleks nupule "Kandidaadid" või "Häält andma".</li>
+						<li>Olles kandidaadi valinud tuleb tehtud valik kinnitada.</li>
+						<li>Eduka kinnituse puhul on hääletamine sooritatud.</li>
+						<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
+					</ul>
 					<h3>
 						Kuidas kandideerida?
 					</h3>
-					<p>
-						<ol>
-							<li>Selleks, et kandideerida tuleb ennast autentida.</li><br>
-							<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li><br>
-							<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li><br>
-							<li>Täida kohustuslikud väljad oma andmetega ning vajuta nupule "Salvesta".</li><br>
-							<li>Peale andmete salvestamist vajuta nupule "Soovin kandideerida".</li><br>
-							<li>Teie soov kandideerida tuleb kinnitada.</li><br>
-							<li>Eduka kinnituse puhul olete kandideeritud.</li><br>
-							<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
-						</ol>
-					</p>
+					<ul>
+						<li>Selleks, et kandideerida tuleb ennast autentida.</li>
+						<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li>
+						<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li>
+						<li>Täida kohustuslikud väljad oma andmetega ning vajuta nupule "Salvesta".</li>
+						<li>Peale andmete salvestamist vajuta nupule "Soovin kandideerida".</li>
+						<li>Teie soov kandideerida tuleb kinnitada.</li>
+						<li>Eduka kinnituse puhul olete kandideeritud.</li>
+						<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
+					</ul>
 				</div>
 	
 				<div id="sisene" class="text">
@@ -463,11 +456,11 @@
 					</h3>
 						<div id="auth-status">
 							<div id="auth-loggedout" style="width:200px; margin:0px auto;">
-								<img src="img/fb1.gif" onclick="fbLogin();" onMouseOver="this.style.cursor='pointer';"/>
+								<img src="img/fb1.gif" onclick="fbLogin();" alt="log in" onMouseOver="this.style.cursor='pointer';"/>
 							</div>
 							<div id="auth-loggedin" style="display:none; width:250px; margin:0px auto;">
 								<br/><br/><br/>
-								<img src="img/fb2.gif" onclick="fbLogout();" onMouseOver="this.style.cursor='pointer';"/>
+								<img src="img/fb2.gif" onclick="fbLogout();" alt="log out" onMouseOver="this.style.cursor='pointer';"/>
 							</div>
 						</div>
 					<br>
@@ -485,15 +478,15 @@
 									<fieldset>
 										<p>
 								         	<label for="ceesnimi">Eesnimi</label>
-								        	<em>*</em><br><input id="ceesnimi" name="eesnimi" size="28" class="required" minlength="2" maxlength="25"/>
+								        	<em>*</em><br><input id="ceesnimi" name="eesnimi" size="28" class="required" pattern=".{2,25}"/>
 								       	</p>
 										<p>
 											<label for="cperenimi">Perenimi</label>
-											<em>*</em><br><input id="cperenimi" name="perenimi" size="28" class="required" minlength="2" maxlength="25"/>
+											<em>*</em><br><input id="cperenimi" name="perenimi" size="28" class="required" pattern=".{2,25}"/>
 										</p>
 										<p>
 											<label for="cisikukood">Isikukood</label>
-											<br><input id="cisikukood" name="isikukood" size="28" class="digits" minlength="11" maxlength="11"/>
+											<br><input id="cisikukood" name="isikukood" size="28" class="digits" pattern=".{11,11}"/>
 										</p>
 										<p>
 											<label for="cvalimisringkond">Valimisringkond</label>
@@ -527,6 +520,11 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div>
+				<br>
+				<br>
+				<br>
 				</div>
 				<div id="jalus">
 		  			<p>

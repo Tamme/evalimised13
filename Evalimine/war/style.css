@@ -3,6 +3,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+
 #auth-display-img {
 	height:30px; 
 	float:left;
@@ -71,10 +72,10 @@ a {
 	height:16.27em;
 }
 
-#tabs li {
-	list-style:none;
-	display:inline;
-}
+/* #tabs li { */
+/* 	list-style:none; */
+/* 	display:inline; */
+/* } */
 
 html {
 	background:#23282e url('img/taust.png') no-repeat;
