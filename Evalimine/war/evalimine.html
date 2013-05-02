@@ -86,21 +86,24 @@
 	var proArray = new Array();
 	var color;
 	
-	$.ajax({
-	    type: "GET",
-	    url: "PartyServlet", 
-	    success: function(items) {
-			for (var i = 0; i < items.length; i++) {
-				nameArray[items[i].area] = items[i].name;
-				proArray[items[i].area] = items[i].percentage;
-			}
-			loadScript();
-			
-	    },
-	    error: function(err) {
-	        alert(err.toString());
-	    }
-	});
+	function makeMap() {
+		$.ajax({
+		    type: "GET",
+		    url: "PartyServlet", 
+		    success: function(items) {
+				for (var i = 0; i < items.length; i++) {
+					nameArray[items[i].area] = items[i].name;
+					proArray[items[i].area] = items[i].percentage;
+				}
+				loadScript();
+				
+		    },
+		    error: function(err) {
+		        alert(err.toString());
+		    }
+		});
+	}
+	
 	
 	function getFromArray(array) {
 		if (typeof array == "undefined") {
@@ -285,7 +288,7 @@
 					  	<ul class="statmenu ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 						    <li class="ui-corner-top ui-tabs-selected ui-state-active"><a href="#statistika-riigiSisu" onclick="getCountryStat()">Statistika riigi l&otilde;ikes</a></li>
 						    <li class="ui-corner-top ui-state-default"><a href="#statistika-piirkonnaSisu" >Statistika piirkonna l&otilde;ikes</a></li>
-						    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu">Statistika parteide l&otilde;ikes</a></li>
+						    <li class="ui-corner-top ui-state-default"><a href="#statistika-parteiSisu" onclick="makeMap();">Statistika parteide l&otilde;ikes</a></li>
 						    <li class="ui-corner-top ui-state-default"><a href="#statistika-kandidaadiSisu" onclick="getCandidateStat(false)">Statistika kandidaatide l&otilde;ikes</a></li>
 					  	</ul>
 						<div id="statistika-riigiSisu"   class="text">

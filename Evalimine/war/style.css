@@ -159,7 +159,7 @@ html {
 
 #sorting th {
 	text-decoration:none;
-	font-color:#23282e;
+/* 	font-color:#23282e; */
 }
 
 .btn {
@@ -233,14 +233,12 @@ input:hover {
 }
 
 .riigistat {
-	float:center;
 	margin:0px;
 	width:60em;
 	height:40em;
 }
 
 .piirkonnastat {
-	float:center;
 	width:40em;
 	height:25em;
 }
@@ -263,13 +261,11 @@ input:hover {
 }
 
 .kandidaadistat {
-	float:center;
 	width:40em;
 	height:25em;
 }
 
 #parteistat {
-  float:center;
   margin:0%;
   padding:10%;
   height:390px;
@@ -299,7 +295,7 @@ input:hover {
 	width:90%;
 	height:10%;
  	text-align:center;
-	border:1;
+	border:0.1em;
  	border-color:#000066;
  	border-collapse:collapse;
  	text-decoration:none;
@@ -389,7 +385,7 @@ th {
 #middle {
 	display: table-cell;
 	padding-left:1em;
-	padding-top:-5em;
+/* 	padding-top:-5em; */
 	vertical-align: top;
 	text-align: left;
 }

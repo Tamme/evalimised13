@@ -5,9 +5,9 @@
 		  center: new google.maps.LatLng(58.397, 25.944),
 		  mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		map = new google.maps.Map(document.getElementById('parteistat'),
-		    mapOptions);
-		
+		map = new google.maps.Map(document.getElementById('parteistat'), mapOptions);
+		google.maps.event.trigger(map, 'resize');
+
 		//  Each area marker -->
 		var counter10 = 1;
 		var window10;
