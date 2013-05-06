@@ -25,7 +25,6 @@ public class PartyServlet extends HttpServlet {
 		String full = "[";
 		try {
 			c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
-			String param = req.getParameter("values");
 			String query = "select   voted_area as a, party.name, round(count(voted_party)/(select count(voted_area) from votes where voted_area = a), 2)*100 as pro from votes " +
 					"left join party on (party.party_id = voted_party) group by voted_party, voted_area order by pro asc";
 						

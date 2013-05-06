@@ -38,59 +38,59 @@
     </servlet-mapping>
     
 <!--     <servlet>
-        <servlet-name>ChannelServlet</servlet-name>
-        <servlet-class>com.evalimine.server.ChannelServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ChannelServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping> -->
+    <servlet-name>ChannelServlet</servlet-name>
+    <servlet-class>com.evalimine.server.ChannelServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ChannelServlet</servlet-name>
+    <url-pattern>/*</url-pattern>
+</servlet-mapping> -->
 
+  <servlet>
+       <servlet-name>LoginServlet</servlet-name>
+       <servlet-class>com.evalimine.server.LoginServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+       <servlet-name>LoginServlet</servlet-name>
+       <url-pattern>/LoginServlet/*</url-pattern>
+   </servlet-mapping>
+   
    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.evalimine.server.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet/*</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>MyDataServlet</servlet-name>
-        <servlet-class>com.evalimine.server.MyDataServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MyDataServlet</servlet-name>
-        <url-pattern>/MyDataServlet/*</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>PartyServlet</servlet-name>
-        <servlet-class>com.evalimine.server.PartyServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PartyServlet</servlet-name>
-        <url-pattern>/PartyServlet/*</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>MyDataServlet2</servlet-name>
-        <servlet-class>com.evalimine.server.MyDataServlet2</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MyDataServlet2</servlet-name>
-        <url-pattern>/MyDataServlet2/*</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>GoogleSuggestServlet</servlet-name>
-        <servlet-class>com.evalimine.server.GoogleSuggestServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GoogleSuggestServlet</servlet-name>
-        <url-pattern>/GoogleSuggestServlet/*</url-pattern>
-    </servlet-mapping>
- 
+       <servlet-name>MyDataServlet</servlet-name>
+       <servlet-class>com.evalimine.server.MyDataServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+       <servlet-name>MyDataServlet</servlet-name>
+       <url-pattern>/MyDataServlet/*</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+       <servlet-name>PartyServlet</servlet-name>
+       <servlet-class>com.evalimine.server.PartyServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+       <servlet-name>PartyServlet</servlet-name>
+       <url-pattern>/PartyServlet/*</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+       <servlet-name>MyDataServlet2</servlet-name>
+       <servlet-class>com.evalimine.server.MyDataServlet2</servlet-class>
+   </servlet>
+   <servlet-mapping>
+       <servlet-name>MyDataServlet2</servlet-name>
+       <url-pattern>/MyDataServlet2/*</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+       <servlet-name>GoogleSuggestServlet</servlet-name>
+       <servlet-class>com.evalimine.server.GoogleSuggestServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+       <servlet-name>GoogleSuggestServlet</servlet-name>
+       <url-pattern>/GoogleSuggestServlet/*</url-pattern>
+   </servlet-mapping>
+
 	<servlet>
 	  	<servlet-name>SystemServiceServlet</servlet-name>
 	  	<servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
@@ -101,30 +101,53 @@
 	</servlet>
 			  
 	<servlet-mapping>
-    	<servlet-name>SystemServiceServlet</servlet-name>
-    	<url-pattern>/_ah/spi/*</url-pattern>
-  	</servlet-mapping>
+	   	<servlet-name>SystemServiceServlet</servlet-name>
+	   	<url-pattern>/_ah/spi/*</url-pattern>
+	 	</servlet-mapping>
 	
 	<servlet>
-        <servlet-name>SignGuestbookServlet</servlet-name>
-        <servlet-class>com.evalimine.server.SignGuestbookServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SignGuestbookServlet</servlet-name>
-        <url-pattern>/SignGuestbookServlet</url-pattern>
-    </servlet-mapping> 
- 
-   <servlet>
-        <servlet-name>sign</servlet-name>
-        <servlet-class>com.evalimine.server.GuestbookServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>sign</servlet-name>
-        <url-pattern>/sign</url-pattern>
-    </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>evalimine.html</welcome-file>
-    </welcome-file-list>
+	     <servlet-name>SignGuestbookServlet</servlet-name>
+	     <servlet-class>com.evalimine.server.SignGuestbookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignGuestbookServlet</servlet-name>
+		<url-pattern>/SignGuestbookServlet</url-pattern>
+	</servlet-mapping> 
+	
+	<servlet>
+		<servlet-name>sign</servlet-name>
+		<servlet-class>com.evalimine.server.GuestbookServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	     <servlet-name>sign</servlet-name>
+	     <url-pattern>/sign</url-pattern>
+	 </servlet-mapping>
+   
+	<filter>
+	  <filter-name>Compress</filter-name>
+	  <filter-class>com.jspbook.GZIPFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+	  <filter-name>Compress</filter-name>
+	  <url-pattern>*.js</url-pattern>
+	</filter-mapping>
+		<filter-mapping>
+	  <filter-name>Compress</filter-name>
+	  <url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	  <filter-name>Compress</filter-name>
+	  <url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	  <filter-name>Compress</filter-name>
+	  <url-pattern>*.css</url-pattern>
+	</filter-mapping>
+	  
+	  <welcome-file-list>
+	      <welcome-file>evalimine.html</welcome-file>
+	  </welcome-file-list>
  
 
 	

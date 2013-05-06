@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/selenium-java-2.32.0-srcs.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/selenium-java-2.32.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/selenium-server-standalone-2.32.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jspbook.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

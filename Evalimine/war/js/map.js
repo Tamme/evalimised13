@@ -310,7 +310,7 @@
 	            icon: 'img/icon10.png',
           },
           Default: {
-	            name: 'Teised',
+	            name: 'Määratama',
 	            icon: 'img/icon5.png',
 	          }
         };

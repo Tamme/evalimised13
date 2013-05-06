@@ -34,7 +34,7 @@
 	 $(function() {
 		   $( "#searcharea" ).autocomplete({
 		           source: "/GoogleSuggestServlet/*",
-		           minLength: 2,
+		           minLength: 2
 		   });
 	 });
 	
@@ -99,7 +99,7 @@
 				
 		    },
 		    error: function(err) {
-		        alert(err.toString());
+		        //alert(err.toString());
 		    }
 		});
 	}
@@ -172,7 +172,7 @@
 
 	    	function sendVote (id, loggedId) {
 	   		 	var param = "vote " +id + " " + loggedId;
-	   		 	var random = Math.floor(Math.random()*1000)
+	   		 	var random = Math.floor(Math.random()*1000);
 				$.post("voteServlet", {values:param}, function(reply) { 
 					alert("Olete hääletanud");    
 				});

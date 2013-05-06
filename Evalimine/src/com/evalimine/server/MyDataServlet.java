@@ -1,12 +1,8 @@
 package com.evalimine.server;
 
 import com.google.appengine.api.rdbms.AppEngineDriver;
-import com.google.gson.Gson;
-import com.google.gwt.dev.util.Empty;
 
 import java.sql.*;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

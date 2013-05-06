@@ -1,12 +1,8 @@
 package com.evalimine.server;
 
 import com.google.appengine.api.rdbms.AppEngineDriver;
-import com.google.gson.Gson;
-import com.google.gwt.dev.util.Empty;
 
 import java.sql.*;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +36,6 @@ public class removeVoteServlet extends HttpServlet {
 			  String statement2 ="UPDATE candidate set voting = 0 where id = " + id;
 			  System.out.println(statement2);
 			  PreparedStatement stmt2 = c.prepareStatement(statement2);
-			  int success2 = 2;
 			  success = stmt2.executeUpdate();
 			  
 			  if(success == 1) {
