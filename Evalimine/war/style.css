@@ -158,7 +158,7 @@ html {
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	font-size:2em;
-	padding:0.05em 0.899em; /* change menu width here */
+	padding:0.05em 0.8395em; /* change menu width here */
 	text-decoration:none;
 }
 
@@ -176,7 +176,7 @@ html {
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	font-size:1.25em;
-	padding:0.05em 1.15em; /* change menu width here */
+	padding:0.05em 0.8em; /* change menu width here */
 	text-decoration:none;
 }
 
