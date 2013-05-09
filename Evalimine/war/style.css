@@ -3,7 +3,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#auth-loggedout{
+#auth-loggedout {
 	cursor:pointer;
 	float:left;
 	display:block; 
@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	background:url(img/fb3.gif) no-repeat;
 }
 
-#auth-loggedin{
+#auth-loggedin {
 	cursor:pointer;
 	float:left;
 	display:none;
@@ -70,7 +70,8 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	margin:auto;
 	text-align:center;
 	width:100%;
-	background:#FE2E2E;
+	background:#000000;
+	color: #ffffff;
 }
 
 #jalus {
@@ -79,16 +80,9 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	margin:-1.5em 0 0 0;
 	text-align:center;
 	width:100%;
-	background:#FE2E2E;
+	background:#000000;
+	color: #ffffff;
 }
-
-/* #header {
-	float:left;
-	margin:-4em 0 0 0; 
-	padding:0em;
-	width:10em;
-	height:20em;
-} */
 
 a {
 	text-decoration:none;
@@ -101,38 +95,16 @@ a {
 }
 
 html {
-	background:#23282e url('img/taust.png') no-repeat;
-	height:100%; /* this should make page container from top to bottom fully white.*/
+	background:url(img/taust2.png);
+	background-repeat:repeat-x;
 }
 
 .container {
 	margin:auto;
 	width:70em;
-	background:#FFFFFF;
+	background:white;
 	height:100%;
 }
-
-/* .title {
-	padding:3.5em 0em;
-	float:left;
-	font-size:2em;
-	color:#000000;
-} */
-
-/* .ops {
-	padding:10em 4em;
-	float:left;
-} */
-
-/* .enter a {
-	line-height:2.5em;
-	color:#ffffff;
-	background:#3a75c4;
-	font-size:2em;
-	clear:both;
-	padding:0em 1.75em;
-	text-decoration:none;
-} */
 
 .text {
 	clear:both;
@@ -140,43 +112,26 @@ html {
 } 
 
 .active {
-	background:#ffffff;
+	background:#000000;
 }
 
-/* .menu {
-	float:left;
-	margin-top: 0em;
-	margin-bottom:3em;
-	margin-left:-2.5em;
-	margin-right:-1em;
-} 
- */
 .menu a {
 	margin:0em 0 0 0;
 	float:left;
-	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	background-size:cover;
 	font-size:2em;
-	padding:0.05em 1.3em; /* change menu width here */
+	padding:0.05em 1.181em; /* change main menu width here */
 	text-decoration:none;
 }
-
-/* .statmenu {
-	float:left;
-	margin-top:-3em;
-	margin-bottom:0em;
- 	margin-left:-6.5em; 
-	margin-right:-6em;
-}   */
 
 .statmenu a {
 	float:left;
 	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	background-size:cover;
 	font-size:1.25em;
-	padding:0.05em 0.8em; /* change menu width here */
+	padding:0.05em 1.54em; /* change statistics menu width here */
 	text-decoration:none;
 }
 
@@ -186,7 +141,7 @@ html {
 }
 
 .btn {
-	background:#23282e url('img/taust.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	color: white;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	width:2em;
@@ -214,7 +169,7 @@ html {
 
 #candSearch, #areaSearch, #saveData {
 	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	background-size:cover;
 	clear:both;
 	padding:0em 1.17em; /* change menu width here */
@@ -252,7 +207,6 @@ input:hover {
 }
 
 .statmenu a:hover {
-	background:#FFFFFF;
 	color:#3a75c4;
 }
 
@@ -265,8 +219,6 @@ input:hover {
 #areaStatistics  {
 	text-align:center;
 	margin:auto;
-/* 	margin-left:2em;
-	margin-bottom:2em; */
 }
 
 .kandidaadistat {
@@ -280,24 +232,6 @@ input:hover {
   margin:auto;
   height:32em;
   width:100%;
-}
-
-.print {
-	margin-top:5em;
-	margin-left:4em;
-	margin-right:4em;
-}
-
-.printbutton a {
-	position:relative;
-	float:inherit;
-	top:-1.2em;
-	color:#ffffff;
-	background:#23282e url('img/taust.png') no-repeat;
-	font-size:1em;
-	padding:0.1em 1.3em;
-	clear:both;
-	text-decoration:none;
 }
 
 .candidateTable, .sortable {
@@ -333,17 +267,8 @@ table.candidateTable td, table.candidateTable th, table.sortable td, table.sorta
 
 th {
 	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	background-size:cover
-}
-
-#candSearch {
-	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
-	background-size:cover;
-	clear:both;
-	padding:0em 1.17em; /* change menu width here */
-	text-decoration:none;
 }
 
 #candSearch:hover, .button:hover {
@@ -351,9 +276,9 @@ th {
 	color:#3a75c4;
 }
 
-#submitcandidate {
+#submitcandidate, #candSearch{
 	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	background-size:cover;
 	clear:both;
 	padding:0em 1.17em; /* change menu width here */
@@ -367,7 +292,7 @@ th {
 
 .button {
 	color:#ffffff;
-	background:#23282e url('img/button.png') no-repeat;
+	background:url(img/button.png) no-repeat;
 	background-size:cover;
 	clear:both;
 	padding:0em 1.17em; /* change menu width here */
@@ -450,10 +375,9 @@ th {
 	body, text, p, h1, h2, h3, ol, ul, div, .menu a {
 		font: 11px "Verdana";
 		width: auto;
-		text
-		border: 0;
-		margin: 0 5%;
-		padding: 0;
+		border: 0px;
+		margin: 0px;
+		padding: 0px;
 		float: none;
 		position: static;
 		overflow: hidden;
@@ -483,10 +407,83 @@ th {
 
 /*Mittekasutatud asju*/
 
+/* .statmenu {
+	float:left;
+	margin-top:-3em;
+	margin-bottom:0em;
+ 	margin-left:-6.5em; 
+	margin-right:-6em;
+}   
+*/
+
+/* .menu {
+	float:left;
+	margin-top: 0em;
+	margin-bottom:3em;
+	margin-left:-2.5em;
+	margin-right:-1em;
+} 
+*/
+
+/* .print {
+	margin-top:5em;
+	margin-left:4em;
+	margin-right:4em;
+} 
+*/
+
+/* .printbutton a {
+	position:relative;
+	float:inherit;
+	top:-1.2em;
+	color:#ffffff;
+	background:#23282e url('img/taust.png') no-repeat;
+	font-size:1em;
+	padding:0.1em 1.3em;
+	clear:both;
+	text-decoration:none;
+} 
+*/
+
+/* .title {
+	padding:3.5em 0em;
+	float:left;
+	font-size:2em;
+	color:#000000;
+} 
+*/
+
+/* .ops {
+	padding:10em 4em;
+	float:left;
+} 
+*/
+
+/* .enter a {
+	line-height:2.5em;
+	color:#ffffff;
+	background:#3a75c4;
+	font-size:2em;
+	clear:both;
+	padding:0em 1.75em;
+	text-decoration:none;
+} 
+*/
+
+/* #header {
+	float:left;
+	margin:-4em 0 0 0; 
+	padding:0em;
+	width:10em;
+	height:20em;
+} 
+*/
+
 /* #tabs li { 
  	list-style:none; 
  	display:inline; 
-} */
+} 
+*/
 
 /* .searchbar {
 	float:right;
@@ -495,7 +492,8 @@ th {
 	background:#23282e url('img/taust.png') no-repeat;
 	padding-bottom:0.5em;
 	padding-left:1.3em;
-} */
+} 
+*/
 
 /* .search {
 	width:6em;
@@ -507,14 +505,17 @@ th {
 	clear:both;
 	padding:0.1em 1.75em;
 	text-decoration:none;
-} */
+} 
+*/
 
 /* a:hover { 
 	background:#FFFFFF; 
 	color:#3a75c4; 
  	text-decoration:none;
- } */
+ } 
+ */
  
  /* #sisene a{
 	padding:0.2em;
-} */
+} 
+*/

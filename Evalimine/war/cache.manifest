@@ -1,12 +1,30 @@
 CACHE MANIFEST
 
-#version 1.1 5-9-2013
+#version 1.2 5-10-2013
 
 CACHE:
 
 #images
 /img/ajax-loader.gif
 /img/logo3.png
+/img/icon1.png
+/img/icon2.png
+/img/icon3.png
+/img/icon4.png
+/img/icon5.png
+/img/icon6.png
+/img/icon7.png
+/img/icon8.png
+/img/icon9.png
+/img/icon10.png
+https://maps.gstatic.com/mapfiles/arrow-down.png
+https://maps.gstatic.com/mapfiles/cb/mod_cb_scout/cb_scout_sprite_api_003.png
+https://maps.gstatic.com/mapfiles/google_white.png
+https://maps.gstatic.com/mapfiles/mv/imgs8.png
+https://maps.gstatic.com/mapfiles/rotate2.png
+https://maps.gstatic.com/mapfiles/szc4.png
+https://mts0.googleapis.com/vt?lyrs=m@216124513&src=apiv3&hl=et-EE&x=70&y=37&z=7&s=Galileo&style=37%7Csmartmaps,59
+https://mts1.googleapis.com/vt?lyrs=m@216118895&src=apiv3&hl=et-EE&x=71&y=37&z=7&s=Ga&style=37%7Csmartmaps,59
 
 #internal HTML documents
 /evalimine.html
@@ -23,7 +41,7 @@ CACHE:
 /img/fb11.gif
 /img/fb12.gif
 /img/fb13.gif
-/img/taust.png
+/img/taust2.png
 /img/ui-anim_basic_16x16.gif
 http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif
 http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif
@@ -43,6 +61,22 @@ http://connect.facebook.net/en_US/all.js
 /js/map.js
 /js/html5-canvas-bar-graph.js
 /_ah/channel/jsapi
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bcommon,map,util,marker%7D.js
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bonion%7D.js
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bcontrols%7D.js
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bstats%7D.js
+https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2F127.0.0.1%3A8888%2F%23%2Fstatistika%2FparteiSisu&4sAIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&5e1&callback=_xdc_._myrn62&token=42995
+https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2F127.0.0.1%3A8888%2F%23%2Fstatistika%2FparteiSisu&3sAIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&4e1&5e0&6u1&7siflw94&callback=_xdc_._urr2ne&token=27207
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bcommon,map,util,marker%7D.js
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bonion%7D.js
+https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/11/%7Bcontrols,stats%7D.js
+https://mts0.googleapis.com/mapslt/ft?hl=et-EE&lyrs=m%40216000000%7Csalt%3A1181333875&las=vutvuut,vutvuuv&z=7&src=apiv3&xc=1&style=37%7Csmartmaps%2C59&callback=_xdc_._ndx8lh&token=33776
+https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2F127.0.0.1%3A8888%2F%23%2Fkkk&4sAIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&5e1&callback=_xdc_._qo35w7&token=95557
+https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2F127.0.0.1%3A8888%2F%23%2Fkkk&3sAIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&4e1&5e0&6u1&7sifm2na&callback=_xdc_._ddip71&token=117363
+https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false&callback=initialize
+https://maps.gstatic.com/intl/et_ee/mapfiles/api-3/12/11/main.js
+https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false&callback=initialize
+https://maps.gstatic.com/intl/et_ee/mapfiles/api-3/12/11/main.js
 
 NETWORK:
 *

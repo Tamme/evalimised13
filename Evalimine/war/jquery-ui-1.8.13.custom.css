@@ -66,12 +66,12 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0px solid #29313a; font-weight: bold; color: #fff; outline: none; }
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #fff; text-decoration: none; outline: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 0px solid #19212a; background: #5db0e6; font-weight: bold; color: #fff; outline: none; }
-.ui-state-hover a, .ui-state-hover a:hover { background: #fff; color: #141414; text-decoration: none; outline: none; font-weight: bold; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 0px solid; background: #eee; font-weight: bold; color: #176092; outline: none; }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: rgb(206, 26, 26); font-weight: bold; text-decoration: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 0px solid black; font-weight: bold; color: white; outline: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #CCCCCC; text-decoration: none; outline: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 0px solid #19212a; background: #5db0e6; font-weight: bold; color: #000000; outline: none; }
+.ui-state-hover a, .ui-state-hover a:hover { background: white; color: black; text-decoration: none; outline: none; font-weight: bold; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 0px solid; background: white; font-weight: bold; outline: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color:black; background: white; font-weight: bold; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
@@ -90,15 +90,15 @@
 ----------------------------------*/
 
 /* Corner radius */
-.ui-corner-tl { border-top-left-radius: 1px; }
-.ui-corner-tr { border-top-right-radius: 1px; }
-.ui-corner-bl { border-bottom-left-radius: 1px; }
-.ui-corner-br { border-bottom-right-radius: 1px; }
-.ui-corner-top { border-top-left-radius: 1px; border-top-right-radius: 1px; }
-.ui-corner-bottom { border-bottom-left-radius: 1px; border-bottom-right-radius: 1px; }
-.ui-corner-right {  border-top-right-radius: 1px; border-bottom-right-radius: 1px; }
-.ui-corner-left {  border-top-left-radius: 1px; border-bottom-left-radius: 1px; }
-.ui-corner-all {border-radius: 1px; }
+.ui-corner-tl { border-top-left-radius: 0px; }
+.ui-corner-tr { border-top-right-radius: 0px; }
+.ui-corner-bl { border-bottom-left-radius: 0px; }
+.ui-corner-br { border-bottom-right-radius: 0px; }
+.ui-corner-top { border-top-left-radius: 0px; border-top-right-radius: 0px; }
+.ui-corner-bottom { border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; }
+.ui-corner-right {  border-top-right-radius: 0px; border-bottom-right-radius: 0px; }
+.ui-corner-left {  border-top-left-radius: 0px; border-bottom-left-radius: 0px; }
+.ui-corner-all {border-radius: 0px; }
 
 .ui-tabs { position: relative; padding: 0px; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 .ui-tabs .ui-tabs-nav { margin: 0; padding: 0px 0px 0; }
