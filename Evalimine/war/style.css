@@ -158,7 +158,7 @@ html {
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	font-size:2em;
-	padding:0.05em 0.8395em; /* change menu width here */
+	padding:0.05em 1.3em; /* change menu width here */
 	text-decoration:none;
 }
 
@@ -445,6 +445,41 @@ th {
 .ui-autocomplete-loading {
     background: white url('img/ui-anim_basic_16x16.gif') right center no-repeat;
   }
+
+@media print {
+	body, text, p, h1, h2, h3, ol, ul, div, .menu a {
+		font: 11px "Verdana";
+		width: auto;
+		text
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		float: none;
+		position: static;
+		overflow: hidden;
+	}
+	      
+	Remove Elements
+	#pais, #jalus, .logo, .menu, .statmenu, .ui-tabs {
+		display:none;
+	}
+
+	Show URL
+	a:link, a:visited {
+		background: transparent;
+		color:#333;
+		text-decoration:none;
+	}
+	
+	a:link[href^="http://"]:after, a[href^="http://"]:visited:after {
+		content: " (" attr(href) ") ";
+		font-size: 11px;
+	}
+	
+	a[href^="http://"] {
+		color:#000;
+	} 
+}
 
 /*Mittekasutatud asju*/
 
