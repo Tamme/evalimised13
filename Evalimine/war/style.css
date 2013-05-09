@@ -3,6 +3,39 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+#auth-loggedout{
+	cursor:pointer;
+	float:left;
+	display:block; 
+	width:255px;
+	height:43px;
+	background:url(img/fb1.gif) no-repeat;	
+}
+
+#auth-loggedout:hover {
+	background:url(img/fb2.gif) no-repeat;
+}
+
+#auth-loggedout:active {
+	background:url(img/fb3.gif) no-repeat;
+}
+
+#auth-loggedin{
+	cursor:pointer;
+	float:left;
+	display:none;
+	width:255px;
+	height:43px;
+	background:url(img/fb11.gif) no-repeat;
+}
+
+#auth-loggedin:hover {
+	background:url(img/fb12.gif) no-repeat;
+}
+
+#auth-loggedin:active {
+	background:url(img/fb13.gif) no-repeat;
+}
 
 #auth-display-img {
 	height:30px; 
@@ -11,8 +44,7 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 
 #legend {
   background: white;
-  padding: 5px;
-}
+} 
 
 #auth-display-name {
 	height:30px; 
@@ -33,32 +65,30 @@ h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 }
 
 #pais {
-	float: left;
-	font-size:75%;
-	margin-left:auto;
-	text-align: center;
-	margin-right:auto;
+	float:left;
+	font-size:65%;
+	margin:auto;
+	text-align:center;
 	width:100%;
 	background:#FE2E2E;
 }
 
 #jalus {
-	float: left;
-	font-size:75%;
-	margin-left:auto;
-	text-align: center;
-	margin-right:auto;
+	float:left;
+	font-size:70%;
+	margin:-1.5em 0 0 0;
+	text-align:center;
 	width:100%;
 	background:#FE2E2E;
 }
 
-#header {
+/* #header {
 	float:left;
 	margin:-4em 0 0 0; 
 	padding:0em;
 	width:10em;
 	height:20em;
-}
+} */
 
 a {
 	text-decoration:none;
@@ -66,43 +96,35 @@ a {
 
 .logo {
 	float:left;
-	margin:0px;
-	padding:5.5em 0 0 0;
-	width:70em;
-	height:16.27em;
+	width:100%;
+	height:auto;
 }
-
-/* #tabs li { */
-/* 	list-style:none; */
-/* 	display:inline; */
-/* } */
 
 html {
 	background:#23282e url('img/taust.png') no-repeat;
-	height:60%; /* this should make page container from top to bottom fully white.*/
+	height:100%; /* this should make page container from top to bottom fully white.*/
 }
 
 .container {
-	margin: -2em auto;
-	padding: 0em 0 0em 0;
-	width: 70em;
+	margin:auto;
+	width:70em;
 	background:#FFFFFF;
 	height:100%;
 }
 
-.title {
+/* .title {
 	padding:3.5em 0em;
 	float:left;
 	font-size:2em;
 	color:#000000;
-}
+} */
 
-.ops {
+/* .ops {
 	padding:10em 4em;
 	float:left;
-}
+} */
 
-.enter a {
+/* .enter a {
 	line-height:2.5em;
 	color:#ffffff;
 	background:#3a75c4;
@@ -110,50 +132,51 @@ html {
 	clear:both;
 	padding:0em 1.75em;
 	text-decoration:none;
-}
+} */
 
 .text {
 	clear:both;
-	margin:1em 4em;
+	margin:1em 1em;
 } 
 
 .active {
 	background:#ffffff;
 }
 
-.menu {
+/* .menu {
 	float:left;
-	margin-top:-0.5em;
+	margin-top: 0em;
 	margin-bottom:3em;
 	margin-left:-2.5em;
 	margin-right:-1em;
 } 
-
+ */
 .menu a {
+	margin:0em 0 0 0;
 	float:left;
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	font-size:2em;
-	padding:0em 1.16em; /* change menu width here */
+	padding:0.05em 0.899em; /* change menu width here */
 	text-decoration:none;
 }
 
-.statmenu {
+/* .statmenu {
 	float:left;
 	margin-top:-3em;
 	margin-bottom:0em;
  	margin-left:-6.5em; 
 	margin-right:-6em;
-}  
+}   */
 
 .statmenu a {
 	float:left;
 	color:#ffffff;
-	background:#23282e url('img/taust.png') no-repeat;
+	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
-	font-size:1em;
-	padding:0.3em 2em; /*change statmenu width here*/
+	font-size:1.25em;
+	padding:0.05em 1.15em; /* change menu width here */
 	text-decoration:none;
 }
 
@@ -177,7 +200,6 @@ html {
 
 .menu a:hover, .statmenu a:hover {
 	color:#3a75c4;
-	
 }
 
 .menu a:active {
@@ -195,32 +217,19 @@ html {
 	background:#23282e url('img/button.png') no-repeat;
 	background-size:cover;
 	clear:both;
-	padding:0.1em 1.17em; /* change menu width here */
+	padding:0em 1.17em; /* change menu width here */
 	text-decoration:none;
 }
 
 #candSearch:hover, .button:hover {
 	background:#FFFFFF;
 	color:#3a75c4;
-	
 }
 
 input:hover {
 	background:#FFFFFF;
 	color:#3a75c4;
 	text-decoration:none;
-}
-
-#idkaardinupp { display: block; width:255px; height:43px;
-	background: url(img/ggl1.gif) no-repeat;
-}
-
-#idkaardinupp:hover {
-	background: url(img/ggl2.gif) no-repeat;
-}
-
-#idkaardinupp:active {
-	background: url(img/ggl3.gif) no-repeat;
 }
 
 #form{
@@ -239,8 +248,7 @@ input:hover {
 }
 
 .piirkonnastat {
-	width:40em;
-	height:25em;
+	margin:auto;
 }
 
 .statmenu a:hover {
@@ -250,26 +258,28 @@ input:hover {
 
 .kandidaadid {
 	text-align:center;
-	margin-left:4em;
-	margin-bottom:2em;
+/* 	margin-left:4em;
+	margin-bottom:2em; */
 }
 
 #areaStatistics  {
 	text-align:center;
-	margin-left:4em;
-	margin-bottom:2em;
+	margin:auto;
+/* 	margin-left:2em;
+	margin-bottom:2em; */
 }
 
 .kandidaadistat {
-	width:40em;
-	height:25em;
+  margin:auto;
+  height:100%;
+  width:100%;
+  display:inline;
 }
 
 #parteistat {
-  margin:0%;
-  padding:10%;
-  height:390px;
-  width:70%;
+  margin:auto;
+  height:32em;
+  width:100%;
 }
 
 .print {
@@ -321,7 +331,6 @@ table.candidateTable td, table.candidateTable th, table.sortable td, table.sorta
  	text-decoration:none;
 }
 
-
 th {
 	color:#ffffff;
 	background:#23282e url('img/button.png') no-repeat;
@@ -355,7 +364,6 @@ th {
 	background:#FFFFFF;
 	color:#3a75c4;
 }
-
 
 .button {
 	color:#ffffff;
@@ -396,7 +404,6 @@ th {
 	vertical-align: top;
 	text-align: left;
 }
-
 	
 #select {
 	width:4em;
@@ -408,7 +415,7 @@ th {
 }
 
 .tabs a {
- padding:0px 0px;
+ padding:0em 0;
  display:inline-block;
  background:#666;
  color:#fff;
@@ -439,7 +446,13 @@ th {
     background: white url('img/ui-anim_basic_16x16.gif') right center no-repeat;
   }
 
-/*Mittekasutatud otsing*/
+/*Mittekasutatud asju*/
+
+/* #tabs li { 
+ 	list-style:none; 
+ 	display:inline; 
+} */
+
 /* .searchbar {
 	float:right;
 	position:relative;

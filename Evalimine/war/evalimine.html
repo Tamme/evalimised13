@@ -182,6 +182,11 @@
 	   	}
 	   </script>
 		<div class="container">
+			<div id="pais">
+				<p>
+					Tähelepanu! Antud rakendus ei ole mõeldud kasutamiseks reaalsetel valimistel.
+				</p>
+			</div>
 			<div id="header" class="logo">
 				<a href="evalimine.html"><img class="logo" src="img/logo3.png" alt="Logo of our website"/></a>
 			</div>
@@ -192,14 +197,8 @@
 				    <li class="ui-corner-top ui-state-default"><a href="#kkk">KKK</a></li>
 				    <li class="ui-corner-top ui-state-default"><a href="#statistika" onclick="getCountryStat()">Statistika</a></li>
 				    <li class="ui-corner-top ui-state-default"><a href="#andmed" onclick="getPersonData()">Minu andmed</a></li>
-				    <li class="ui-corner-top ui-state-default"><a href="#sisene">Sisene</a></li>
+				    <li class="ui-corner-top ui-state-default"><a href="#sisene">Sisene/Välju</a></li>
 				</ul>
-				<div id="pais">
-					<p>
-						Tähelepanu! Antud rakendus ei ole mõeldud kasutamiseks reaalsetel valimistel.
-					</p>
-				</div>
-				
 				<div id="esileht" class="text">
 					<h1>
 						Valimised ja e-hääletamine
@@ -208,23 +207,23 @@
 						Hiljemalt 01.08.2013
 					</h3>
 					<p>
-						Kandideerimisõigus on hääleõiguslikul Eesti kodanikul ja Euroopa Liidu kodanikul, kelle püsiv elukoht, st. elukoht, mille aadressiandmed on 
-						kantud rahvastikuregistrisse, asub hiljemalt valimisaasta 1. augustil selles vallas või linnas.
+						Kandideerimisõigus on hääleõiguslikul Jugoslaavia kodanikul, kelle püsiv elukoht, st. elukoht, mille aadressiandmed on 
+						kantud rahvastikuregistrisse, asub hiljemalt valimisaasta 1. jaanuaril selles vallas või linnas.
 					</p>
 					<h3>
-						Alates 21.08.2013 kuni 05.09.2013
+						Alates 01.01.2013 kuni 01.03.2013
 					</h3>
 					<p>
 						Esitatakse valimisliit valla ja linna valimiskomisjonile registreerimiseks.
 					</p>
 					<h3>
-						Alates 21.08.2013
+						Alates 05.03.2013 kuni 05.04.2013
 					</h3>
 					<p>
 						Algab kandidaatide registreerimiseks esitamine.
 					</p>
 					<h3>
-						Hiljemalt 05.09.2013
+						Hiljemalt 10.05.2013
 					</h3>
 					<p>
 						Valimistel osalev erakond ja valimisliit võib esitada valla- või linnasekretärile ühe jaoskonnakomisjoni liikmeskandidaadi.
@@ -232,13 +231,15 @@
 				</div>
 				
 				<div id="kandidaadid" class="text">
+					<h1>
+						Kandidaadid
+					</h1>
 					<h3>
 						Otsi kandidaate
 					</h3>
 		
 					<div class="searchCandidate">
 						<form id="candidateForm">
-							Vali piirkond:
 							<select name="area" id="areas">
 								<option selected="" value="Eesti"> --Palun vali oma valimisringkond--</option>
 								<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
@@ -254,7 +255,6 @@
 								<option value="valimisringkondnr11">Võru-, Valga- ja Põlvamaa</option>
 								<option value="valimisringkondnr12">Pärnumaa</option>
 							</select>
-							Vali erakond:
 							<select name="party" id="partyID">
 								<option selected="" value="allParties"> --Palun vali oma erakond--</option>
 								<option value="erakondnr1">Mustad</option>
@@ -267,9 +267,7 @@
 								<option value="erakondnr8">Hallid</option>
 								<option value="erakondnr9">Valged</option>
 							</select>
-							<br>
-							Kandidaatide otsing nime järgi:
-		     				<input type="text" class="ui-widget" id="searcharea" size="40" autocomplete="off">
+		     				<input type="text" class="ui-widget" id="searcharea" size="48" autocomplete="off" placeholder="Kandidaatide otsing perenime järgi">
 							<button id="candSearch">Otsi</button>
 						</form>
 					</div>
@@ -277,6 +275,7 @@
 					</div>
 					<div id="list">
 					</div>
+					<br>
 				</div>
 				
 				<div id="loading">
@@ -299,11 +298,6 @@
 								<div id="sortingdiv" >
 								</div>
 								<br>
-								<br>
-								<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
-								<div class="printbutton">
-									<a href="riigistatprint.html">Prindi</a>
-								</div>
 							</div>
 						</div>
 		
@@ -315,7 +309,6 @@
 								<div class="searchCandidate">
 								
 									<form  id="areaStatForm">
-										Vali piirkond:
 										<select name="area" id="areaId">
 											<option selected="" value="Eesti"> --Palun vali oma valimisringkond--</option>
 											<option value="valimisringkondnr1">Tallinna Haabersti, Põhja-Tallinna ja Kristiine linnaosa</option>
@@ -334,16 +327,8 @@
 										<button id="areaSearch">Otsi</button>
 									</form>
 								</div>
-								<div id = "areaStatistics">
-									<img class="piirkonnastat" src="img/eestikaart2.gif" alt="Vali piirkond"/>
-								</div>
-								
-							</div>
-							<br>
-							<br>
-							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
-							<div class="printbutton">
-								<a href="piirkonnastatprint.html">Prindi</a>
+								<br>
+								<div id = "areaStatistics"></div><br>
 							</div>
 						</div>
 							
@@ -356,13 +341,7 @@
 							<div id="legend">
 							  Legend:
 							</div>
-							
 							<br>
-							<br>
-							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
-							<div class="printbutton">
-								<a href="parteistatprint.html">Prindi</a>
-							</div>
 						</div>
 							
 						<div id="statistika-kandidaadiSisu">
@@ -404,11 +383,6 @@
 								</script>
 							</div>
 							<br>
-							<br>
-							<!-- Print vaated on illustratiivsed mitte funktsionaalsed ning print nupp võiks olla statmenu.js all mitte buttonina realiseeritud -->
-							<div class="printbutton">
-								<a href="kandidaadistatprint.html">Prindi</a>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -428,11 +402,10 @@
 					</h3>
 					<ul>
 						<li>Selleks, et anda oma hääl tuleb ennast autentida.</li>
-						<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li>
-						<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li>
+						<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene/Välju" ning seejärel nupule "Sisene läbi Facebook'i".</li>
 						<li>Leia endale sobiv kandidaat kasutades selleks nupule "Kandidaadid" või "Häält andma".</li>
-						<li>Olles kandidaadi valinud tuleb tehtud valik kinnitada.</li>
-						<li>Eduka kinnituse puhul on hääletamine sooritatud.</li>
+						<li>Olles kandidaadi valinud tuleb tehtud valik kinnitada. Eduka kinnituse puhul on hääletamine sooritatud.</li>
+						<li>Rakendusest väljumise alustamiseks tuleb vajutada nupule "Sisene/Välju" ning seejärel nupule "Välju valimisrakendusest".</li>
 						<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
 					</ul>
 					<h3>
@@ -440,14 +413,15 @@
 					</h3>
 					<ul>
 						<li>Selleks, et kandideerida tuleb ennast autentida.</li>
-						<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene".</li>
-						<li>Sisene vajutades nupule "Sisene ID-Kaardiga".</li>
+						<li>Autentimise alustamiseks tuleb vajutada nupule "Sisene/Välju" ning seejärel nupule "Sisene läbi Facebook'i".</li>
+						<li>Kandideerimise alustamiseks tuleb vajutada nupule "Minu andmed".</li>
 						<li>Täida kohustuslikud väljad oma andmetega ning vajuta nupule "Salvesta".</li>
 						<li>Peale andmete salvestamist vajuta nupule "Soovin kandideerida".</li>
-						<li>Teie soov kandideerida tuleb kinnitada.</li>
-						<li>Eduka kinnituse puhul olete kandideeritud.</li>
+						<li>Teie soov kandideerida tuleb kinnitada. Eduka kinnituse puhul olete kandideeritud.</li>
+						<li>Rakendusest väljumise alustamiseks tuleb vajutada nupule "Sisene/Välju" ning seejärel nupule "Välju valimisrakendusest".</li>
 						<li>Turvalisuse tagamiseks soovitame peale hääletamist sulgeda oma brauseri aken.</li>
 					</ul>
+				<br>
 				</div>
 	
 				<div id="sisene" class="text">
@@ -455,18 +429,15 @@
 						Autentimine
 					</h1>
 					<h3>
-						Sisenemiseks vali sobiv autentimismeetod:
+						Autentimiseks vajuta allpool asuvale nupule:
 					</h3>
-						<div id="auth-status">
-							<div id="auth-loggedout" style="width:200px; margin:0px auto;">
-								<img src="img/fb1.gif" onclick="fbLogin();" alt="log in" onMouseOver="this.style.cursor='pointer';"/>
-							</div>
-							<div id="auth-loggedin" style="display:none; width:250px; margin:0px auto;">
-								<br/><br/><br/>
-								<img src="img/fb2.gif" onclick="fbLogout();" alt="log out" onMouseOver="this.style.cursor='pointer';"/>
-							</div>
-						</div>
-					<br>
+					<div id="auth-status">
+						<div id="auth-loggedout" onclick="fbLogin();"></div>
+						<div id="auth-loggedin" onclick="fbLogout();"></div>
+						<br>
+						<br>
+						<br>
+					</div>
 				</div>
 				<div id="andmed" class="text">
 					<h1>
@@ -518,16 +489,11 @@
 							</div>
 							<div id="minu"> 
 				            </div> 
-	    					<div id="right">
-	  							
+	    					<div id="right">			
 							</div>
 						</div>
 					</div>
-				</div>
-				<div>
-				<br>
-				<br>
-				<br>
+					<br>
 				</div>
 				<div id="jalus">
 		  			<p>

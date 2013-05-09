@@ -1,31 +1,15 @@
 CACHE MANIFEST
 
-#version 2.0 4-28-2013
+#version 1.1 5-10-2013
 
 CACHE:
 
 #images
 /img/ajax-loader.gif
-/img/eestikaart2.gif
 /img/logo3.png
-/img/parteistat.png
-/img/fb1.gif
-/img/fb2.gif
-https://maps.gstatic.com/mapfiles/arrow-down.png
-https://maps.gstatic.com/mapfiles/cb/mod_cb_scout/cb_scout_sprite_api_003.png
-https://maps.gstatic.com/mapfiles/google_white.png
-https://maps.gstatic.com/mapfiles/mv/imgs8.png
-https://maps.gstatic.com/mapfiles/rotate2.png
-https://maps.gstatic.com/mapfiles/szc4.png
-https://mts0.googleapis.com/vt?lyrs=m@215000000&src=apiv3&hl=et-EE&x=72&y=38&z=7&s=Galile&style=37%7Csmartmaps,59
-https://mts1.googleapis.com/vt?lyrs=m@215000000&src=apiv3&hl=et-EE&x=73&y=38&z=7&s=G&style=37%7Csmartmaps,59
 
 #internal HTML documents
 /evalimine.html
-/kandidaadistatprint.html
-/parteistatprint.html
-/piirkonnastatprint.html
-/riigistatprint.html
 
 #style sheets
 /jquery-ui-1.8.13.custom.css
@@ -33,31 +17,28 @@ https://mts1.googleapis.com/vt?lyrs=m@215000000&src=apiv3&hl=et-EE&x=73&y=38&z=7
 
 #style sheet images
 /img/button.png
-/img/ggl1.gif
-/img/ggl2.gif
-/img/ggl3.gif
+/img/fb1.gif
+/img/fb2.gif
+/img/fb3.gif
+/img/fb11.gif
+/img/fb12.gif
+/img/fb13.gif
 /img/taust.png
 /img/ui-anim_basic_16x16.gif
+http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif
+http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif
+http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif
+http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png
+http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png
 
 #javascript files
 /js/jquery-1.9.0.min.js
 /js/jquery-ui-1.8.13.js
-/js/jquery-1.9.0.min.js
 /js/jquery.address-1.6.min.js
 /js/menu.js
 /js/sorttable.js
 /js/candidate.js
-/js/validate.js
-/js/html5-canvas-bar-graph.js
-/_ah/channel/jsapi
 http://connect.facebook.net/en_US/all.js
-https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&sensor=false
-https://maps.gstatic.com/intl/et_ee/mapfiles/api-3/12/9/main.js
-https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/9/%7Bcommon,map,util,marker%7D.js
-https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/9/%7Bonion%7D.js
-https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/9/%7Bcontrols%7D.js
-https://maps.gstatic.com/cat_js/intl/et_ee/mapfiles/api-3/12/9/%7Bstats%7D.js
-https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2F127.0.0.1%3A8888%2Fevalimine.html%3Fgwt.codesvr%3D127.0.0.1%3A9999%23%2Fesileht&3sAIzaSyDcZAh_kX3AEq9pla4E5UpzZ8Zyr-2jrkU&4e1&5e0&6u1&7s2j2z7z&callback=_xdc_._x7j1ig&token=57102
-
-NETWORK:
-*
+/js/validate.js
+/js/map.js
+/js/html5-canvas-bar-graph.js
