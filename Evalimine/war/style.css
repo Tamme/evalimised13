@@ -1,3 +1,4 @@
+@media screen {
 
 h1, h2, h3, h4, h5, p, a, ul, li, input, select, textarea {
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -370,21 +371,22 @@ th {
 .ui-autocomplete-loading {
     background: white url('img/ui-anim_basic_16x16.gif') right center no-repeat;
   }
+}
 
 @media print {
-	body, text, p, h1, h2, h3, ol, ul, div, .menu a {
+	body, text, p, h1, h2, h3, ol, ul, div {
 		font: 11px "Verdana";
 		width: auto;
 		border: 0px;
 		margin: 0px;
-		padding: 0px;
+		padding: 5px;
 		float: none;
 		position: static;
 		overflow: hidden;
 	}
 	      
 	Remove Elements
-	#pais, #jalus, .logo, .menu, .statmenu, .ui-tabs {
+	#pais, #jalus, .logo, .menu, .statmenu, .ui-tabs, .menu a {
 		display:none;
 	}
 
