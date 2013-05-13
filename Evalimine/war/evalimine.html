@@ -134,15 +134,15 @@
 	<script type="text/javascript">
 
 	       	onOpened = function() {
-				//alert('/opened');
+				alert('/opened');
 				connected = true;
 				var $id = 12;
-				//$.post("StatisticsServlet", {values:$id}, function(reply) { 
-					//alert("tagasi");
-				//	  if (logged == "true") 
-				//  	  extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
-				//    
-				//});
+				$.post("StatisticsServlet", {values:$id}, function(reply) { 
+					alert("tagasi");
+					  //if (logged == "true") 
+				  	  //extra = "<tr><th>Vali antud kandidaat</th><td><button type='button' onclick=sendVote(" + items[0].id + ") class='button'>Hääleta</button></tr>"
+				    
+				});
 	       	};
 
 	        onMessage = function(m) {
@@ -175,9 +175,6 @@
 	   		 	var random = Math.floor(Math.random()*1000);
 				$.post("voteServlet", {values:param}, function(reply) { 
 					alert("Olete hääletanud");    
-				});
-				$.get("voteServlet", {values:param}, function(items) { 
-					votedname=items[0].full_name; 
 				});
 	   	}
 	   </script>

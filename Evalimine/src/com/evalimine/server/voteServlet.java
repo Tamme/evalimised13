@@ -28,21 +28,21 @@ public class voteServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		Connection c = null;
-		String [] params = req.getParameter("values").split(" ");
+		String id = req.getParameter("values");
 		String full = "[";
 		try {
 		      DriverManager.registerDriver(new AppEngineDriver());
 		      c = DriverManager.getConnection("jdbc:google:rdbms://faceelection:fakeelection/guestbook");
 			  String statement= "";
-		      statement ="select fullname from candidate where id=" + params[1];
+		      statement ="select voted_name from votes where voter_id=" + id;
 			  System.out.println(statement);
 			  ResultSet rs = c.createStatement().executeQuery(statement);
 				while (rs.next()){
-				    String fullname = rs.getString("fullname");
-				    System.out.println(fullname);
+				    String voted_name = rs.getString("voted_name");
+				    System.out.println(voted_name);
 				    
 				    Map<String, String> json = new LinkedHashMap<String, String>();
-		            json.put("full_name", fullname);
+		            json.put("voted_name", voted_name);
 		            
 		            String jsonData = new Gson().toJson(json);
 		            if (full.length() != 1) {
@@ -85,6 +85,11 @@ public class voteServlet extends HttpServlet {
 	      PreparedStatement stmt2 = c.prepareStatement(statement2);
 	      int success2 = 2;
 	      success2 = stmt2.executeUpdate();
+	      String statement3 = "UPDATE votes SET voted_name = (select candidate.fullname from candidate where candidate.id=" + params[1] + ") WHERE voter_id = " + params[2];
+	      System.out.println(statement3);
+	      PreparedStatement stmt3 = c.prepareStatement(statement3);
+	      int success3 = 2;
+	      success3 = stmt3.executeUpdate();
 	      //if unsuccessful then TODO...
 		} catch (Exception e) {
 	        System.out.println(e);

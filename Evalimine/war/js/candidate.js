@@ -11,6 +11,7 @@ var email; //email id
 var personId = -1;
 var voted;
 var votedname;
+var myArea;
 $(function () {
     "use strict";
     if (personId === -1) {
@@ -192,16 +193,24 @@ $(document).ready(function () {
 });
 
 function getPerson(id) {
-    //NEED TO ADD LOGGED IN PERSON ID INTO AS PARAMETER!!!!!!!!!!! FOR NOW JUST MADE UP ONE
     "use strict";
-    loggedId = personId;
+    var $id2 = personId;
+	$.get("CandidateServlet", {values:$id2}, function(items) {
+		myArea = items[0].area;
+	});
+    var loggedId = personId;
     //var logged = document.getElementById("logging").value;
     var $id = id;
     $.get("CandidateServlet", {
         values: $id
     }, function (items) {
-        extra = "";
-        if (personId > 0 && voted === 0) {
+        var extra = "";
+        alert(myArea);
+        alert(items[0].area);
+        alert(personId);
+        alert(voted);
+        if (personId > 0 && voted == 0 && myArea == items[0].area) {
+        	alert("gfdg");
             extra = "<tr><th>Vali antud kandidaat</th><td><a href='evalimine.html'><button type='button' onclick=sendVote(" + items[0].id + "," + loggedId + ") class='button'>Hääleta</button></a></tr>";
         }
         var text = "<table class='candidateInfo' border='1'>" +
@@ -255,7 +264,7 @@ $(document).ready(function () {
     "use strict";
     $('#candidateForm').submit(function (e) {
         e.preventDefault();
-        var party = $("#partyID option:selected").val(), area = $("#areas option:selected").val(), search = $("#searcharea").val(), $param = party + ";" + area + ";" + search;
+        var party = $("#partyID option:selected").val(), area = $("#areas option:selected").val(), search = $("#searcharea").val(), $param = personId + ";" + party + ";" + area + ";" + search;
         if (area === 'Eesti' && party === 'allParties') {
             $.get("CandidateServlet", {
                 values: $param
@@ -319,12 +328,15 @@ function getPersonData() {
     //$(document).ready(function(){
     "use strict";
     var $id = personId;
+    $.get("voteServlet", {values:$id}, function(items) { 
+		votedname=items[0].voted_name;
+	}); 
     $.get("CandidateServlet", {
         values: $id
     }, function (items) {
-        extra = "";
-        extra2 = "";
-        if (voted === 1) {
+        var extra = "";
+        var extra2 = "";
+        if (voted == 1) {
             extra = "<tr><th>Sinu hääl</th><td>" + votedname + "</td><tr>";
             extra2 = "Hääle tühistamine:<br><div id='tühistamine'></div></p>";
         }
